@@ -1,0 +1,59 @@
+#pragma once
+#include "../MainCtrl_Define.h"
+#include "Trajectory.h"
+#include "IOA.h"
+#include <vector>
+#include <pthread.h>
+#include "_2DMap.h"
+
+typedef int (*CallBack_RobotPos)(float x,float y,float th);
+using namespace std;
+class Task
+{
+public:
+	Task();
+	~Task();
+
+	int TaskInit();
+	int TaskRun();
+	int TaskStop();
+	int TaskUninit();
+
+	static int TaskIn(int nTaskType,char *pcData,int nDataLen);
+
+
+	static pthread_t m_hThreadIOA;
+	static void* ThreadIOA(void* lpParam);
+	static bool m_bStopThreadIOA;
+
+
+	CallBack_LogFile m_cbLogFile;
+	static CallBack_RobotPos m_cbRobotPos;
+	static CallBack_NetUpload m_cbSend2RS_A;
+	static CallBack_NetUpload m_cbSend2RS_B;
+
+	static CallBack_SendNKJCMD m_cbSendNKJCMD;
+//	static int TaskUpdates(int nTaskType,char *pcData,int nDataLen);
+protected:
+private:
+	
+
+//	vector<float> m_vctTaskPath;
+	static Task *m_pCTask;
+
+	vector<Point_f> m_vctTaskPath;
+	Trajectory m_CTrajectory;
+
+	static int Drive();
+
+	static int FaceToMilestone(float fSX,float fSY,float fEX,float fEY);
+	static int Break(float fV);
+	static int RepathPlanning1Step(float fSX,float fSY,float fEX,float fEY);
+
+	IOA m_CIOA;
+
+	_2DMap m_C2DMap;
+	SubCtrlCom m_CSubCtrlCom;
+
+
+};

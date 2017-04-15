@@ -1,0 +1,357 @@
+Index: localv1.cpp
+===================================================================
+--- localv1.cpp	(revision 167)
++++ localv1.cpp	(revision 166)
+@@ -102,22 +102,6 @@
+ 		}
+ 		for(int i=0;i<pose.size();i++)
+ 		{
+-			bool bIgnore = false;
+-			m_pPSM->pm_median_filter(scan[i]);
+-			// ignore corridor scan 
+-			if(m_pPSM->pm_is_corridor(scan[i]))
+-			{	
+-				cout<<"localv1.cpp: corridor scan, ignored!"<<endl;
+-				bIgnore = true;
+-			}
+-			else
+-			{	
+-				t_pose = m_synPose->oplus(*pose[i]);
+-				m_Particles->predict2(t_pose/**pose[i]*/);
+-				cm2m(scan[i]);
+-				bIgnore = m_Particles->update(m_PMap, scan[i]);
+-				t_pose = m_synPose->ominus(*(m_Particles->getMean2()));
+-			}
+ 			t_pose = m_synPose->oplus(*pose[i]);
+ 			//cout<<"init Pose: "<<i<<" "<<t_pose<<endl;
+ 			m_Particles->predict2(t_pose/**pose[i]*/);
+@@ -126,9 +110,8 @@
+ 			m_Particles->update(m_PMap, scan[i]);
+ 			//cout<<"update Pose: "<<i<<" "<<*(m_Particles->getMean2())<<endl;
+ 			t_pose = m_synPose->ominus(*(m_Particles->getMean2()));
+->>>>>>> .r166
+ 			// sendUpdatePose(syn[i],(void*)(m_Particles->getMean2()));
+-			sendUpdatePose(syn[i],(void*)(&t_pose), bIgnore);
++			sendUpdatePose(syn[i],(void*)(&t_pose));
+ 			//cout<<"sendUpdatePose: "<<syn[i]<<" "<<t_pose<<endl;
+ 		}
+ 		for(int i=0; i<pose.size(); i++)
+Index: localv1.h
+===================================================================
+--- localv1.h	(revision 167)
++++ localv1.h	(revision 166)
+@@ -20,7 +20,7 @@
+ 	void runLocalization();
+ 	void stop();
+ Q_SIGNALS:
+-	void sendUpdatePose(int, void*, bool);
++	void sendUpdatePose(int, void*);
+ 	void finished();
+ public:
+ 	// back up
+Index: globaldef.cpp
+===================================================================
+--- globaldef.cpp	(revision 167)
++++ globaldef.cpp	(revision 166)
+@@ -13,10 +13,8 @@
+ const unsigned int g_scan_decimation = 3; // decimation in likelihood calculation
+ 
+ const int g_num_of_global_particles = 10000;
+-const int g_num_of_particles = 50;
+-const int g_num_of_weight_particles = 6;
+-const double g_goodness_of_localization = 0.6;
+-const double g_meandis_of_localization = 0.05; 
++const int g_num_of_particles = 100;
++const int g_num_of_weight_particles = 10;
+ const float g_resample_threshold = 0.5; // threshold 
+ 
+ const float g_threshold_resample = 0.5; // threadhold for resample
+Index: testState.cpp
+===================================================================
+--- testState.cpp	(revision 167)
++++ testState.cpp	(revision 166)
+@@ -8,7 +8,7 @@
+ #include <iostream>
+ #include <fstream>
+ 
+-double segment_Score3(PMScan& ls, vector<float>& f, vector<int>& segs, int seg, int& index, int shift, int&, int&);
++double segment_Score3(PMScan& ls, vector<float>& f, vector<int>& segs, int seg, int& index, int shift);
+ int segment_Scan2(vector<float>&, vector<int>&);
+ double segment_Score2(vector<float>& f, vector<int>& segs, int seg, int& index, int shift);
+ 
+@@ -56,7 +56,7 @@
+ #define LEFT_OCC 60
+ #define RIGHT_OCC 40
+ #define ANGLE_THRE 10 
+-#define MIN_DIST 1 // 
++#define MIN_DIST 2
+ #define ROBOT_LEN 0.8
+ #ifndef PM_R2D
+ #define PM_R2D (180./M_PI)
+@@ -104,8 +104,7 @@
+ 		// c_r = m_stSickARange[i+start].fDis;
+ 		c_r = ls.r[i+start]/100.;
+ 		if(c_r == 0) continue;
+-		if( single_d - RIGHT_OCC < i && i < single_d + LEFT_OCC )
+-		{
++		if( single_d - RIGHT_OCC < i && i < single_d + LEFT_OCC ){
+ 			if(c_r <= stop_dis)
+ 			{
+ 				ret_Status = 1; // stop 
+@@ -135,15 +134,12 @@
+ 	// vector<float> score(n_of_seg);
+ 	vector<int> index(n_of_seg+1,0);
+ 	vector<float> score(n_of_seg+1,0);
+-	vector<int> win_st(n_of_seg+1,0);
+-	vector<int> win_et(n_of_seg+1,0);
+ 	float max_score = MIN_R;
+ 	// float score;
+ 	int ret_index = 0;
+-	for(int i=1;i<=n_of_seg;i++)
+-	{
++	for(int i=1;i<=n_of_seg;i++){
+ 		// score = segment_Score2(frontpts, segs, i, index[i], start);
+-		score[i] = segment_Score3(ls, frontpts, segs, i, index[i], start, win_st[i], win_et[i]);
++		score[i] = segment_Score3(ls, frontpts, segs, i, index[i], start);
+ 		//  score = 0;
+ 		// score = segment_Score(ls, frontpts, segs, i, index[i], start);
+ 	
+@@ -172,7 +168,7 @@
+ 	}
+ 
+ 	int min_change_angle = MAX_R;
+-	for(int i=1; i<=n_of_seg; i++)
++	for(int i=0; i<=n_of_seg; i++)
+ 	{
+ 		int change = abs(index[i] - single_d);
+ 		if(change < min_change_angle && score[i] >= ROBOT_LEN)
+@@ -182,14 +178,6 @@
+ 		}
+ 	}
+ 
+-	for(int i=1; i<=n_of_seg;i++)
+-	{
+-		if(i==ret_index){
+-			printf("best: {%d, %d} score: %f\n", win_st[i], win_et[i], score[i]);
+-		}else{
+-			printf("option: [%d, %d] score: %f\n", win_st[i], win_et[i], score[i]);
+-		}
+-	}
+ 	/*// calculate weights for each laser line
+ 	for(int i=0; i< N; i++){
+ 		weights[i] = (frontpts[i] - min_r)/(max_r - min_r);
+@@ -263,8 +251,7 @@
+ 	
+ 	return seg_cnt;
+ }
+-
+-double segment_Score3(PMScan& ls, vector<float>& f, vector<int>& segs, int seg, int& index, int shift, int& vst, int& vet)
++double segment_Score3(PMScan& ls, vector<float>& f, vector<int>& segs, int seg, int& index, int shift)
+ {
+ 	double sum = 0;
+ 	int cnt = 0;
+@@ -324,38 +311,6 @@
+ 	// angle displacement
+ 	index = st+(et-st)/2;
+ 	cout<<"st: "<<st<<" et: "<<et<<" index: "<<index<<endl;
+-	
+-	const double delta_r = 0.19; // 20cm
+-	const double delta_l = 0.44; // 44cm
+-	if(f[et] == 0 ) --et;
+-	if(f[st] == 0 ) ++st;
+-	double r = f[st];
+-	double l = f[et];
+-	double theta_r, theta_l;
+-	if(delta_r >= r)
+-		theta_r = M_PI/2;
+-	else 
+-		theta_r = asin(delta_r/r);
+-	if(delta_l >= l) 
+-		theta_l = M_PI/2;
+-	else 
+-		theta_l = asin(delta_l/l);
+-
+-	int shift_r = (theta_r/M_PI)*360;
+-	int shift_l = (theta_l/M_PI)*360;
+-	// printf("r=%f, l=%f, tr=%f, tl=%f, sr=%f, sl=%f\n",r,l,theta_r,theta_l,shift_r,shift_l);
+-	vst = st + shift_r + 2;
+-	vet = et - shift_l - 2;	
+-	// cout<<"testState.cpp: valid window "<<vst<<" : "<<vet<<endl;
+-	if(vet < vst)
+-	{
+-		cout<<"testState.cpp Not valid window!"<<endl;
+-		return 0;
+-	}
+-	if(et - st > 180)
+-	{
+-		return 2.0;
+-	}
+ 	double tangle = sin(PM_D2R*(et-st)*0.5*0.5);
+ 	if(tangle < 0) tangle *=-1.;
+ 	double line = f[st] < f[et] ? f[st] : f[et];
+@@ -367,8 +322,7 @@
+ 	x2 = ls.x[shift+et]/100.;  y2 = ls.y[shift+et]/100.;
+ 	cout<<"p1: " <<f[st]<<" "<<x1<<","<<y1<<" p2: "<<f[et]<<" "<<x2<<","<<y2<<" ";
+ 	// double score = sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+-	printf("tan: %f, line: %f, score: %f\n",tangle,line,score);
+-	// cout<<"score: "<<score<<endl;
++	cout<<"score: "<<score<<endl;
+ 
+ 	return score;
+ }
+@@ -658,7 +612,7 @@
+ 		cout<<"small angle "<<PM_R2D*angle<<", no need rotation!"<<endl;
+ 		return 2;
+ 	}
+-	// cout<<"index: "<< ret_index <<" rotation : "<<PM_R2D*angle<<endl;
++	cout<<"index: "<< ret_index <<" rotation : "<<PM_R2D*angle<<endl;
+ 	return 3;
+ }
+ 
+Index: globaldef.h
+===================================================================
+--- globaldef.h	(revision 167)
++++ globaldef.h	(revision 166)
+@@ -7,8 +7,6 @@
+ extern const int g_num_of_global_particles;
+ extern const int g_num_of_particles;
+ extern const int g_num_of_weight_particles;
+-extern const double g_goodness_of_localization;
+-extern const double g_meandis_of_localization;
+ extern const float g_resample_threshold;
+ 
+ extern const float g_free_threshold;
+Index: particles.cpp
+===================================================================
+--- particles.cpp	(revision 167)
++++ particles.cpp	(revision 166)
+@@ -226,42 +226,13 @@
+ 	*m_mean_pose = OrientedPoint2D(x,y,th);
+ }*/
+ 
+-namespace{
+-	double disPose(OrientedPoint2D* p1, OrientedPoint2D* p2)
+-	{
+-		return ((p1->x-p2->x)*(p1->x-p2->x) + (p1->y-p2->y)*(p1->y-p2->y));
+-	}
+-}
+-
+-double CParticles::meanDis(vector<int>& index)
++void CParticles::weightMean(vector<int>& index, vector<float>& weight)
+ {
+-	vector<float> dis_set;
+-	double sum = 0;
+-	unsigned int N = index.size();
+-	double sum_i;
+-	for(int i=0;i<N;i++)
+-	{
+-		sum_i = 0;
+-		for(int j=0;j<N;j++)
+-		{
+-			sum_i += disPose(m_pParticlePose[index[j]],m_pParticlePose[index[i]]);
+-		}
+-		sum_i /= N;
+-		sum += sum_i;
+-	}
+-	return (sum/N);
+-} 
+-
+-double CParticles::weightMean(vector<int>& index, vector<float>& weight)
+-{
+-	double meanKW = 0;
+ 	double sumW = 0;
+ 	for(int i=0;i<index.size();i++)
+ 	{
+ 		sumW += weight[index[i]];
+ 	}
+-	meanKW = sumW/index.size();
+-	// cout<<"particles.cpp: mean weight: "<<sumW/index.size()<<endl;
+ 	double score; 
+ 	double x = 0;
+ 	double y = 0; 
+@@ -274,7 +245,6 @@
+ 		th += score*m_pParticlePose[index[i]]->theta;
+ 	}
+ 	*m_mean_pose = OrientedPoint2D(x,y,th);
+-	return meanKW;
+ }
+ 
+ void CParticles::calMaxWeight()
+@@ -315,7 +285,7 @@
+ 	mp.theta = p.theta + M_PI ;
+ }
+ 
+-bool CParticles::update(CVPmap* map, PMScan* ls)
++void CParticles::update(CVPmap* map, PMScan* ls)
+ {
+ 	FM::Vec z(m_nParticles);
+ 	OrientedPoint2D mp;
+@@ -340,9 +310,7 @@
+ 	calMaxWeight();
+ 	
+ 	((threadLocalization*)0)->topK(index,scores,g_num_of_weight_particles);
+-	double meandis = meanDis(index);
+-	double goodness = weightMean(index,scores);
+-	cout<<"particles.cpp: meandis: "<<meandis<<" goodness: "<<goodness<<endl;
++	weightMean(index,scores);
+ 
+ 	if(neff() < m_nParticles*g_resample_threshold)
+ 	{
+@@ -353,34 +321,7 @@
+ 	{
+ 		// m_PF->mean();
+ 	}
+-
+-	// for initial scans, threshold is a little bit loose
+-	static int cnt = 0;
+-	if(++cnt <= 2)
+-	{
+-		if(goodness < 0.48) 
+-		{
+-			cout<<"particles.cpp: initial scan goodness: "<<goodness<<" ignored!"<<endl;
+-			return true;
+-		}else if(meandis >= 0.08)
+-		{
+-			cout<<"particles.cpp: initial scan goodness: "<<meandis<<" ignored!"<<endl;
+-			return true;
+-		}
+-	}else
+-	{
+-		// cout<<"particles.cpp: Hi, I am here!"<<endl;
+-		if(goodness < g_goodness_of_localization)
+-		{
+-			cout<<"particles.cpp : goodness: "<<goodness<<" ignored!"<<endl;
+-			return true;
+-		}else if(meandis >= g_meandis_of_localization)
+-		{
+-			cout<<"particles.cpp : meandis: "<<meandis<< "ignored!"<<endl;
+-			return true;
+-		}
+-	}
+-	return false;
++	// cout<<"particles.cpp: Hi, I am here!"<<endl;
+ }
+ 
+ void CParticles::getMean(OrientedPoint2D& p)
+Index: particles.h
+===================================================================
+--- particles.h	(revision 167)
++++ particles.h	(revision 166)
+@@ -98,15 +98,14 @@
+ 	void predict(OrientedPoint2D& );
+ 	void predict2(OrientedPoint2D& );
+ 	double neff();
+-	bool update(CVPmap*, struct _PMScan*);
++	void update(CVPmap*, struct _PMScan*);
+ 	void translate2RealPose(OrientedPoint2D&, OrientedPoint2D&);
+ 	void translate2MapPose(OrientedPoint2D&, OrientedPoint2D&);
+ 	void getMax(OrientedPoint2D&);
+ 	void getMean(OrientedPoint2D&);
+ 	OrientedPoint2D* getMean2();
+ 	void calMaxWeight();
+-	double weightMean(vector<int>&, vector<float>&);
+-	double meanDis(vector<int>&);
++	void weightMean(vector<int>&, vector<float>&);
+ 	int m_maxIndexParticle; // particle with max Weight
+ 	unsigned int m_nParticles; // num of particles
+ 	unsigned int m_nL; // location vector for each particle

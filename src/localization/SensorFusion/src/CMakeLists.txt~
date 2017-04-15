@@ -1,0 +1,32 @@
+PROJECT(SensorFusion)
+
+
+SET(BAYES_SRCS
+bayesFltAlg.cpp  covFlt.cpp       unsFlt.cpp
+bayesFlt.cpp       matSup.cpp      UdU.cpp    SIRFlt.cpp
+)
+
+SET(BAYES_HEADERS 
+bayesException.hpp  config.hpp      matSup.hpp     models.hpp    uBLASmatrix.hpp
+bayesFlt.hpp        covFlt.hpp    matSupSub.hpp  random.hpp    unsFlt.hpp SIRFlt.hpp
+)
+
+SET(SLAM_SRCS
+ fastSLAM.cpp kalmanSLAM.cpp 
+)
+
+SET(SLAM_HEADERS
+ fastSLAM.hpp kalmanSLAM.hpp 
+)
+
+ADD_LIBRARY(bayesFilters SHARED ${BAYES_SRCS} ${BAYES_HEADERS})
+ADD_LIBRARY(SLAM SHARED ${SLAM_SRCS} ${SLAM_HEADERS})
+
+
+ADD_EXECUTABLE(testSensorFusion testSensorFusion.cpp)
+TARGET_LINK_LIBRARIES(testSensorFusion bayesFilters)
+
+message("AA : ${LAPACK_LIBRARIES}")
+
+ADD_EXECUTABLE(testFastSLAM testFastSLAM.cpp)
+TARGET_LINK_LIBRARIES(testFastSLAM SLAM bayesFilters ${LAPACK_LIBRARIES})

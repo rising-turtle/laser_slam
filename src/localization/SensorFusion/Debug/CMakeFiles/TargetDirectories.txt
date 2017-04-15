@@ -1,0 +1,5 @@
+/home/lyxp/work/mkproj/SVN/PFG/trunk/src/localization/SensorFusion/Debug/src/CMakeFiles/SLAM.dir
+/home/lyxp/work/mkproj/SVN/PFG/trunk/src/localization/SensorFusion/Debug/src/CMakeFiles/bayesFilters.dir
+/home/lyxp/work/mkproj/SVN/PFG/trunk/src/localization/SensorFusion/Debug/src/CMakeFiles/testFastSLAM.dir
+/home/lyxp/work/mkproj/SVN/PFG/trunk/src/localization/SensorFusion/Debug/src/CMakeFiles/testPF.dir
+/home/lyxp/work/mkproj/SVN/PFG/trunk/src/localization/SensorFusion/Debug/src/CMakeFiles/testSensorFusion.dir

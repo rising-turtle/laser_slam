@@ -1,0 +1,8 @@
+
+float g_robot_len = 0.8 ; // the width of the robot
+float g_small_angle = 20 ; // 10' small angle not turn
+float g_min_dis = 2; // minimum dis to make segments
+float g_start_angle = 0; // serach area from start
+float g_end_angle = 540; // to end
+float g_stop_dis = 1.0; // stop if found objects in front
+float g_slow_dis = 1.5; // slow if found objects in front

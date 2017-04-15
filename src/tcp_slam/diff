@@ -1,0 +1,240 @@
+Index: clientFusion.cpp
+===================================================================
+--- clientFusion.cpp	(revision 90)
++++ clientFusion.cpp	(revision 89)
+@@ -104,40 +104,39 @@
+ 	odo->moveToThread(&mThreadOdo);
+ 
+ 
+-	bool test = false;
++	bool test = true;
+ 	if(test)
+ 	{
+ 		//testing
+-
+-
+ 		{
+ 			//lenovo, 151
+-			mainSICK->setFile("/media/ShareRegion/Datasets/LMS151_20130125/exp1.txt");
+ 			// mainSICK->setFile("/mnt/hgfs/SharedFold/dataset/lenovo/LMS151/20130108_t2.txt");
+-		//	mainSICK->setFile("/mnt/hgfs/SharedFold/dataset/lenovo/LMS151/20130219.txt");
++			mainSICK->setFile("/mnt/hgfs/SharedFold/dataset/lenovo/LMS151/20130219.txt");
+ 
+ 			connect(&mThreadMainSICK,SIGNAL(started()),mainSICK,SLOT(runCM()),Qt::DirectConnection); // for debuging using rawseed data
+ 			connect(&mThreadMinorSICK,SIGNAL(started()),minorSICK,SLOT(runCM()),Qt::DirectConnection);
+ 			connect(&mThreadOdo,SIGNAL(started()),odo,SLOT(runRawseedOdo()),Qt::DirectConnection);
+ 		
+ 		}
++		/*{
+ 
+-		/*
+-		{
+-
+ 			//intel, but 211
+-			mainSICK->setFile("/media/ShareRegion/Datasets/intel/intel_rawseed.log");
++			// mainSICK->setFile("/media/ShareRegion/Datasets/intel/intel_rawseed.log");
++			mainSICK->setFile("/mnt/hgfs/SharedFold/dataset/lenovo/LMS151/20130108_t2.txt");
++		//	minorSICK->setFile("/media/ShareRegion/Datasets/Rawseeds/Bicocca_2009-02-25b/Bicocca_2009-02-25b-SICK_REAR.csv");
+ 			odo->setFile("/media/ShareRegion/Datasets/intel/intel_pose.log");
+ 
++
+ 			connect(&mThreadMainSICK,SIGNAL(started()),mainSICK,SLOT(runRS()),Qt::DirectConnection); // for debuging using rawseed data
+ 			connect(&mThreadMinorSICK,SIGNAL(started()),minorSICK,SLOT(runRS()),Qt::DirectConnection);
+ 			connect(&mThreadOdo,SIGNAL(started()),odo,SLOT(runRawseedOdo()),Qt::DirectConnection);
+ 
++			oriInRobot_odo->x = 0.;
++			oriInRobot_odo->y = 0.;
++			oriInRobot_odo->theta = M_PI_2;
+ 
+-		}
+-		*/
++		}*/
+ 
+-
+ 		/*
+ 		{
+ 			//ourdata in rawseed format, but 151
+@@ -148,7 +147,6 @@
+ 		}
+ 		*/
+ 
+-
+ 		/*
+ 		{
+ 			//rawseed, but 211
+@@ -177,7 +175,6 @@
+ 
+ 
+ 
+-
+ 	}
+ 	else
+ 	{
+@@ -239,10 +236,10 @@
+ 
+ 		QMutexLocker lock_filter(&mutex_filter);
+ 		QMutexLocker lock_main(&mutex_mainSICK);
+-		//QMutexLocker lock_odo(&mutex_odo);
++		QMutexLocker lock_odo(&mutex_odo);
+ 		//QMutexLocker lock_minor(&mutex_minorSICK);
+ 
+-		if(_MAIN_SICK_READY)// && _ODO_READY)// && _MAIN_SICK_READY)// && _ODO_READY)// && scan_minorSick)
++		if(_MAIN_SICK_READY)//_ODO_READY && _MAIN_SICK_READY)// && _ODO_READY)// && scan_minorSick)
+ 		{
+ 
+ 			//printf("main time = %lld, minor time = %lld \n", t_mainSick, t_minorSick);
+@@ -305,7 +302,6 @@
+ 	Vec z(3);
+ 	cvtOPD2X(*opd_x_u, z);
+ 
+-
+ 	if(cov_mainSick)
+ 	{
+ 		sick_observe_main.Zv[0] = cov_mainSick[0]*100;
+@@ -431,20 +427,19 @@
+ 	}
+ 
+ 	//update filt
+-	if(1){
++	if(0){
+ 		synGlobal_observe.Zv[0] = cov_Global[0]*100;
+ 		synGlobal_observe.Zv[1] = cov_Global[3]*100;
+ 		synGlobal_observe.Zv[2] = rad2deg(cov_Global[5]);
+ 	}
++	// *opd_x_u = opd_x_p->oplus(*p);
+ 	*opd_x_u = *opd_x_p + *p;
+ 	Vec z(3);
+ 	cvtOPD2X(*opd_x_u, z);
+ 
+ 	my_filter->observe (synGlobal_observe, z);
+ 	my_filter->update();
+-
+ 	syn_mainSick++;
+-
+ }
+ 
+ 
+Index: clientFrontend.cpp
+===================================================================
+--- clientFrontend.cpp	(revision 90)
++++ clientFrontend.cpp	(revision 89)
+@@ -158,7 +158,6 @@
+ 		break;
+ 	case 3:
+ 		cout<<"runFusion()!"<<endl;
+-		use_UKF = false; // frontend stop to use ukf
+ 		m_pFusion->runFusion();
+ 		break;
+ 	default:
+@@ -265,9 +264,6 @@
+ 
+ void CClientFrontend::run(PMScan& ls){
+ 
+-	static ofstream fout("tcp_out.txt");
+-	TTimeStamp ts = getCurrentTime();
+-
+ 	OrientedPoint2D prev_pose;
+ 	OrientedPoint2D rel_pose;
+ 	OrientedPoint2D curr_pose;
+@@ -379,7 +375,7 @@
+ 		// feout<<curr_pose.x<<" "<<curr_pose.y<<" "<<curr_pose.theta<<endl;
+ 		// gtout<<gt_pose.x<<" "<<gt_pose.y<<" "<<gt_pose.theta<<endl;
+ 		// send to sever
+-		cout<<"sendFrameInfo x: "<<curr_pose.x<<" y: "<<curr_pose.y<<" th: "<<curr_pose.theta<<endl;
++		// cout<<"sendFrameInfo x: "<<curr_pose.x<<" y: "<<curr_pose.y<<" th: "<<curr_pose.theta<<endl;
+ 		// sendFrameInfo(curr_pose.x,curr_pose.y,curr_pose.theta,ls.r,ls.np);
+ 
+ 		rel_pose = sent_pose->ominus(curr_pose);
+@@ -417,50 +413,26 @@
+ 			bSetScnt = true;
+ 			scnt = 0;
+ 			usleep(10000);
+-
+-			TTimeStamp te = getCurrentTime();
+-			fout<<timeDifference(ts, te)<<" "<<curr_pose.x<<" "<<curr_pose.y<<" "<<curr_pose.theta<<endl;
+ 		}
+ 	}
+ 	else
+ 	{
+ 		// Fusion mode
+ 
+-		if((!smallMove(rel_pose)) || (bSetScnt && scnt>=5))
+-		{
+-			if( scnt >=5 ){
+-				m_pPSM->pm_segment_scan(&ls);
+-				// if the robot is not moving
+-				if(!m_pPSM->pm_is_corridor(&ls)){
+-					scnt = 0;
+-					return ;
+-				}
+-				else{ // this scan is taken in the corridor
+-					addMatrix(matrix, corridor_m);
+-					addEigen(curr_cov, corridor_m);
+-					cout<<"clientFrontend: in corridor, covariance: "<<matrix[0]<<" "<<matrix[3]<<" "<<matrix[5]<<endl;
+-				}
+-			}
++		TTimeStamp t = (int64_t)(ls.t*10000000);
++		sendRelFrameInfo(rel_pose.x,rel_pose.y,rel_pose.theta,ls.r,ls.np,t, syn_num,matrix);
++		//cout<<"ClientFrontend::run "<<" "<<rel_pose.x<<" "<<rel_pose.y<<" "<<rel_pose.theta<<" "<<ls.np<<" "<<ls.t<<" "<<t<<endl;
+ 
+-			TTimeStamp t = getCurrentTime();
+-			sendRelFrameInfo(rel_pose.x,rel_pose.y,rel_pose.theta,ls.r,ls.np,t, syn_num,matrix);
+-			//cout<<"ClientFrontend::run "<<" "<<rel_pose.x<<" "<<rel_pose.y<<" "<<rel_pose.theta<<" "<<ls.np<<" "<<ls.t<<" "<<t<<endl;
+-
+-			bSetScnt = true;
+-			scnt = 0;
+-			/*
+-			while(1)
++		while(1)
++		{
++			QMutex lock(&mutex_recv_t);
++			if(recv_t != t)
+ 			{
+-				QMutex lock(&mutex_recv_t);
+-				if(recv_t != t)
+-				{
+-					QThread::yieldCurrentThread();
+-					continue;
+-				}
+-				else
+-					break;
++				QThread::yieldCurrentThread();
++				continue;
+ 			}
+-			*/
++			else
++				break;
+ 		}
+ 	}
+ }
+Index: dialog_client.cpp
+===================================================================
+--- dialog_client.cpp	(revision 90)
++++ dialog_client.cpp	(revision 89)
+@@ -11,9 +11,9 @@
+ 
+ namespace{
+ // QString initFile("/mnt/hgfs/SharedFold/dataset/rawseed/Bicocca_2009-02-25b/Bicocca_2009-02-25b-SICK_FRONT.csv");
+-//QString initFile("/mnt/hgfs/SharedFold/dataset/lenovo/LMS151/20130219.txt");
++QString initFile("/mnt/hgfs/SharedFold/dataset/lenovo/LMS151/20130219.txt");
+ // QString initFile("/mnt/hgfs/SharedFold/dataset/slaminput/intel-lab.log");
+-QString initFile("/media/ShareRegion/Datasets/LMS151_20130219/t1.txt");
++
+  // QString initFile("/media/ShareRegion/Datasets/LMS151_20130108/t1.txt");
+ 
+ 
+@@ -44,11 +44,11 @@
+ Dialog_Client::Dialog_Client(QWidget *parent)
+ : QDialog(parent),
+   m_file_name(initFile),
+-  m_server_ip("10.100.203.63"),
++  m_server_ip("127.0.0.1"),
+   m_server_port(6188),
+-  m_sick1_ip("192.168.1.2"),
++  m_sick1_ip("192.168.1.3"),
+   m_sick1_port(2112),
+-  m_sick2_ip("192.168.1.3"),
++  m_sick2_ip("192.168.1.2"),
+   m_sick2_port(2112)
+ {
+ 	// initailize log widgets       

@@ -1,0 +1,1 @@
+/home/administrator/Work/Main-Ctrl_CMake/debug/CMakeFiles/Main-Ctrl.dir

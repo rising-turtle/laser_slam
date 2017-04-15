@@ -1,0 +1,144 @@
+Index: slam_v1.cpp
+===================================================================
+--- slam_v1.cpp	(revision 166)
++++ slam_v1.cpp	(revision 165)
+@@ -123,7 +123,7 @@
+ 
+ 	//For localization
+ 
+-	string imgfile = "/home/jetfire/CoProjects/trunk/data/B2Map.jpg";
++	string imgfile = "/home/administrator/Desktop/B2Map.jpg";
+ 
+ 	int start_x = 1393;
+ 	int start_y = 517;
+@@ -210,8 +210,7 @@
+ 
+ 	TTimeStamp ts = getCurrentTime();
+ 
+-	ofstream outf("slamv1_scan.log");
+-	ofstream outf2("slamv1_odo.log");
++	ofstream outf("timett.log");
+ 	// startThreads
+ 	m_threadFrontend.start();
+ 	m_threadBackend.start();
+@@ -231,7 +230,6 @@
+ 				odoTime_cur = odoPose[3];
+ 				if(odo_first)
+ 				{
+-					outf2<<getCurrentTime()<<", "<<odoPose[0]<<", "<<odoPose[1]<<", "<<odoPose[2]<<", "<<odoPose[3]<<endl;
+ 					odoTime_last = odoTime_cur;
+ 
+ 					//printf("sendODO: %f, %f, %f, %f\n", odoPose[0], odoPose[1], odoPose[2],odoPose[3]);
+@@ -244,9 +242,6 @@
+ 					{ }
+ 					else
+ 					{
+-
+-
+-						outf2<<getCurrentTime()<<", "<<odoPose[0]<<", "<<odoPose[1]<<", "<<odoPose[2]<<", "<<odoPose[3]<<endl;
+ 						//printf("sendODO: %f, %f, %f, %f\n", odoPose[0], odoPose[1], odoPose[2],odoPose[3]);
+ 						this->sendODO(odoPose[0],odoPose[1],odoPose[2],odoPose[3]);//mm, degree
+ 						odoTime_last = odoTime_cur;
+@@ -284,8 +279,7 @@
+ 				{
+ 
+ 					//cout<<"MainSICK TIME: "<<t_scanMain_last<<" "<<t_scanMain_cur<<endl;
+-					//outf<<timeDifference(t_scanMain_last, t_scanMain_cur)<<", 541, 0, ";
+-					outf<<t_scanMain_cur<<", 541, 0, ";
++					outf<<timeDifference(t_scanMain_last, t_scanMain_cur)<<", 541, 0, ";
+ 					for(int i=0;i<541;i++)
+ 					{
+ 						outf<<scanMain[i]<<", ";
+@@ -400,8 +394,8 @@
+ {
+ 	//LD ONLY
+ 
+-	m_pCBSet->cbLocalization(x,y,theta);
+ 
++
+ }
+ 
+ 
+Index: clientFusion.cpp
+===================================================================
+--- clientFusion.cpp	(revision 166)
++++ clientFusion.cpp	(revision 165)
+@@ -653,8 +653,7 @@
+ 		if( _ODO_READY )
+ 		{
+ 			//cout<<"sendOdo!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
+-			//send2CBScan(0, 0, absPose_odo_cur->x,absPose_odo_cur->y,absPose_odo_cur->theta);
+-			sendODO(absPose_odo_cur->x,absPose_odo_cur->y,absPose_odo_cur->theta,odo_t_last);
++			send2CBScan(0, 0, absPose_odo_cur->x,absPose_odo_cur->y,absPose_odo_cur->theta);
+ 			_ODO_READY = false;
+ 		}
+ 		else
+@@ -675,8 +674,7 @@
+ 		QMutexLocker lock(&mutex_filter);
+ 		if( _BN_READY )
+ 		{
+-			sendBN(absPose_bn->x, absPose_bn->y, absPose_bn->theta);
+-//send2CBScan(0, 0, absPose_bn->x,absPose_bn->y,absPose_bn->theta);
++			send2CBScan(0, 0, absPose_bn->x,absPose_bn->y,absPose_bn->theta);
+ 			_BN_READY = false;
+ 		}else
+ 		{
+@@ -1126,15 +1124,7 @@
+ 			m_bSent2Localization = false;
+ 			_SYN_LOCALIZE_READY = true;
+ 
+-/*
+-			Vec z(3);
+-			cvtOPD2X(*absPose_localize,z);
+-			my_filter->observeFusion(synLocalize_observe,z);
+-			_SYN_LOCALIZE_READY = false;
+-			my_filter->updateFusion();
+-*/
+ 			sendLD(absPose_localize->x, absPose_localize->y, absPose_localize->theta);
+-
+ 		}
+ 
+ 
+Index: slam_v1.h
+===================================================================
+--- slam_v1.h	(revision 166)
++++ slam_v1.h	(revision 165)
+@@ -40,7 +40,7 @@
+ typedef int (*CallBack_OnlyBNResult)(float fX,float fY,float fTheta);
+ typedef int (*CallBack_DataFusionAndPC)(float* b, int n, double px, double py, double pth);
+ 
+-typedef int (*CallBack_Localization)(double px, double py, double pth);
++
+ typedef struct SLAM_CallBack
+ {
+ 	CallBack_Odometry cbOdometry;
+@@ -59,7 +59,6 @@
+ 	CallBack_OnlyOdoResult cbOnlyOdoResult;
+ 	CallBack_OnlyBNResult cbOnlyBNResult;
+ 	CallBack_DataFusionAndPC cbDataFusionAndPC;
+-	CallBack_Localization cbLocalization;
+ } SLAM_CallBack;
+ 
+ typedef struct SLAMParams
+Index: clientFrontend.cpp
+===================================================================
+--- clientFrontend.cpp	(revision 166)
++++ clientFrontend.cpp	(revision 165)
+@@ -43,7 +43,7 @@
+ 			 		  	      cov(2,2) = m[5];
+ 	}
+ 
+-//	ofstream time_log("time.log");
++	ofstream time_log("time.log");
+ }
+ 
+ 
+@@ -639,7 +639,7 @@
+ 	PMScan ls(m_pPSM->m_pParam->pm_l_points);
+ 	m_scan->scan.resize(m_pPSM->m_pParam->pm_l_points);
+ 
+-	//ofstream outf("scan_frontend.log");
++	ofstream outf("scan_frontend.log");
+ 	//TTimeStamp t_last = 0.;
+ 	while(!m_stop_thread){
+ 

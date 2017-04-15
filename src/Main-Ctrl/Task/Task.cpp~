@@ -1,0 +1,305 @@
+#include "Task.h"
+#include <string.h>
+#include <stdio.h>
+Task *Task::m_pCTask;
+
+
+pthread_t Task::m_hThreadIOA;
+bool Task::m_bStopThreadIOA;
+CallBack_RobotPos Task::m_cbRobotPos;
+CallBack_NetUpload Task::m_cbSend2RS_A;
+CallBack_NetUpload Task::m_cbSend2RS_B;
+CallBack_SendNKJCMD Task::m_cbSendNKJCMD;
+Task::Task()
+{
+	m_pCTask=this;
+}
+
+Task::~Task()
+{
+	m_pCTask=NULL;
+}
+
+int Task::TaskInit()
+{
+	m_C2DMap._2DMapInit();
+	
+	return 0;
+}
+
+
+int Task::TaskRun()
+{
+	
+	return 0;
+}
+
+
+int Task::TaskStop()
+{
+	
+	return 0;
+}
+
+
+int Task::TaskUninit()
+{
+	return 0;
+}
+
+void* Task::ThreadIOA(void* lpParam)
+{
+	while(!m_bStopThreadIOA)
+	{
+		m_pCTask->m_CIOA.CanRunAreaCheck();
+		usleep(10000);
+	}
+}
+
+int Task::Drive()
+{
+	int i,j=0,k,m,n;
+	float fX,fY,fTheta;
+float fTmpL,fTmpR;
+	int nCMD;
+	int nSliceTime=(int)((float)CMD_SLICE_LEN*1000.0)*1000;
+
+	printf("nSliceTime  :%d \n",nSliceTime);
+	Point_f stPoint1,stPoint2;
+	stPoint1=m_pCTask->m_vctTaskPath[0];
+	stPoint2=m_pCTask->m_vctTaskPath[1];
+
+	fX=stPoint2.fX-stPoint1.fX;
+	fY=stPoint2.fY-stPoint1.fY;
+	float fV,fXS=0,fYS=0,fXAcc=0,fYAcc=0,fThetaAcc;
+	fThetaAcc=atan2(fY,fX)-3.1415926/2;
+
+	//printf("fX:%f ,  fY:%f,  fThetaAcc  :  %f  \n",fX,fY,atan2(fY,fX));
+	//printf("size():%d \n",m_pCTask->m_CTrajectory.m_vctRecvLinearVL.size());
+	char cSendData[1024];
+	for(i=0;i<m_pCTask->m_CTrajectory.m_vctRecvLinearVL.size();i++)
+	{
+		for(m=0;m<m_pCTask->m_CTrajectory.m_vctRecvLinearVL[i].size();m++)
+		{	
+			fTmpL=m_pCTask->m_CTrajectory.m_vctRecvLinearVL[i][m]*1000;
+			fTmpR=m_pCTask->m_CTrajectory.m_vctRecvLinearVL[i][m]*1000;
+			//printf("line  VL:%f  ,VR:%f  \n",m_pCTask->m_CTrajectory.m_vctRecvLinearVL[i][m]
+			//	,m_pCTask->m_CTrajectory.m_vctRecvLinearVL[i][m]);
+			//m_cbSendNKJCMD(m_pCTask->m_CTrajectory.m_vctRecvLinearVL[i][m],m_pCTask->m_CTrajectory.m_vctRecvLinearVL[i][m],10,10);
+			printf("line  VL:%f  ,VR:%f  \n",fTmpL,fTmpR);
+			m_cbSendNKJCMD(fTmpL,fTmpR,nSliceTime/1000,nSliceTime/1000);
+			fV=m_pCTask->m_CTrajectory.m_vctRecvLinearVL[i][m]*CMD_SLICE_LEN;
+			fXS=cos(fThetaAcc)*fV;
+			fYS=-sin(fThetaAcc)*fV;
+			fXAcc+=fYS;
+			fYAcc+=fXS;
+			m_cbRobotPos(fXAcc,fYAcc,fThetaAcc);
+			usleep(nSliceTime);
+		}
+		nCMD=ROB_REACH_MIL;
+		memcpy(cSendData,&nCMD,4);
+		memcpy(cSendData+4,&i,4);
+		m_cbSend2RS_B(cSendData,8);
+
+		if(i<m_pCTask->m_CTrajectory.m_vctBlendVL.size())
+		{
+			for(j=0;j<m_pCTask->m_CTrajectory.m_vctBlendVL[i].size();j++)
+			{
+				
+				
+				fTheta=(m_pCTask->m_CTrajectory.m_vctBlendVR[i][j]-m_pCTask->m_CTrajectory.m_vctBlendVL[i][j])/ROBOT_L;
+				fV=(m_pCTask->m_CTrajectory.m_vctBlendVR[i][j]+m_pCTask->m_CTrajectory.m_vctBlendVL[i][j])/2;
+
+				fTmpL=m_pCTask->m_CTrajectory.m_vctBlendVL[i][j]*1000*20;
+				fTmpR=m_pCTask->m_CTrajectory.m_vctBlendVR[i][j]*1000*20;
+				m_cbSendNKJCMD(fTmpL,fTmpR,nSliceTime/1000,nSliceTime/1000);
+				printf("Turn  VL:%f  ,VR:%f  \n",fTmpL,fTmpR);
+				fThetaAcc+=fTheta;
+				fXS=cos(fThetaAcc)*fV;
+				fYS=-sin(fThetaAcc)*fV;
+				fXAcc+=fYS;
+				fYAcc+=fXS;
+				m_cbRobotPos(fXAcc,fYAcc,fThetaAcc);
+				usleep(nSliceTime);
+			}
+		}
+	}
+		m_cbSendNKJCMD(fTmpL,fTmpR,0,0);
+	return 0;
+}
+
+int Task::TaskIn(int nTaskType,char *pcData,int nDataLen)
+{
+	int i,nNum=(nDataLen>>2),nRtn;
+	Point_f stPoint;
+	vector<float> vctSpdLmt;
+	float fPos[3],fDiffX,fDiffY;
+	Point_f stPt;
+	if (nTaskType==1)//new path in
+	{
+		float *pfPoint=new float[nNum];
+		memcpy(pfPoint,pcData,nDataLen);
+		printf("Path Len %d  \n",nNum);
+		m_pCTask->m_vctTaskPath.clear();
+		for(i=1;i<nNum;i=i+2)
+		{
+			stPoint.fX=-(pfPoint[i]/1000-9.8);
+			stPoint.fY=-(pfPoint[i-1]/1000-27.1);
+			printf("x:  %f ,y:   %f\n",stPoint.fX,stPoint.fY);
+			m_pCTask->m_vctTaskPath.push_back(stPoint);
+			vctSpdLmt.push_back(MAX_SPD);
+		}
+		nRtn=FaceToMilestone(m_pCTask->m_vctTaskPath[0].fX,m_pCTask->m_vctTaskPath[0].fY,
+				m_pCTask->m_vctTaskPath[1].fX,m_pCTask->m_vctTaskPath[1].fY);
+
+		m_pCTask->m_CTrajectory.NewTrajectory(m_pCTask->m_vctTaskPath,vctSpdLmt,0);
+		Drive();
+		delete [] pfPoint;
+
+		/*stPoint.fX=0;
+		stPoint.fY=0;
+		m_pCTask->m_vctTaskPath.push_back(stPoint);
+		vctSpdLmt.push_back(MAX_SPD);
+		stPoint.fX=0;
+		stPoint.fY=5;
+		m_pCTask->m_vctTaskPath.push_back(stPoint);
+		vctSpdLmt.push_back(MAX_SPD);
+		m_pCTask->m_CTrajectory.NewTrajectory(m_pCTask->m_vctTaskPath,vctSpdLmt,0);
+		Drive();*/
+		
+
+		
+	}
+	else if (nTaskType==10)//Stop 1Robot Slowly
+	{
+		m_pCTask->m_vctTaskPath.clear();
+		printf("Stop Robot Slowly!!!!\n");
+		//Send Break CMD to Lower
+	}
+	else if(nTaskType==16)
+	{
+		printf("2D Grid Map In.....\n");
+		m_pCTask->m_C2DMap.AddNew2DGridMap(pcData);
+	}
+	else if(nTaskType==RE_TASK_PATH)
+	{
+		float *pfPoint=new float[nNum];
+		memcpy(pfPoint,pcData,nDataLen);
+		printf("Path Len %d  \n",nNum);
+		m_pCTask->m_vctTaskPath.clear();
+		for(i=1;i<nNum;i=i+2)
+		{
+			stPoint.fX=-(pfPoint[i]/1000-9.8);
+			stPoint.fY=-(pfPoint[i-1]/1000-27.1);
+			printf("x:  %f ,y:   %f\n",stPoint.fX,stPoint.fY);
+			m_pCTask->m_vctTaskPath.push_back(stPoint);
+			vctSpdLmt.push_back(MAX_SPD);
+		}
+		RepathPlanning1Step(m_pCTask->m_vctTaskPath[0].fX,m_pCTask->m_vctTaskPath[0].fY,
+					m_pCTask->m_vctTaskPath[1].fX,m_pCTask->m_vctTaskPath[1].fY);
+		if(nRtn==1)
+		{
+			m_pCTask->m_CTrajectory.NewTrajectory(m_pCTask->m_vctTaskPath,vctSpdLmt,0);
+		}
+		if(nRtn==2)
+		{
+			m_pCTask->m_CIOA.GetCurPose(fPos);
+			m_pCTask->m_vctTaskPath[0].fX=fPos[0];
+			m_pCTask->m_vctTaskPath[1].fX=fPos[1];
+			m_pCTask->m_CTrajectory.NewTrajectory(m_pCTask->m_vctTaskPath,vctSpdLmt,0);
+		}
+		else
+		{
+			m_pCTask->m_CIOA.GetCurPose(fPos);
+			stPt.fX=cos(fPos[2])+fPos[0];
+			stPt.fY=sin(fPos[2])+fPos[1];
+
+			m_pCTask->m_vctTaskPath[0].fX=fPos[0];
+			m_pCTask->m_vctTaskPath[0].fY=fPos[1];
+			m_pCTask->m_vctTaskPath.insert(m_pCTask->m_vctTaskPath.begin(),stPt);
+			m_pCTask->m_CTrajectory.NewTrajectory(m_pCTask->m_vctTaskPath,vctSpdLmt,0.5);
+		}
+
+		Drive();
+		delete [] pfPoint;
+	}
+	return 0;
+}
+int Task::RepathPlanning1Step(float fSX,float fSY,float fEX,float fEY)
+{
+	float fPos[3];
+	float fX,fY,fTH,fDis,fSpdLmt=1;
+	float fDiffX,fDiffY;
+	m_pCTask->m_CIOA.GetCurPose(fPos);
+	vector<Point_f> vctTmp;
+	Point_f stPoint;
+	vector<float> vctSpdLmt;
+	vctSpdLmt.push_back(fSpdLmt);
+
+	fX=fEX-fPos[0];
+	fY=fEY-fPos[1];
+	fDis=sqrt(fX*fX+fY*fY);
+
+	if(fDis<1)
+	{
+		Break(0);
+		m_pCTask->m_CIOA.GetCurPose(fPos);
+		FaceToMilestone(fPos[0],fPos[1],fSX,fSY);
+		stPoint.fX=fPos[0];
+		stPoint.fY=fPos[1];
+		vctTmp.push_back(stPoint);
+		stPoint.fX=fSX;
+		stPoint.fY=fSY;
+		vctTmp.push_back(stPoint);
+		m_pCTask->m_CTrajectory.NewTrajectory(vctTmp,vctSpdLmt,0);
+		Drive();
+		FaceToMilestone(fSX,fSY,fEX,fEY);
+		return 1;
+	}
+	else
+	{
+		fX=fEX-fSX;
+		fY=fEY-fSY;
+		fTH=atan2(fY,fX);
+		fTH=fPos[2]-fTH;
+
+
+		if(fabs(fTH)<3.1415926/2)
+		{
+			Break(0);
+			m_pCTask->m_CIOA.GetCurPose(fPos);
+			fX=fSX-fPos[0];
+			fY=fSY-fPos[1];
+			FaceToMilestone(fPos[0],fPos[1],fEX,fEY);
+			return 2;
+		}
+		else
+		{
+			Break(0.5);
+			return 3;
+		}
+	}
+
+
+	return 0;
+}
+
+int Task::FaceToMilestone(float fSX,float fSY,float fEX,float fEY)
+{
+	float fPos[3];
+	float fX,fY,fTH;
+	m_pCTask->m_CIOA.GetCurPose(fPos);
+	fX=fEX-fSX;
+	fY=fEY-fSY;
+	fTH=atan2(fY,fX);
+
+	fTH=fPos[2]-fTH;
+	//Rotate
+
+	return 0;
+}
+
+int Task::Break(float fV)
+{
+	return 0;
+}

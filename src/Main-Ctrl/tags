@@ -1,0 +1,1170 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ADJUST_ANGLE_THRS	./MainCtrl_Define.h	185;"	d
+ADJUST_LEN_THRS	./MainCtrl_Define.h	184;"	d
+ADJUST_Len	./MainCtrl_Define.h	186;"	d
+AGMInit	./MapService/AmbientGridMap.cpp	/^int AmbientGridMap::AGMInit()$/;"	f	class:AmbientGridMap
+AGM_H_	./MapService/AmbientGridMap.h	2;"	d
+ARCHITECTURE_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	193;"	d	file:
+ARCHITECTURE_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	196;"	d	file:
+ARCHITECTURE_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	199;"	d	file:
+ARCHITECTURE_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	202;"	d	file:
+ARCHITECTURE_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	206;"	d	file:
+ARCHITECTURE_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	181;"	d	file:
+ARCHITECTURE_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	184;"	d	file:
+ARCHITECTURE_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	187;"	d	file:
+ARCHITECTURE_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	190;"	d	file:
+ARCHITECTURE_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	194;"	d	file:
+ARCHITECTURE_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	193;"	d	file:
+ARCHITECTURE_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	196;"	d	file:
+ARCHITECTURE_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	199;"	d	file:
+ARCHITECTURE_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	202;"	d	file:
+ARCHITECTURE_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	206;"	d	file:
+ARCHITECTURE_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	181;"	d	file:
+ARCHITECTURE_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	184;"	d	file:
+ARCHITECTURE_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	187;"	d	file:
+ARCHITECTURE_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	190;"	d	file:
+ARCHITECTURE_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	194;"	d	file:
+AccTable	./MainCtrl_Define.h	/^typedef struct AccTable$/;"	s
+AccTable	./MainCtrl_Define.h	/^}AccTable;$/;"	t	typeref:struct:AccTable
+AddNew2DGridMap	./Task/_2DMap.cpp	/^int _2DMap::AddNew2DGridMap(char *pcData)$/;"	f	class:_2DMap
+AmbientGridMap	./MapService/AmbientGridMap.cpp	/^AmbientGridMap::AmbientGridMap()$/;"	f	class:AmbientGridMap
+AmbientGridMap	./MapService/AmbientGridMap.h	/^class AmbientGridMap$/;"	c
+BLEND_LEVEL	./MainCtrl_Define.h	33;"	d
+BMPLib	./Task/BMPLib.cpp	/^BMPLib::BMPLib(void)$/;"	f	class:BMPLib
+BMPLib	./Task/BMPLib.h	/^class BMPLib$/;"	c
+BMPLoad	./Task/BMPLib.cpp	/^unsigned char* BMPLib::BMPLoad(char *pFile,unsigned char *pucData,int *pnWidth,int *pnHeight)$/;"	f	class:BMPLib
+BMPSave	./Task/BMPLib.cpp	/^int BMPLib::BMPSave(const char *pFile,const unsigned char *pucData,const int nWidth,const int nHeight)$/;"	f	class:BMPLib
+BN	./BN/BN.cpp	/^BN::BN()$/;"	f	class:BN
+BN	./BN/BN.h	/^class BN$/;"	c
+BNLctAndOdemetry	./SLAM/Tmp/SLAM.cpp	/^int SLAM::BNLctAndOdemetry(char *pcData)$/;"	f	class:SLAM
+BNLocation	./BN/BN.cpp	/^int BN::BNLocation(float *pfLocation)$/;"	f	class:BN
+BNParams	./BN/BN.h	/^typedef struct BNParams$/;"	s
+BNParams	./BN/BN.h	/^}BNParams;$/;"	t	typeref:struct:BNParams
+BN_H_	./BN/BN.h	2;"	d
+BNpos	./BN/BNpos.cpp	/^BNpos::BNpos(char* dev,unsigned int Baudrate,int myRobotID)$/;"	f	class:BNpos
+BNpos	./BN/BNpos.h	/^class BNpos$/;"	c
+BUFFER_LENGTH	./SubCtrlCom/SerialPort.h	16;"	d
+BYTE	./SubCtrlCom/IICtrl.h	26;"	d
+BYTE	./Task/BMPLib.h	/^typedef unsigned char BYTE;$/;"	t
+Back2OriPath	./Task/PathPlanning.cpp	/^int PathPlanning::Back2OriPath()$/;"	f	class:PathPlanning
+Backward	./SubCtrlCom/SubCtrlCom.cpp	/^int SubCtrlCom::Backward()$/;"	f	class:SubCtrlCom
+Break	./SubCtrlCom/SubCtrlCom.cpp	/^int SubCtrlCom::Break()$/;"	f	class:SubCtrlCom
+Break	./Task/Task.cpp	/^int Task::Break(float fV)$/;"	f	class:Task
+CFLAGS	./ReadSLAMResult/Makefile	/^CFLAGS := -g -Wall$/;"	m
+CGPS	./GPS/CGPS.cpp	/^CGPS::CGPS()$/;"	f	class:CGPS
+CGPS	./GPS/CGPS.h	/^class CGPS$/;"	c
+CGPS_H_	./GPS/CGPS.h	2;"	d
+CIRCBUFF	./SubCtrlCom/circbuff.h	/^}CIRCBUFF;$/;"	t	typeref:struct:_CIRCBUFF
+CIRCUMFERENCE	./SubCtrlCom/IICtrl.h	34;"	d
+CMAKE_BINARY_DIR	./build/Makefile	/^CMAKE_BINARY_DIR = \/home\/administrator\/Work\/Main-Ctrl_CMake\/build$/;"	m
+CMAKE_BINARY_DIR	./debug/Makefile	/^CMAKE_BINARY_DIR = \/home\/administrator\/Work\/Main-Ctrl_CMake\/debug$/;"	m
+CMAKE_COMMAND	./build/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_COMMAND	./debug/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_SOURCE_DIR	./build/Makefile	/^CMAKE_SOURCE_DIR = \/home\/administrator\/Work\/Main-Ctrl_CMake$/;"	m
+CMAKE_SOURCE_DIR	./debug/Makefile	/^CMAKE_SOURCE_DIR = \/home\/administrator\/Work\/Main-Ctrl_CMake$/;"	m
+CMD_SLICE_HZ	./MainCtrl_Define.h	133;"	d
+CMD_SLICE_LEN	./MainCtrl_Define.h	132;"	d
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	13;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	16;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	19;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	22;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	25;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	28;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	32;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	34;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	36;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	40;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	43;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	46;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	49;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	52;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	55;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	58;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	61;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	66;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	77;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	80;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	86;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	89;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	92;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	12;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	15;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	18;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	21;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	24;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	27;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	30;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	34;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	36;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	38;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	42;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	45;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	48;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	51;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	54;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	57;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	60;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	65;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	68;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	74;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	77;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	80;"	d	file:
+COMPILER_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	9;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	13;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	16;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	19;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	22;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	25;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	28;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	32;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	34;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	36;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	40;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	43;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	46;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	49;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	52;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	55;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	58;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	61;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	66;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	77;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	80;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	86;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	89;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	92;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	12;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	15;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	18;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	21;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	24;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	27;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	30;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	34;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	36;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	38;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	42;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	45;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	48;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	51;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	54;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	57;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	60;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	65;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	68;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	74;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	77;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	80;"	d	file:
+COMPILER_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	9;"	d	file:
+CTRL_BATTERY_SAFE_VOLT	./MainCtrl_Define.h	205;"	d
+C_C	./C_C.cpp	/^C_C::C_C(void)$/;"	f	class:C_C
+C_C	./C_C.h	/^class C_C$/;"	c
+C_CInit	./C_C.cpp	/^int C_C::C_CInit()$/;"	f	class:C_C
+C_CRun	./C_C.cpp	/^int C_C::C_CRun(int argc, char* argv[])$/;"	f	class:C_C
+C_C_H_	./C_C.h	2;"	d
+CalDis	./Task/Task.cpp	/^float Task::CalDis(float fX1,float fY1,float fX2,float fY2)$/;"	f	class:Task
+CalMidSpd	./Task/Trajectory.cpp	/^int Trajectory::CalMidSpd(float fV0,float fVt,float fAcc,float fDeacc,float fDis,float &fMidSpd,float &fT1,float &fT2)$/;"	f	class:Trajectory
+CalWheelVel	./Task/Trajectory.cpp	/^int Trajectory::CalWheelVel(vector<Point_f> vctPath)$/;"	f	class:Trajectory
+CallBack_	./MainCtrl_Define.h	/^typedef int (*CallBack_)(char *pcData);$/;"	t
+CallBack_BNLctAndOdometry	./MainCtrl_Define.h	/^typedef int (*CallBack_BNLctAndOdometry)(char *pcData);$/;"	t
+CallBack_BNLocation	./SLAM/SLAM.h	/^typedef int (*CallBack_BNLocation)(float *pfLocation);$/;"	t
+CallBack_BNLocation	./SLAM/Tmp/SLAM.h	/^typedef int (*CallBack_BNLocation)(float *pfLocation);$/;"	t
+CallBack_Backward	./MainCtrl_Define.h	/^typedef int (*CallBack_Backward)();$/;"	t
+CallBack_Break	./MainCtrl_Define.h	/^typedef int (*CallBack_Break)();$/;"	t
+CallBack_DataFusionResult	./SLAM/SLAM.h	/^typedef int (*CallBack_DataFusionResult)(float fX,float fY,float fTheta);$/;"	t
+CallBack_DataFusionResult	./SLAM/Tmp/SLAM.h	/^typedef int (*CallBack_DataFusionResult)(float fX,float fY,float fTheta);$/;"	t
+CallBack_Forward	./MainCtrl_Define.h	/^typedef int (*CallBack_Forward)();$/;"	t
+CallBack_GlobalMap	./SLAM/SLAM.h	/^typedef int (*CallBack_GlobalMap)(float *pfGlobalMapData);$/;"	t
+CallBack_GlobalMap	./SLAM/Tmp/SLAM.h	/^typedef int (*CallBack_GlobalMap)(float *pfGlobalMapData);$/;"	t
+CallBack_LaserData	./MainCtrl_Define.h	/^typedef int (*CallBack_LaserData)(char *pcData,int nDataLen);$/;"	t
+CallBack_LaserDtct	./MainCtrl_Define.h	/^typedef int (*CallBack_LaserDtct)(char *pcDtctRslt);$/;"	t
+CallBack_LocalMap	./SLAM/SLAM.h	/^typedef int (*CallBack_LocalMap)(float *pfLocalMapData);$/;"	t
+CallBack_LocalMap	./SLAM/Tmp/SLAM.h	/^typedef int (*CallBack_LocalMap)(float *pfLocalMapData);$/;"	t
+CallBack_LogFile	./MainCtrl_Define.h	/^typedef int (*CallBack_LogFile)(char* pcContent,int nModuleIdx);\/\/2012 11 14 add$/;"	t
+CallBack_NetUpload	./MainCtrl_Define.h	/^typedef int (*CallBack_NetUpload)(char *pcData,int nDataLen);$/;"	t
+CallBack_NetUpload	./NetPortal/ClientNet.h	/^typedef int (*CallBack_NetUpload)(char *pcData,int nDataLen);$/;"	t
+CallBack_Odometry	./SLAM/SLAM.h	/^typedef int (*CallBack_Odometry)(float *pfOdometry);$/;"	t
+CallBack_Odometry	./SLAM/Tmp/SLAM.h	/^typedef int (*CallBack_Odometry)(float *pfOdometry);$/;"	t
+CallBack_RobotPos	./Task/Task.h	/^typedef int (*CallBack_RobotPos)(float x,float y,float th);$/;"	t
+CallBack_SICK	./SLAM/SLAM.h	/^typedef int (*CallBack_SICK)(vector<float> vctSICKData);$/;"	t
+CallBack_SICK	./SLAM/Tmp/SLAM.h	/^typedef int (*CallBack_SICK)(vector<float> vctSICKData);$/;"	t
+CallBack_SendNKJCMD	./MainCtrl_Define.h	/^typedef int (*CallBack_SendNKJCMD)(float fVL,float fVR,int nLTime,int nRTime);$/;"	t
+CallBack_TaskIn	./MainCtrl_Define.h	/^typedef int (*CallBack_TaskIn)(int nTaskType,char *pcData,int nDataLen);$/;"	t
+CallBack_Turn	./MainCtrl_Define.h	/^typedef int (*CallBack_Turn)();$/;"	t
+CallBack_Update2DGridMap	./MainCtrl_Define.h	/^typedef int (*CallBack_Update2DGridMap)();$/;"	t
+CanRunAreaCheck	./Task/IOA.cpp	/^int IOA::CanRunAreaCheck()$/;"	f	class:IOA
+CanRunAreaCheck_Blend	./Task/IOA.cpp	/^int IOA::CanRunAreaCheck_Blend()$/;"	f	class:IOA
+CircBuff	./SubCtrlCom/circbuff.h	/^class CircBuff$/;"	c
+CircBuffAlloc	./SubCtrlCom/circbuff.c	/^u_int8_t CircBuffAlloc(CIRCBUFF *CircBuff, const u_int32_t size)$/;"	f
+CircBuffFree	./SubCtrlCom/circbuff.c	/^u_int8_t CircBuffFree (CIRCBUFF *CircBuff)$/;"	f
+CircBuffGet	./SubCtrlCom/circbuff.c	/^u_int32_t CircBuffGet(CIRCBUFF *CircBuff, void *buffer, const u_int32_t size)$/;"	f
+CircBuffGetFrame	./SubCtrlCom/circbuff.c	/^u_int32_t CircBuffGetFrame(CIRCBUFF *CircBuff, void *buffer, const u_int32_t buff_size, u_int32_t *frame_length)$/;"	f
+CircBuffPut	./SubCtrlCom/circbuff.c	/^u_int32_t CircBuffPut(CIRCBUFF *CircBuff, void *buffer, const u_int32_t size)$/;"	f
+CircBuffReset	./SubCtrlCom/circbuff.c	/^u_int8_t CircBuffReset(CIRCBUFF *CircBuff)$/;"	f
+CircRoomLeft	./SubCtrlCom/circbuff.c	/^u_int32_t CircRoomLeft(CIRCBUFF *CircBuff)$/;"	f
+ClientNet	./NetPortal/ClientNet.cpp	/^ClientNet::ClientNet(void)$/;"	f	class:ClientNet
+ClientNet	./NetPortal/ClientNet.h	/^class ClientNet$/;"	c
+ClientNetInit	./NetPortal/ClientNet.cpp	/^int ClientNet::ClientNetInit(char *pucConfig)$/;"	f	class:ClientNet
+ClientNetUninit	./NetPortal/ClientNet.cpp	/^int ClientNet::ClientNetUninit()$/;"	f	class:ClientNet
+DWORD	./Task/BMPLib.h	/^typedef unsigned long DWORD;$/;"	t
+DataCarrier	./Task/PathPlanning1.h	/^typedef struct DataCarrier $/;"	s
+DataCarrier	./Task/PathPlanning1.h	/^}DataCarrier;$/;"	t	typeref:struct:DataCarrier
+DataFusionResult	./Task/IOA.cpp	/^int IOA::DataFusionResult(float fX,float fY,float fTheta)$/;"	f	class:IOA
+DisMaxAccSpd	./Task/Trajectory.cpp	/^int Trajectory::DisMaxAccSpd()$/;"	f	class:Trajectory
+Distance	./GPS/CGPS.h	/^}Distance;$/;"	t	typeref:struct:__anon3
+Dodge	./Task/IOA.cpp	/^int IOA::Dodge(int nSecurityRange)$/;"	f	class:IOA
+DodgePath	./Task/PathPlanning.cpp	/^int PathPlanning::DodgePath(Pos_f *pstDest,vector<Point_f> &vctPath)$/;"	f	class:PathPlanning
+Drive	./Task/Task.cpp	/^int Task::Drive()$/;"	f	class:Task
+Drive	./Task/Task.cpp	/^int Task::Drive(vector<Point_f> vctSegmentLen,$/;"	f	class:Task
+Drive	./Task/Task.cpp	/^int Task::Drive(vector<Point_f> vctSegmentLen,vector<Point_f> vctBlendSegmentLen,float fInitSpd)$/;"	f	class:Task
+ERRLIST	./SubCtrlCom/IICtrl.h	/^}ERRLIST;$/;"	t	typeref:enum:__anon6
+ERR_TOLERATE	./MainCtrl_Define.h	87;"	d
+EmptyFlag	./SubCtrlCom/circbuff.h	/^	u_int8_t      EmptyFlag;	\/\/ true if buffer is empty$/;"	m	struct:_CIRCBUFF
+EndPtr	./SubCtrlCom/circbuff.h	/^	u_int8_t      *EndPtr;	\/\/ points after last element (fix)$/;"	m	struct:_CIRCBUFF
+FAILURE	./SubCtrlCom/circbuff.h	10;"	d
+FALSE	./SubCtrlCom/SerialPort.h	19;"	d
+FaceToMilestone	./Task/Task.cpp	/^int Task::FaceToMilestone(float fSX,float fSY,float fEX,float fEY)$/;"	f	class:Task
+FastProbabilityGraphInit	./MapService/AmbientGridMap.cpp	/^int AmbientGridMap::FastProbabilityGraphInit()$/;"	f	class:AmbientGridMap
+Forward	./SubCtrlCom/SubCtrlCom.cpp	/^int SubCtrlCom::Forward()$/;"	f	class:SubCtrlCom
+FullFlag	./SubCtrlCom/circbuff.h	/^	u_int8_t      FullFlag;	\/\/ true if buffer is full$/;"	m	struct:_CIRCBUFF
+GPSVel	./GPS/CGPS.h	/^}GPSVel;$/;"	t	typeref:struct:__anon4
+GPSllh	./GPS/CGPS.h	/^}GPSllh;$/;"	t	typeref:struct:__anon2
+GRID_MAP_IN	./MainCtrl_Define.h	83;"	d
+GenerateInflectionPoint	./Task/Pace_Lock.cpp	/^int Pace_Lock::GenerateInflectionPoint(float *fPointArray,int nStartIdx,$/;"	f	class:Pace_Lock
+GetContent	./ParseXML.cpp	/^bool ParseXML::GetContent(char *pcBuff, int &nLen, int nStyle)$/;"	f	class:ParseXML
+GetCurPos	./SLAM/Tmp/SLAM.cpp	/^int SLAM::GetCurPos(char *pcPos)$/;"	f	class:SLAM
+GetCurPose	./Task/IOA.cpp	/^int IOA::GetCurPose(float *pfPos)$/;"	f	class:IOA
+GetCurPose	./Task/PathPlanning.cpp	/^int PathPlanning::GetCurPose(float *pfPos)$/;"	f	class:PathPlanning
+GetLaserAData	./Task/IOA.cpp	/^int IOA::GetLaserAData(vector<float> vctSICKData)$/;"	f	class:IOA
+GetLaserBData	./Task/IOA.cpp	/^int IOA::GetLaserBData(vector<float> vctSICKData)$/;"	f	class:IOA
+GetMileStone	./Task/Trajectory.cpp	/^int Trajectory::GetMileStone(vector<Point_f> vctPath,$/;"	f	class:Trajectory
+GetMileStone	./Task/Trajectory.cpp	/^int Trajectory::GetMileStone(vector<Point_f> vctPath,vector<Point_f> &vctSegmentLen,vector<Point_f> &vctBlendSegmentLen)$/;"	f	class:Trajectory
+GetMileStonePos	./Task/PathPlanning.cpp	/^int PathPlanning::GetMileStonePos(float *pfPos)$/;"	f	class:PathPlanning
+GetPosBeforeIOA	./Task/PathPlanning.cpp	/^int PathPlanning::GetPosBeforeIOA(float *pfPos)$/;"	f	class:PathPlanning
+GetSerialPortNum	./C_C.cpp	/^int C_C::GetSerialPortNum(char* pcKey,char *pcPortNum)$/;"	f	class:C_C
+GetTransMat	./Task/PathPlanning.cpp	/^int PathPlanning::GetTransMat(float *pfOriPos,float *pfCurPos,float *pfMat)$/;"	f	class:PathPlanning
+HEART_BIT	./MainCtrl_Define.h	176;"	d
+IDEAL_PRE_RADIUS	./MainCtrl_Define.h	137;"	d
+IDEAL_RADIUS	./MainCtrl_Define.h	136;"	d
+ID_VOID_MAIN	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
+ID_VOID_MAIN	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
+IICTRL_API	./SubCtrlCom/IICtrl.h	15;"	d
+INIT_ANGLE	./MainCtrl_Define.h	142;"	d
+INT16	./SubCtrlCom/IICtrl.h	23;"	d
+INT32	./SubCtrlCom/IICtrl.h	24;"	d
+INT8	./SubCtrlCom/IICtrl.h	22;"	d
+IOA	./Task/IOA.cpp	/^IOA::IOA(void)$/;"	f	class:IOA
+IOA	./Task/IOA.h	/^class IOA$/;"	c
+IOAInit	./Task/IOA.cpp	/^int IOA::IOAInit()$/;"	f	class:IOA
+IOARun	./Task/IOA.cpp	/^int IOA::IOARun()$/;"	f	class:IOA
+IOAStop	./Task/IOA.cpp	/^int IOA::IOAStop()$/;"	f	class:IOA
+IOAUninit	./Task/IOA.cpp	/^int IOA::IOAUninit()$/;"	f	class:IOA
+IOA_FREEAREA	./Task/PathPlanning.h	10;"	d
+IOA_Pos	./MainCtrl_Define.h	/^typedef struct IOA_Pos$/;"	s
+IOA_Pos	./MainCtrl_Define.h	/^}IOA_Pos;$/;"	t	typeref:struct:IOA_Pos
+IOA_VIEWHEIGHT	./Task/PathPlanning.h	12;"	d
+IOA_VIEWWIDTH	./Task/PathPlanning.h	11;"	d
+IOA_Y_RANGE	./Task/PathPlanning.h	13;"	d
+Init	./BN/BN.cpp	/^int BN::Init(BNParams stParams)$/;"	f	class:BN
+Init	./SLAM/SLAM.cpp	/^int SLAM::Init(SLAM_CallBack stCallBackSet,SLAMParams stParams)$/;"	f	class:SLAM
+Init	./SubCtrlCom/SerialPort.cpp	/^int SubCtrl::Init(int port, int baud, PACKETPARSE parse)$/;"	f	class:SubCtrl
+InitNetByClass	./NetPortal/NetPortal.cpp	/^int NetPortal::InitNetByClass(ClientNet *pCClientNet,char *pcNetConfig)$/;"	f	class:NetPortal
+InstantView	./Task/PathPlanning.cpp	/^int PathPlanning::InstantView(IOA_Pos *pstSICKView_A,IOA_Pos *pstSICKView_B)$/;"	f	class:PathPlanning
+Inverse	./Task/PathPlanning.cpp	/^int PathPlanning::Inverse(float *pfMat,float *pfInv)$/;"	f	class:PathPlanning
+JetFire	./SubCtrlCom/SerialCom/JetFire.cpp	/^JetFire::JetFire()$/;"	f	class:JetFire
+JetFire	./SubCtrlCom/SerialCom/JetFire.h	/^class JetFire$/;"	c
+JetFireCmd_Pack	./SubCtrlCom/SerialCom/JetFire.cpp	/^void JetFire::JetFireCmd_Pack(char Wheel, float Velocity, unsigned int mTime, unsigned char *Cmd_Ep)$/;"	f	class:JetFire
+KEEP_4_SLAM_LEN	./MainCtrl_Define.h	192;"	d
+LASER_NUM	./MainCtrl_Define.h	18;"	d
+LEFT_CURRENT	./SubCtrlCom/IICtrl.h	/^	LEFT_CURRENT = 0x08,$/;"	e	enum:__anon10
+LEFT_VOLTAGE	./SubCtrlCom/IICtrl.h	/^	LEFT_VOLTAGE = 0x01,$/;"	e	enum:__anon10
+LELVEL0	./MainCtrl_Define.h	31;"	d
+LELVEL1	./MainCtrl_Define.h	30;"	d
+LELVEL2	./MainCtrl_Define.h	29;"	d
+LELVEL3	./MainCtrl_Define.h	28;"	d
+LELVEL4	./MainCtrl_Define.h	27;"	d
+LMB_H_	./MapService/LocalMapBuilder.h	3;"	d
+LOG_IOA	./MainCtrl_Define.h	22;"	d
+LOG_NET	./MainCtrl_Define.h	20;"	d
+LOG_SLAM	./MainCtrl_Define.h	21;"	d
+LOG_SUBCTRL	./MainCtrl_Define.h	23;"	d
+LONG	./Task/BMPLib.h	/^typedef long LONG;$/;"	t
+LaserCom	./NetPortal/LaserCom.cpp	/^LaserCom::LaserCom()$/;"	f	class:LaserCom
+LaserCom	./NetPortal/LaserCom.h	/^class LaserCom$/;"	c
+LaserComInit	./NetPortal/LaserCom.cpp	/^int LaserCom::LaserComInit(char *pcConfig)$/;"	f	class:LaserCom
+LaserComRun	./NetPortal/LaserCom.cpp	/^int LaserCom::LaserComRun()$/;"	f	class:LaserCom
+LaserComStop	./NetPortal/LaserCom.cpp	/^int LaserCom::LaserComStop()$/;"	f	class:LaserCom
+LaserComUninit	./NetPortal/LaserCom.cpp	/^int LaserCom::LaserComUninit()$/;"	f	class:LaserCom
+Listen2Host	./NetPortal/ClientNet.cpp	/^int ClientNet::Listen2Host()$/;"	f	class:ClientNet
+LoadConfig	./C_C.cpp	/^int C_C::LoadConfig(char *pcConfigPath)$/;"	f	class:C_C
+LocalMapBuilder	./MapService/LocalMapBuilder.cpp	/^LocalMapBuilder::LocalMapBuilder()$/;"	f	class:LocalMapBuilder
+LocalMapBuilder	./MapService/LocalMapBuilder.h	/^class LocalMapBuilder$/;"	c
+LogFile	./LogFile/LogFile.cpp	/^LogFile::LogFile(void)$/;"	f	class:LogFile
+LogFile	./LogFile/LogFile.h	/^class LogFile$/;"	c
+LogFileInit	./LogFile/LogFile.cpp	/^int LogFile::LogFileInit(char *pcLogFilePath)$/;"	f	class:LogFile
+LogFileRun	./LogFile/LogFile.cpp	/^int LogFile::LogFileRun()$/;"	f	class:LogFile
+LogFileStop	./LogFile/LogFile.cpp	/^int LogFile::LogFileStop()$/;"	f	class:LogFile
+LogFileUninit	./LogFile/LogFile.cpp	/^int LogFile::LogFileUninit()$/;"	f	class:LogFile
+LogFormat	./LogFile/LogFile.h	/^typedef struct LogFormat$/;"	s
+LogFormat	./LogFile/LogFile.h	/^}LogFormat;$/;"	t	typeref:struct:LogFormat
+LookForInflectionPoint	./Task/Pace_Lock.cpp	/^float Pace_Lock::LookForInflectionPoint(float *fPointArray,int nStartIdx,int nEndIdx,int *pnMaxValIdx,float *pfMaxVal)$/;"	f	class:Pace_Lock
+MAP_COPY_NUM	./Task/_2DMap.h	9;"	d
+MAP_FREE_AREA	./MainCtrl_Define.h	166;"	d
+MAP_INIT_WEIGHT	./MainCtrl_Define.h	164;"	d
+MAP_STATIC_OBSTACLE	./MainCtrl_Define.h	168;"	d
+MAP_TMP_OBSTACLE	./MainCtrl_Define.h	167;"	d
+MAP_UNFREE_AREA	./MainCtrl_Define.h	165;"	d
+MAX_ACC_SPD	./MainCtrl_Define.h	125;"	d
+MAX_CNT_LEN	./LogFile/LogFile.h	10;"	d
+MAX_DEACC_SPD	./MainCtrl_Define.h	127;"	d
+MAX_RAWDATA_FILE_NUM	./MainCtrl_Define.h	6;"	d
+MAX_SPD	./MainCtrl_Define.h	182;"	d
+MAX_SPEED_L0	./MainCtrl_Define.h	39;"	d
+MAX_SPEED_L1	./MainCtrl_Define.h	38;"	d
+MAX_SPEED_L2	./MainCtrl_Define.h	37;"	d
+MAX_SPEED_L3	./MainCtrl_Define.h	36;"	d
+MAX_SPEED_L4	./MainCtrl_Define.h	35;"	d
+MAX_TURNNING_SPD	./MainCtrl_Define.h	129;"	d
+MIN	./MainCtrl_Define.h	172;"	d
+MIN_RECTIL_LEN	./MainCtrl_Define.h	135;"	d
+MODULE_NUM	./LogFile/LogFile.h	11;"	d
+MOTION_ERR	./MainCtrl_Define.h	121;"	d
+MapStreamIn	./MapService/LocalMapBuilder.cpp	/^int LocalMapBuilder::MapStreamIn(char *pcMapData,int nMapDataLen)$/;"	f	class:LocalMapBuilder
+MergeGridsBasedOnRobotSize	./Task/PathPlanning.cpp	/^int PathPlanning::MergeGridsBasedOnRobotSize(int nRobotSize,unsigned char *pucLocalMap)$/;"	f	class:PathPlanning
+MileStoneSlct	./Task/PathPlanning.cpp	/^int PathPlanning::MileStoneSlct(unsigned char *pucInstantView,int nArrayLen,vector<Point_f> &vctPath)$/;"	f	class:PathPlanning
+MulMat	./Task/PathPlanning.cpp	/^int PathPlanning::MulMat(float *pfMatA,float *pfMatB,float *pfMatC)$/;"	f	class:PathPlanning
+MulVec	./Task/PathPlanning.cpp	/^int PathPlanning::MulVec(float *pfMat,float *pfVec,float *pfVecRslt)$/;"	f	class:PathPlanning
+MyAddressNow	./BN/BNpos.h	/^		unsigned char MyAddressNow;$/;"	m	class:BNpos
+MyAddressNow	./SubCtrlCom/SerialCom/SerialCom.h	/^		unsigned char MyAddressNow;$/;"	m	class:SerialCom
+MyRobotID	./BN/BNpos.h	/^		int MyRobotID;$/;"	m	class:BNpos
+MyRobotID	./SubCtrlCom/SerialCom/SerialCom.h	/^		int MyRobotID;$/;"	m	class:SerialCom
+NEW_TASK_PATH	./MainCtrl_Define.h	80;"	d
+NP_CNCParams	./NetPortal/NetPortal.h	/^	typedef struct NP_CNCParams$/;"	s	class:NetPortal
+NP_CNCParams	./NetPortal/NetPortal.h	/^	}NP_CNCParams;$/;"	t	class:NetPortal	typeref:struct:NetPortal::NP_CNCParams
+NetPortal	./NetPortal/NetPortal.cpp	/^NetPortal::NetPortal(void)$/;"	f	class:NetPortal
+NetPortal	./NetPortal/NetPortal.h	/^class NetPortal$/;"	c
+NetPortalInit	./NetPortal/NetPortal.cpp	/^int NetPortal::NetPortalInit(char *pcNetConfig)$/;"	f	class:NetPortal
+NetPortalRun	./NetPortal/NetPortal.cpp	/^int NetPortal::NetPortalRun()$/;"	f	class:NetPortal
+NetPortalStop	./NetPortal/NetPortal.cpp	/^int NetPortal::NetPortalStop(char *pcNetConfig)$/;"	f	class:NetPortal
+NewSegmentBlend	./Task/Trajectory.cpp	/^int Trajectory::NewSegmentBlend(Point_f *stPt,vector<float> &vctWL,vector<float> &vctWR,float fInitSpd)$/;"	f	class:Trajectory
+NewSegmentRectilinear	./Task/Trajectory.cpp	/^int Trajectory::NewSegmentRectilinear(float fInitSpd,float &fEndSpd,float fSpdlmt,Point_f stStartPoint,Point_f stEndPoint,vector<float> &vctVL,vector<float> &vctVR)$/;"	f	class:Trajectory
+NewTaskIn	./Task/Task.cpp	/^int Task::NewTaskIn(int nTaskType,char *pcData,int nDataLen)$/;"	f	class:Task
+NewTrajectory	./Task/Trajectory.cpp	/^int Trajectory::NewTrajectory(vector<Point_f> vctPath,vector<float> vctSpdLmt,float fInitV)$/;"	f	class:Trajectory
+OBJ	./ReadSLAMResult/Makefile	/^OBJ  := $(SRC:%.cpp=%.o)$/;"	m
+OPEN_ADJUST	./MainCtrl_Define.h	190;"	d
+OPEN_BN	./MainCtrl_Define.h	196;"	d
+Odometry	./SubCtrlCom/SubCtrlCom.cpp	/^int SubCtrlCom::Odometry(float *pfOdometry)$/;"	f	class:SubCtrlCom
+OpenDev	./BN/BNpos.cpp	/^int BNpos::OpenDev(char *Dev)$/;"	f	class:BNpos
+OpenDev	./GPS/CGPS.cpp	/^int CGPS::OpenDev(char *Dev)$/;"	f	class:CGPS
+OpenDev	./SubCtrlCom/SerialCom/SerialCom.cpp	/^int SerialCom::OpenDev(char *Dev)$/;"	f	class:SerialCom
+PACKETPARSE	./SubCtrlCom/SerialPort.h	/^typedef int (*PACKETPARSE)(unsigned char* buff, int buff_len);$/;"	t
+PI	./MainCtrl_Define.h	123;"	d
+PI	./SubCtrlCom/IICtrl.h	32;"	d
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	104;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	107;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	110;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	113;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	116;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	119;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	122;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	125;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	128;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	131;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	134;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	137;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	140;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	146;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	149;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	152;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	155;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	158;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	161;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	164;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	167;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	170;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	173;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	176;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	179;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	182;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	101;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	104;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	107;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	110;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	113;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	116;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	119;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	122;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	125;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	128;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	134;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	137;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	140;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	143;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	146;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	149;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	152;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	155;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	158;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	161;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	164;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	167;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	170;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	92;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	95;"	d	file:
+PLATFORM_ID	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	98;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	104;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	107;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	110;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	113;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	116;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	119;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	122;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	125;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	128;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	131;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	134;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	137;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	140;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	146;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	149;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	152;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	155;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	158;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	161;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	164;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	167;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	170;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	173;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	176;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	179;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	182;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	101;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	104;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	107;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	110;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	113;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	116;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	119;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	122;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	125;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	128;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	134;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	137;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	140;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	143;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	146;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	149;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	152;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	155;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	158;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	161;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	164;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	167;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	170;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	92;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	95;"	d	file:
+PLATFORM_ID	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	98;"	d	file:
+PORT_OPEN_ERROR	./SubCtrlCom/IICtrl.h	/^	PORT_OPEN_ERROR = -30,$/;"	e	enum:__anon6
+POWER_BATTERY_SAFE_VOLT	./MainCtrl_Define.h	206;"	d
+PRARAM_VALUE_ERROR	./SubCtrlCom/IICtrl.h	/^	PRARAM_VALUE_ERROR = -100,$/;"	e	enum:__anon6
+PROB_MAP_H	./MainCtrl_Define.h	8;"	d
+PROB_MAP_W	./MainCtrl_Define.h	7;"	d
+PUSH_DATA_OUT_OF_LEN	./SubCtrlCom/IICtrl.h	/^	PUSH_DATA_OUT_OF_LEN = -10,$/;"	e	enum:__anon6
+Pace_Lock	./Task/Pace_Lock.cpp	/^Pace_Lock::Pace_Lock(void)$/;"	f	class:Pace_Lock
+Pace_Lock	./Task/Pace_Lock.h	/^class Pace_Lock$/;"	c
+Pace_LockRun	./Task/Pace_Lock.cpp	/^int Pace_Lock::Pace_LockRun(float *pfPath,int nPathLen,char *pcPaceLockData,int &nDataLen)$/;"	f	class:Pace_Lock
+Pace_LockRun	./Task/Pace_Lock.cpp	/^int Pace_Lock::Pace_LockRun(float *pfPath,int nPathLen,float *pfPaceLock,int &nPaceLockLen)$/;"	f	class:Pace_Lock
+Pace_LockRun_Dest	./Task/Pace_Lock.cpp	/^int Pace_Lock::Pace_LockRun_Dest(float *pfPath,int nPathLen,vector<float> &vctPath)$/;"	f	class:Pace_Lock
+PalVersion	./SubCtrlCom/SerialPort.h	17;"	d
+ParseIP	./C_C.cpp	/^int C_C::ParseIP(char *pcData,char *pcIP)$/;"	f	class:C_C
+ParseIP	./ParseXML.cpp	/^int ParseXML::ParseIP(char *pcData,char *pcIP)$/;"	f	class:ParseXML
+ParseNetDataA	./NetPortal/NetPortal.cpp	/^int NetPortal::ParseNetDataA(char *pcData,int nDataLen)$/;"	f	class:NetPortal
+ParseNetDataB	./NetPortal/NetPortal.cpp	/^int NetPortal::ParseNetDataB(char *pcData,int nDataLen)$/;"	f	class:NetPortal
+ParseNetDataL	./NetPortal/NetPortal.cpp	/^int NetPortal::ParseNetDataL(char *pcData,int nDataLen)$/;"	f	class:NetPortal
+ParseNetDataM	./NetPortal/NetPortal.cpp	/^int NetPortal::ParseNetDataM(char *pcData,int nDataLen)$/;"	f	class:NetPortal
+ParseXML	./ParseXML.cpp	/^ParseXML::ParseXML(void)$/;"	f	class:ParseXML
+ParseXML	./ParseXML.h	/^class ParseXML$/;"	c
+ParseXMLRun	./ParseXML.cpp	/^int ParseXML::ParseXMLRun(const char *pcPath)$/;"	f	class:ParseXML
+PathPlanning	./Task/PathPlanning.cpp	/^PathPlanning::PathPlanning(void)$/;"	f	class:PathPlanning
+PathPlanning	./Task/PathPlanning.h	/^class PathPlanning$/;"	c
+PathPlanning	./Task/PathPlanning1.cpp	/^PathPlanning::PathPlanning()$/;"	f	class:PathPlanning
+PathPlanning	./Task/PathPlanning1.h	/^class PathPlanning$/;"	c
+Point_f	./MainCtrl_Define.h	/^typedef struct Point_f$/;"	s
+Point_f	./MainCtrl_Define.h	/^}Point_f;$/;"	t	typeref:struct:Point_f
+Pos_f	./MainCtrl_Define.h	/^typedef struct Pos_f$/;"	s
+Pos_f	./MainCtrl_Define.h	/^}Pos_f;$/;"	t	typeref:struct:Pos_f
+ProbabilityGraphNode	./MapService/AmbientGridMap.h	/^typedef struct ProbabilityGraphNode$/;"	s
+ProbabilityGraphNode	./MapService/AmbientGridMap.h	/^}ProbabilityGraphNode;$/;"	t	typeref:struct:ProbabilityGraphNode
+PushContent2LogStack	./LogFile/LogFile.cpp	/^int LogFile::PushContent2LogStack(LogFormat *pstContent)$/;"	f	class:LogFile
+PushContent2LogStack	./LogFile/LogFile.cpp	/^int LogFile::PushContent2LogStack(char* pcContent,int nModuleIdx)$/;"	f	class:LogFile
+READMOTION	./SubCtrlCom/IICtrl.h	/^}READMOTION;$/;"	t	typeref:enum:__anon11
+READSENSOR	./SubCtrlCom/IICtrl.h	/^}READSENSOR;$/;"	t	typeref:enum:__anon12
+READ_IMU_STATE	./SubCtrlCom/IICtrl.h	/^	READ_IMU_STATE = 0x02,$/;"	e	enum:__anon12
+READ_IMU_VALUE	./SubCtrlCom/IICtrl.h	/^	READ_IMU_VALUE = 0x04,$/;"	e	enum:__anon11
+READ_IR_STATE	./SubCtrlCom/IICtrl.h	/^	READ_IR_STATE = 004,$/;"	e	enum:__anon12
+READ_LASER_STATE	./SubCtrlCom/IICtrl.h	/^	READ_LASER_STATE = 0x01,$/;"	e	enum:__anon12
+READ_LEFT_ENCODER	./SubCtrlCom/IICtrl.h	/^	READ_LEFT_ENCODER = 0x01,$/;"	e	enum:__anon11
+READ_RUGHT_ENCODER	./SubCtrlCom/IICtrl.h	/^	READ_RUGHT_ENCODER = 0x02,$/;"	e	enum:__anon11
+RE_TASK_PATH	./MainCtrl_Define.h	81;"	d
+RIGHT_CURRENT	./SubCtrlCom/IICtrl.h	/^	RIGHT_CURRENT = 0x10,$/;"	e	enum:__anon10
+RIGHT_VOLTAGE	./SubCtrlCom/IICtrl.h	/^	RIGHT_VOLTAGE = 0x02,$/;"	e	enum:__anon10
+RLM_HEIGHT	./Task/_2DMap.h	8;"	d
+RLM_WIDTH	./Task/_2DMap.h	7;"	d
+RM	./build/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+RM	./debug/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+ROBOTSTATE	./SubCtrlCom/IICtrl.h	/^}ROBOTSTATE;$/;"	t	typeref:enum:__anon10
+ROBOT_L	./MainCtrl_Define.h	147;"	d
+ROBOT_TEMPERATURE	./SubCtrlCom/IICtrl.h	/^	ROBOT_TEMPERATURE = 0x20,$/;"	e	enum:__anon10
+ROBOT_TREAD	./SubCtrlCom/IICtrl.h	29;"	d
+ROBOT_WHEEL_DIAM	./SubCtrlCom/IICtrl.h	31;"	d
+ROBOT_WIDTH_IN_2DMAP	./MainCtrl_Define.h	170;"	d
+ROB_REACH_MIL	./MainCtrl_Define.h	175;"	d
+RTN_LOSS_LASER_CNC	./MainCtrl_Define.h	15;"	d
+RTN_LOSS_RS_CNC	./MainCtrl_Define.h	11;"	d
+RTN_OK	./MainCtrl_Define.h	10;"	d
+RTN_RS_CNC_NOR	./MainCtrl_Define.h	12;"	d
+RTN_RS_CNC_RECNC	./MainCtrl_Define.h	13;"	d
+RawDataInfo	./MapService/AmbientGridMap.h	/^typedef struct RawDataInfo$/;"	s
+RawDataInfo	./MapService/AmbientGridMap.h	/^}RawDataInfo;$/;"	t	typeref:struct:RawDataInfo
+RcvStream	./NetPortal/ClientNet.cpp	/^int ClientNet::RcvStream(int nGoalSize,char *pcTmpBuff,int sockfd)$/;"	f	class:ClientNet
+ReCNCAll	./NetPortal/NetPortal.cpp	/^void* NetPortal::ReCNCAll(void* lpParam)$/;"	f	class:NetPortal
+ReadCPFile	./ReadSLAMResult/ReadSLAMResult.cpp	/^bool ReadSLAMResult::ReadCPFile(const char *pcPath)$/;"	f	class:ReadSLAMResult
+ReadData	./SubCtrlCom/SerialCom/SerialCom.cpp	/^int SerialCom::ReadData(char *pcData,int nDataLen)$/;"	f	class:SerialCom
+ReadData	./SubCtrlCom/SubCtrlCom.cpp	/^int SubCtrlCom::ReadData(char *pcData,int nDataLen)$/;"	f	class:SubCtrlCom
+ReadOdometry	./C_C.cpp	/^int C_C::ReadOdometry(float *pcData)$/;"	f	class:C_C
+ReadPtr	./SubCtrlCom/circbuff.h	/^    u_int8_t      *ReadPtr;    \/\/ points to next buffer to read$/;"	m	struct:_CIRCBUFF
+ReadSLAMResult	./ReadSLAMResult/ReadSLAMResult.cpp	/^ReadSLAMResult::ReadSLAMResult(void)$/;"	f	class:ReadSLAMResult
+ReadSLAMResult	./ReadSLAMResult/ReadSLAMResult.h	/^class ReadSLAMResult$/;"	c
+ReadSLAMResultInit	./ReadSLAMResult/ReadSLAMResult.cpp	/^int ReadSLAMResult::ReadSLAMResultInit()$/;"	f	class:ReadSLAMResult
+ReadSLAMResultRun	./ReadSLAMResult/ReadSLAMResult.cpp	/^int ReadSLAMResult::ReadSLAMResultRun(const char *pcPath)$/;"	f	class:ReadSLAMResult
+ReadTraFile	./ReadSLAMResult/ReadSLAMResult.cpp	/^bool ReadSLAMResult::ReadTraFile(const char *pcPath)$/;"	f	class:ReadSLAMResult
+ReadWholeFile	./ParseXML.cpp	/^bool ParseXML::ReadWholeFile(const char *pcPath)$/;"	f	class:ParseXML
+RectilinearCtrl	./MainCtrl_Define.h	/^typedef struct RectilinearCtrl$/;"	s
+RectilinearCtrl	./MainCtrl_Define.h	/^}RectilinearCtrl;$/;"	t	typeref:struct:RectilinearCtrl
+RepathPlanning1Step	./Task/Task.cpp	/^int Task::RepathPlanning1Step(float fSX,float fSY,float fEX,float fEY)$/;"	f	class:Task
+Run	./BN/BN.cpp	/^int BN::Run()$/;"	f	class:BN
+Run	./SLAM/SLAM.cpp	/^int SLAM::Run()$/;"	f	class:SLAM
+Run	./SubCtrlCom/SerialCom/SerialCom.cpp	/^int SerialCom::Run()$/;"	f	class:SerialCom
+SECURITY_AREA_NUM	./MainCtrl_Define.h	26;"	d
+SECURTY_WIDTH	./MainCtrl_Define.h	144;"	d
+SENSORFLAG	./SubCtrlCom/IICtrl.h	/^}SENSORFLAG;$/;"	t	typeref:enum:__anon7
+SENSORSTATE	./SubCtrlCom/IICtrl.h	/^}SENSORSTATE;$/;"	t	typeref:enum:__anon8
+SENSOR_CLOSE	./SubCtrlCom/IICtrl.h	/^	SENSOR_CLOSE = 0x0,$/;"	e	enum:__anon8
+SENSOR_LASER	./SubCtrlCom/IICtrl.h	/^	SENSOR_LASER = 0x1,$/;"	e	enum:__anon7
+SENSOR_OPEN	./SubCtrlCom/IICtrl.h	/^	SENSOR_OPEN  = 0x1,$/;"	e	enum:__anon8
+SHELL	./build/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	./debug/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SICK_LINES	./MainCtrl_Define.h	141;"	d
+SICK_RESOLUTION	./MainCtrl_Define.h	143;"	d
+SLAM	./SLAM/SLAM.cpp	/^SLAM::SLAM()$/;"	f	class:SLAM
+SLAM	./SLAM/SLAM.h	/^class SLAM$/;"	c
+SLAM	./SLAM/Tmp/SLAM.cpp	/^SLAM::SLAM(void)$/;"	f	class:SLAM
+SLAM	./SLAM/Tmp/SLAM.h	/^class SLAM$/;"	c
+SLAMInit	./SLAM/Tmp/SLAM.cpp	/^int SLAM::SLAMInit()$/;"	f	class:SLAM
+SLAMParams	./SLAM/SLAM.h	/^typedef struct SLAMParams$/;"	s
+SLAMParams	./SLAM/SLAM.h	/^}SLAMParams;$/;"	t	typeref:struct:SLAMParams
+SLAMParams	./SLAM/Tmp/SLAM.h	/^typedef struct SLAMParams$/;"	s
+SLAMParams	./SLAM/Tmp/SLAM.h	/^}SLAMParams;$/;"	t	typeref:struct:SLAMParams
+SLAMRun	./SLAM/Tmp/SLAM.cpp	/^int SLAM::SLAMRun()$/;"	f	class:SLAM
+SLAMStop	./SLAM/Tmp/SLAM.cpp	/^int SLAM::SLAMStop()$/;"	f	class:SLAM
+SLAMUninit	./SLAM/Tmp/SLAM.cpp	/^int SLAM::SLAMUninit()$/;"	f	class:SLAM
+SLAM_CallBack	./SLAM/SLAM.h	/^typedef struct SLAM_CallBack$/;"	s
+SLAM_CallBack	./SLAM/SLAM.h	/^} SLAM_CallBack;$/;"	t	typeref:struct:SLAM_CallBack
+SLAM_CallBack	./SLAM/Tmp/SLAM.h	/^typedef struct SLAM_CallBack$/;"	s
+SLAM_CallBack	./SLAM/Tmp/SLAM.h	/^} SLAM_CallBack;$/;"	t	typeref:struct:SLAM_CallBack
+SLAM_H_	./SLAM/SLAM.h	2;"	d
+SLAM_H_	./SLAM/Tmp/SLAM.h	2;"	d
+SLAM_LOCATION	./MainCtrl_Define.h	191;"	d
+SLOW_BREAK	./MainCtrl_Define.h	82;"	d
+SPD_LMT_NUM	./MainCtrl_Define.h	145;"	d
+SPEED_OUT_OF_RANGE	./SubCtrlCom/IICtrl.h	/^	SPEED_OUT_OF_RANGE = -20,$/;"	e	enum:__anon6
+SRC	./ReadSLAMResult/Makefile	/^SRC  := $(wildcard *.cpp) $/;"	m
+SUCCESS	./SubCtrlCom/IICtrl.h	/^	SUCCESS = 0,$/;"	e	enum:__anon6
+SUCCESS	./SubCtrlCom/circbuff.h	11;"	d
+SUFFIXES	./build/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	./debug/Makefile	/^SUFFIXES =$/;"	m
+SYS_ERR_CTRL_BATTERY_LOW	./MainCtrl_Define.h	209;"	d
+SYS_ERR_POWER_BATTERY_LOW	./MainCtrl_Define.h	210;"	d
+SeedGrowing	./Task/PathPlanning.cpp	/^int PathPlanning::SeedGrowing(int nStartPosIdx,unsigned char *pucLocalMap)$/;"	f	class:PathPlanning
+SegmentBlend	./Task/Trajectory.cpp	/^int Trajectory::SegmentBlend(Point_f *stPt,vector<float> &vctWL,vector<float> &vctWR)$/;"	f	class:Trajectory
+SegmentRectilinear	./Task/Trajectory.cpp	/^int Trajectory::SegmentRectilinear(float fInitSpd,float fEndSpd,float fLen,vector<float> &vctWL,vector<float> &vctWR)$/;"	f	class:Trajectory
+SendControlCMD	./SubCtrlCom/SerialCom/SerialCom.cpp	/^int SerialCom::SendControlCMD(float fVL,float fVR,int nLTime,int nRTime)$/;"	f	class:SerialCom
+SendData	./SubCtrlCom/SerialPort.cpp	/^void SubCtrl::SendData(char *pcData,int nDatalen)$/;"	f	class:SubCtrl
+SendGetRobotStatus	./SubCtrlCom/SerialCom/SerialCom.cpp	/^int SerialCom::SendGetRobotStatus()$/;"	f	class:SerialCom
+SendGetRobotStatus	./SubCtrlCom/SubCtrlCom.cpp	/^int SubCtrlCom::SendGetRobotStatus()$/;"	f	class:SubCtrlCom
+SendNKJCmd	./SubCtrlCom/SubCtrlCom.cpp	/^int SubCtrlCom::SendNKJCmd(float fVL,float fVR,int nLTime,int nRTime)$/;"	f	class:SubCtrlCom
+SendSLAMData	./NetPortal/ClientNet.cpp	/^int ClientNet::SendSLAMData(char *pcData,int nDataLen)$/;"	f	class:ClientNet
+SendStream	./NetPortal/ClientNet.cpp	/^int ClientNet::SendStream(int nGoalSize,char *pcTmpBuff,int sockfd)$/;"	f	class:ClientNet
+Send_GetStatus	./SubCtrlCom/SerialCom/JetFire.cpp	/^void JetFire::Send_GetStatus(unsigned char *pcData,int nDataLen)$/;"	f	class:JetFire
+Send_JetFireCmd	./SubCtrlCom/SerialCom/JetFire.cpp	/^void JetFire::Send_JetFireCmd(float Wheel_L, float Wheel_R, unsigned int mTime_L, unsigned int mTime_R,unsigned char* Cmd_Ep)$/;"	f	class:JetFire
+SerialCom	./SubCtrlCom/SerialCom/SerialCom.cpp	/^SerialCom::SerialCom(char* dev,unsigned int Baudrate,int myRobotID)$/;"	f	class:SerialCom
+SerialCom	./SubCtrlCom/SerialCom/SerialCom.h	/^class SerialCom$/;"	c
+SerialPort	./SubCtrlCom/SerialPort.h	/^}SerialPort;$/;"	t	typeref:struct:_SerialPort
+SetAddr	./NetPortal/ClientNet.cpp	/^int ClientNet::SetAddr(int nPort,unsigned char *pucIP,sockaddr_in &addr)$/;"	f	class:ClientNet
+SetSocket	./NetPortal/ClientNet.cpp	/^int ClientNet::SetSocket(int nPort,unsigned char *pucIP,sockaddr_in &addr)$/;"	f	class:ClientNet
+ShowPathInBMP	./Task/_2DMap.cpp	/^int _2DMap::ShowPathInBMP(_2DGridMapData *pst2DGridMapData)$/;"	f	class:_2DMap
+SimpleCtrlCmd	./MainCtrl_Define.h	/^typedef struct  SimpleCtrlCmd$/;"	s
+SimpleCtrlCmd	./MainCtrl_Define.h	/^}SimpleCtrlCmd;$/;"	t	typeref:struct:SimpleCtrlCmd
+StartPtr	./SubCtrlCom/circbuff.h	/^	u_int8_t      *StartPtr;	\/\/ points to first element (fix)$/;"	m	struct:_CIRCBUFF
+Stat2Parse	./ParseXML.cpp	/^bool ParseXML::Stat2Parse(char * pcBuff,int &nLen)$/;"	f	class:ParseXML
+Step2MileStone	./Task/IOA.cpp	/^int IOA::Step2MileStone(Point_f stPoint,RectilinearCtrl stRectilinearCtrl)$/;"	f	class:IOA
+Stop	./BN/BN.cpp	/^int BN::Stop()$/;"	f	class:BN
+Stop	./SLAM/SLAM.cpp	/^int SLAM::Stop()$/;"	f	class:SLAM
+SubCtrl	./SubCtrlCom/SerialPort.cpp	/^SubCtrl::SubCtrl()$/;"	f	class:SubCtrl
+SubCtrl	./SubCtrlCom/SerialPort.h	/^class SubCtrl$/;"	c
+SubCtrlCom	./SubCtrlCom/SubCtrlCom.cpp	/^SubCtrlCom::SubCtrlCom(void)$/;"	f	class:SubCtrlCom
+SubCtrlCom	./SubCtrlCom/SubCtrlCom.h	/^class SubCtrlCom$/;"	c
+SubCtrlComInit	./SubCtrlCom/SubCtrlCom.cpp	/^int SubCtrlCom::SubCtrlComInit(char *pcUSBPort)$/;"	f	class:SubCtrlCom
+SubCtrlComRun	./SubCtrlCom/SubCtrlCom.cpp	/^int SubCtrlCom::SubCtrlComRun()$/;"	f	class:SubCtrlCom
+SubCtrlComStop	./SubCtrlCom/SubCtrlCom.cpp	/^int SubCtrlCom::SubCtrlComStop()$/;"	f	class:SubCtrlCom
+SubCtrlComUninit	./SubCtrlCom/SubCtrlCom.cpp	/^int SubCtrlCom::SubCtrlComUninit()$/;"	f	class:SubCtrlCom
+TIMESTAMP_H_	./timestamp/timestamp.h	9;"	d
+TRUE	./SubCtrlCom/SerialPort.h	20;"	d
+TRY_TIME	./NetPortal/ClientNet.h	24;"	d
+TTimeStamp	./timestamp/timestamp.h	/^typedef uint64_t TTimeStamp;$/;"	t
+TURNDIRC	./SubCtrlCom/IICtrl.h	/^}TURNDIRC;$/;"	t	typeref:enum:__anon9
+TURNNING_TIME	./MainCtrl_Define.h	138;"	d
+TURNNING_TIME	./MainCtrl_Define.h	198;"	d
+TURN_LEFT_DIRC	./SubCtrlCom/IICtrl.h	/^	TURN_LEFT_DIRC   = 0x0,$/;"	e	enum:__anon9
+TURN_POS_ERR	./MainCtrl_Define.h	194;"	d
+TURN_RIGHT_DIRC	./SubCtrlCom/IICtrl.h	/^	TURN_RIGHT_DIRC  = 0x1,$/;"	e	enum:__anon9
+Task	./Task/Task.cpp	/^Task::Task()$/;"	f	class:Task
+Task	./Task/Task.h	/^class Task$/;"	c
+TaskIn	./Task/Task.cpp	/^int Task::TaskIn(int nTaskType,char *pcData,int nDataLen)$/;"	f	class:Task
+TaskInit	./Task/Task.cpp	/^int Task::TaskInit()$/;"	f	class:Task
+TaskRun	./Task/Task.cpp	/^int Task::TaskRun()$/;"	f	class:Task
+TaskStop	./Task/Task.cpp	/^int Task::TaskStop()$/;"	f	class:Task
+TaskUninit	./Task/Task.cpp	/^int Task::TaskUninit()$/;"	f	class:Task
+ThreadBN	./C_C.cpp	/^void* C_C::ThreadBN(void* lpParam)$/;"	f	class:C_C
+ThreadDrive	./Task/Task.cpp	/^void* Task::ThreadDrive(void* lpParam)$/;"	f	class:Task
+ThreadGPS	./C_C.cpp	/^void *C_C::ThreadGPS(void* lpParam)$/;"	f	class:C_C
+ThreadGetLaserData	./NetPortal/LaserCom.cpp	/^void* LaserCom::ThreadGetLaserData(void*  lpParam)$/;"	f	class:LaserCom
+ThreadIOA	./C_C.cpp	/^void* C_C::ThreadIOA(void* lpParam)$/;"	f	class:C_C
+ThreadIOA	./Task/Task.cpp	/^void* Task::ThreadIOA(void* lpParam)$/;"	f	class:Task
+ThreadLaserCom	./NetPortal/NetPortal.cpp	/^void* NetPortal::ThreadLaserCom(void* lpParam)$/;"	f	class:NetPortal
+ThreadListen	./NetPortal/NetPortal.cpp	/^void* NetPortal::ThreadListen(void* lpParam)$/;"	f	class:NetPortal
+ThreadLogFile	./C_C.cpp	/^void* C_C::ThreadLogFile(void* lpParam)$/;"	f	class:C_C
+ThreadNetMapBuilder	./NetPortal/NetPortal.cpp	/^void* NetPortal::ThreadNetMapBuilder(void* lpParam)$/;"	f	class:NetPortal
+ThreadNetMonitor	./NetPortal/NetPortal.cpp	/^void* NetPortal::ThreadNetMonitor(void* lpParam)$/;"	f	class:NetPortal
+ThreadNetPortal	./C_C.cpp	/^void* C_C::ThreadNetPortal(void* lpParam)$/;"	f	class:C_C
+ThreadReadRobotStatus	./C_C.cpp	/^void* C_C::ThreadReadRobotStatus(void* lpParam)$/;"	f	class:C_C
+ThreadRestartCnc	./NetPortal/NetPortal.cpp	/^void* NetPortal::ThreadRestartCnc(void* lpParam)$/;"	f	class:NetPortal
+ThreadSLAM	./C_C.cpp	/^void* C_C::ThreadSLAM(void* lpParam)$/;"	f	class:C_C
+ThreadSubCtrlCom	./C_C.cpp	/^void* C_C::ThreadSubCtrlCom(void* lpParam)$/;"	f	class:C_C
+ThreadSystemMonitor	./C_C.cpp	/^void *C_C::ThreadSystemMonitor(void* lpParam)$/;"	f	class:C_C
+ThreadWriteRawData2File	./MapService/AmbientGridMap.cpp	/^void* AmbientGridMap::ThreadWriteRawData2File(void* lpParam)$/;"	f	class:AmbientGridMap
+Trajectory	./Task/Trajectory.cpp	/^Trajectory::Trajectory(void)$/;"	f	class:Trajectory
+Trajectory	./Task/Trajectory.h	/^class Trajectory$/;"	c
+TranslateCP	./ReadSLAMResult/ReadSLAMResult.cpp	/^int ReadSLAMResult::TranslateCP()$/;"	f	class:ReadSLAMResult
+Try2CncHost	./NetPortal/ClientNet.cpp	/^int ClientNet::Try2CncHost()$/;"	f	class:ClientNet
+Turn	./SubCtrlCom/SubCtrlCom.cpp	/^int SubCtrlCom::Turn()$/;"	f	class:SubCtrlCom
+TwoPointsDis	./Task/Pace_Lock.cpp	/^float Pace_Lock::TwoPointsDis(float x1,float y1,float x2,float y2)$/;"	f	class:Pace_Lock
+UINT16	./SubCtrlCom/IICtrl.h	20;"	d
+UINT32	./SubCtrlCom/IICtrl.h	19;"	d
+UINT8	./SubCtrlCom/IICtrl.h	21;"	d
+USING_SLAM_DATA_THRS	./MainCtrl_Define.h	197;"	d
+UnInit	./SubCtrlCom/SerialPort.cpp	/^void SubCtrl::UnInit()$/;"	f	class:SubCtrl
+Uninit	./BN/BN.cpp	/^int BN::Uninit()$/;"	f	class:BN
+Uninit	./SLAM/SLAM.cpp	/^int SLAM::Uninit()$/;"	f	class:SLAM
+UploadA	./NetPortal/NetPortal.cpp	/^int NetPortal::UploadA(char *pcData,int nDataLen)$/;"	f	class:NetPortal
+UploadB	./NetPortal/NetPortal.cpp	/^int NetPortal::UploadB(char *pcData,int nDataLen)$/;"	f	class:NetPortal
+UploadMapBuilder	./NetPortal/NetPortal.cpp	/^int NetPortal::UploadMapBuilder(char *pcData,int nDataLen)$/;"	f	class:NetPortal
+VERSION	./SubCtrlCom/IICtrl.h	17;"	d
+Vel2RPM	./Task/IOA.cpp	/^int IOA::Vel2RPM(float fVel)$/;"	f	class:IOA
+WHEEL_RADIOUS	./MainCtrl_Define.h	122;"	d
+WIDTHBYTES	./Task/BMPLib.h	9;"	d
+WORD	./Task/BMPLib.h	/^typedef unsigned short WORD;$/;"	t
+Write2LogFile	./LogFile/LogFile.cpp	/^int LogFile::Write2LogFile(LogFormat *pstContent)$/;"	f	class:LogFile
+WritePtr	./SubCtrlCom/circbuff.h	/^	u_int8_t      *WritePtr;   \/\/ points to next buffer to write$/;"	m	struct:_CIRCBUFF
+WriteRawData2File	./MapService/AmbientGridMap.cpp	/^int AmbientGridMap::WriteRawData2File(char *pcData,int nDatalen)$/;"	f	class:AmbientGridMap
+Wrtie2RawDataBuff	./MapService/AmbientGridMap.cpp	/^int AmbientGridMap::Wrtie2RawDataBuff(char *pcRawData,int nDatalen)$/;"	f	class:AmbientGridMap
+WrtieData	./SubCtrlCom/SerialCom/SerialCom.cpp	/^int SerialCom::WrtieData(unsigned char *pcData,int nDataLen)$/;"	f	class:SerialCom
+X_OFFSET	./MainCtrl_Define.h	200;"	d
+Y_OFFSET	./MainCtrl_Define.h	201;"	d
+_100M	./MainCtrl_Define.h	5;"	d
+_10M	./MainCtrl_Define.h	4;"	d
+_1M	./MainCtrl_Define.h	3;"	d
+_2DGridMapData	./Task/_2DMap.h	/^typedef struct _2DGridMapData$/;"	s
+_2DGridMapData	./Task/_2DMap.h	/^}_2DGridMapData;$/;"	t	typeref:struct:_2DGridMapData
+_2DMap	./Task/_2DMap.cpp	/^_2DMap::_2DMap(void)$/;"	f	class:_2DMap
+_2DMap	./Task/_2DMap.h	/^class _2DMap$/;"	c
+_2DMapInit	./Task/_2DMap.cpp	/^int _2DMap::_2DMapInit()$/;"	f	class:_2DMap
+_90DEGREE	./MainCtrl_Define.h	203;"	d
+_CIRCBUFF	./SubCtrlCom/circbuff.h	/^typedef struct _CIRCBUFF{$/;"	s
+_CIRCBUFF_H_	./SubCtrlCom/circbuff.h	3;"	d
+_SerialPort	./SubCtrlCom/SerialPort.h	/^typedef struct _SerialPort$/;"	s
+__JetFire_H	./SubCtrlCom/SerialCom/JetFire.h	2;"	d
+address	./BN/BNpos.h	/^			int address;$/;"	m	struct:BNpos::__anon1
+address	./SubCtrlCom/SerialCom/SerialCom.h	/^			int address;$/;"	m	struct:SerialCom::__anon5
+angle	./BN/BNpos.h	/^			int angle;$/;"	m	struct:BNpos::__anon1
+angle	./SubCtrlCom/SerialCom/SerialCom.h	/^			int angle;$/;"	m	struct:SerialCom::__anon5
+bHasRecv	./Task/PathPlanning1.h	/^	bool bHasRecv;$/;"	m	struct:DataCarrier
+bRecv	./MapService/AmbientGridMap.h	/^	bool bRecv;$/;"	m	struct:RawDataInfo
+bfOffBits	./Task/BMPLib.h	/^	DWORD bfOffBits; \/\/实际位图数据的偏移字节数，即前三个部分长度之和$/;"	m	struct:libBITMAPFILEHEADER
+bfReserved1	./Task/BMPLib.h	/^	WORD bfReserved1; \/\/保留字，不考虑$/;"	m	struct:libBITMAPFILEHEADER
+bfReserved2	./Task/BMPLib.h	/^	WORD bfReserved2; \/\/保留字，同上$/;"	m	struct:libBITMAPFILEHEADER
+bfSize	./Task/BMPLib.h	/^	DWORD bfSize; \/\/文件大小$/;"	m	struct:libBITMAPFILEHEADER
+biBitCount	./Task/BMPLib.h	/^	WORD biBitCount; \/\/采用颜色位数，可以是1，2，4，8，16，24，新的可以是32$/;"	m	struct:libBITMAPINFOHEADER
+biClrImportant	./Task/BMPLib.h	/^	DWORD biClrImportant; \/\/重要颜色数，如果为0，则表示所有颜色都是重要的$/;"	m	struct:libBITMAPINFOHEADER
+biClrUsed	./Task/BMPLib.h	/^	DWORD biClrUsed; \/\/使用的颜色数，如果为0，则表示默认值(2^颜色位数)$/;"	m	struct:libBITMAPINFOHEADER
+biCompression	./Task/BMPLib.h	/^	DWORD biCompression; \/\/压缩方式，可以是0，1，2，其中0表示不压缩$/;"	m	struct:libBITMAPINFOHEADER
+biHeight	./Task/BMPLib.h	/^	LONG biHeight; \/\/位图高$/;"	m	struct:libBITMAPINFOHEADER
+biPlanes	./Task/BMPLib.h	/^	WORD biPlanes; \/\/平面数，为1$/;"	m	struct:libBITMAPINFOHEADER
+biSize	./Task/BMPLib.h	/^	DWORD biSize; \/\/指定此结构体的长度，为40$/;"	m	struct:libBITMAPINFOHEADER
+biSizeImage	./Task/BMPLib.h	/^	DWORD biSizeImage; \/\/实际位图数据占用的字节数$/;"	m	struct:libBITMAPINFOHEADER
+biWidth	./Task/BMPLib.h	/^	LONG biWidth; \/\/位图宽$/;"	m	struct:libBITMAPINFOHEADER
+biXPelsPerMeter	./Task/BMPLib.h	/^	LONG biXPelsPerMeter; \/\/X方向分辨率$/;"	m	struct:libBITMAPINFOHEADER
+biYPelsPerMeter	./Task/BMPLib.h	/^	LONG biYPelsPerMeter; \/\/Y方向分辨率$/;"	m	struct:libBITMAPINFOHEADER
+bubble_sort	./Task/Pace_Lock.cpp	/^void Pace_Lock::bubble_sort(int *x, int n)$/;"	f	class:Pace_Lock
+buff	./SubCtrlCom/circbuff.h	/^	u_int8_t      *buff;$/;"	m	struct:_CIRCBUFF
+cContent	./LogFile/LogFile.h	/^	char cContent[MAX_CNT_LEN];$/;"	m	struct:LogFormat
+cDataTime	./LogFile/LogFile.h	/^	char cDataTime[20];$/;"	m	struct:LogFormat
+cDev	./BN/BN.h	/^	char cDev[100];$/;"	m	struct:BNParams
+cHost_IP_A	./SLAM/SLAM.h	/^	char cHost_IP_A[16];$/;"	m	struct:SLAMParams
+cHost_IP_A	./SLAM/Tmp/SLAM.h	/^	char cHost_IP_A[16];$/;"	m	struct:SLAMParams
+cHost_IP_B	./SLAM/SLAM.h	/^	char cHost_IP_B[16];$/;"	m	struct:SLAMParams
+cHost_IP_B	./SLAM/Tmp/SLAM.h	/^	char cHost_IP_B[16];$/;"	m	struct:SLAMParams
+cID	./NetPortal/NetPortal.h	/^		char cID;$/;"	m	struct:NetPortal::NP_CNCParams
+cModuleName	./LogFile/LogFile.h	/^	char cModuleName[20];$/;"	m	struct:LogFormat
+cSICK_IP_A	./SLAM/SLAM.h	/^	char cSICK_IP_A[16];$/;"	m	struct:SLAMParams
+cSICK_IP_A	./SLAM/Tmp/SLAM.h	/^	char cSICK_IP_A[16];$/;"	m	struct:SLAMParams
+cSICK_IP_B	./SLAM/SLAM.h	/^	char cSICK_IP_B[16];$/;"	m	struct:SLAMParams
+cSICK_IP_B	./SLAM/Tmp/SLAM.h	/^	char cSICK_IP_B[16];$/;"	m	struct:SLAMParams
+cType	./MainCtrl_Define.h	/^	char cType;$/;"	m	struct:RectilinearCtrl
+cbBNLocation	./SLAM/SLAM.h	/^	CallBack_BNLocation cbBNLocation;$/;"	m	struct:SLAM_CallBack
+cbBNLocation	./SLAM/Tmp/SLAM.h	/^	CallBack_BNLocation cbBNLocation;$/;"	m	struct:SLAM_CallBack
+cbBackward	./MainCtrl_Define.h	/^	CallBack_Backward cbBackward;$/;"	m	struct:SimpleCtrlCmd
+cbBreak	./MainCtrl_Define.h	/^	CallBack_Break cbBreak;$/;"	m	struct:SimpleCtrlCmd
+cbCB	./C_C.cpp	/^SLAM_CallBack cbCB;$/;"	v
+cbCtrlCmdParse	./C_C.cpp	/^int C_C::cbCtrlCmdParse(float x,float y,float th)$/;"	f	class:C_C
+cbDataFusionResult	./SLAM/SLAM.h	/^	CallBack_DataFusionResult cbDataFusionResult;$/;"	m	struct:SLAM_CallBack
+cbDataFusionResult	./SLAM/Tmp/SLAM.h	/^	CallBack_DataFusionResult cbDataFusionResult;$/;"	m	struct:SLAM_CallBack
+cbForward	./MainCtrl_Define.h	/^	CallBack_Forward cbForward;$/;"	m	struct:SimpleCtrlCmd
+cbGlobalMap	./SLAM/SLAM.h	/^	CallBack_GlobalMap cbGlobalMap;$/;"	m	struct:SLAM_CallBack
+cbGlobalMap	./SLAM/Tmp/SLAM.h	/^	CallBack_GlobalMap cbGlobalMap;$/;"	m	struct:SLAM_CallBack
+cbLocalMap	./SLAM/SLAM.h	/^	CallBack_LocalMap cbLocalMap;$/;"	m	struct:SLAM_CallBack
+cbLocalMap	./SLAM/Tmp/SLAM.h	/^	CallBack_LocalMap cbLocalMap;$/;"	m	struct:SLAM_CallBack
+cbOdometry	./SLAM/SLAM.h	/^	CallBack_Odometry cbOdometry;$/;"	m	struct:SLAM_CallBack
+cbOdometry	./SLAM/Tmp/SLAM.h	/^	CallBack_Odometry cbOdometry;$/;"	m	struct:SLAM_CallBack
+cbSICK	./C_C.cpp	/^int C_C::cbSICK(vector<float>& bearing)$/;"	f	class:C_C
+cbSICKA	./SLAM/SLAM.h	/^	CallBack_SICK cbSICKA;$/;"	m	struct:SLAM_CallBack
+cbSICKA	./SLAM/Tmp/SLAM.h	/^	CallBack_SICK cbSICKA;$/;"	m	struct:SLAM_CallBack
+cbSICKB	./SLAM/SLAM.h	/^	CallBack_SICK cbSICKB;$/;"	m	struct:SLAM_CallBack
+cbSICKB	./SLAM/Tmp/SLAM.h	/^	CallBack_SICK cbSICKB;$/;"	m	struct:SLAM_CallBack
+cbSLAM	./C_C.cpp	/^int C_C::cbSLAM(float x,float y,float th){$/;"	f	class:C_C
+cbTurn	./MainCtrl_Define.h	/^	CallBack_Turn cbTurn;$/;"	m	struct:SimpleCtrlCmd
+checkGPS	./GPS/CGPS.cpp	/^bool CGPS::checkGPS()$/;"	f	class:CGPS
+circ_buff	./SubCtrlCom/SerialPort.h	/^	CIRCBUFF circ_buff;$/;"	m	struct:_SerialPort
+closed	./BN/BNpos.cpp	/^void BNpos::closed()$/;"	f	class:BNpos
+closed	./GPS/CGPS.cpp	/^void CGPS::closed()$/;"	f	class:CGPS
+closed	./SubCtrlCom/SerialCom/SerialCom.cpp	/^void SerialCom::closed()$/;"	f	class:SerialCom
+count	./SubCtrlCom/circbuff.h	/^	u_int32_t     count;		\/\/ current count of bytes in the buffer$/;"	m	struct:_CIRCBUFF
+delaytime	./SubCtrlCom/SerialPort.h	/^	int delaytime;$/;"	m	struct:sndbuf
+direction	./SubCtrlCom/SerialPort.h	/^	char direction;$/;"	m	struct:sndbuf
+earth_R	./GPS/CGPS.h	/^		double earth_R;$/;"	m	class:CGPS
+endflag	./SubCtrlCom/SerialPort.h	/^	char endflag;	$/;"	m	struct:sndbuf
+fA	./MainCtrl_Define.h	/^	float fA;$/;"	m	struct:RectilinearCtrl
+fAccLen	./MainCtrl_Define.h	/^	float fAccLen;$/;"	m	struct:AccTable
+fCurSpd	./MainCtrl_Define.h	/^	float fCurSpd;$/;"	m	struct:RectilinearCtrl
+fDeacclen	./MainCtrl_Define.h	/^	float fDeacclen;$/;"	m	struct:AccTable
+fDis	./MainCtrl_Define.h	/^	float fDis;$/;"	m	struct:IOA_Pos
+fLen	./MainCtrl_Define.h	/^	float fLen;$/;"	m	struct:Point_f
+fOriginInGlobalX	./Task/_2DMap.h	/^	float fOriginInGlobalX;$/;"	m	struct:_2DGridMapData
+fOriginInGlobalY	./Task/_2DMap.h	/^	float fOriginInGlobalY;$/;"	m	struct:_2DGridMapData
+fResolution	./Task/_2DMap.h	/^	float fResolution;$/;"	m	struct:_2DGridMapData
+fTAcc	./MainCtrl_Define.h	/^	float fTAcc;$/;"	m	struct:RectilinearCtrl
+fTDeacc	./MainCtrl_Define.h	/^	float fTDeacc;$/;"	m	struct:RectilinearCtrl
+fTUni	./MainCtrl_Define.h	/^	float fTUni;$/;"	m	struct:RectilinearCtrl
+fTheta	./MainCtrl_Define.h	/^	float fTheta;$/;"	m	struct:Pos_f
+fVm	./MainCtrl_Define.h	/^	float fVm;$/;"	m	struct:RectilinearCtrl
+fX	./MainCtrl_Define.h	/^	float fX;$/;"	m	struct:IOA_Pos
+fX	./MainCtrl_Define.h	/^	float fX;$/;"	m	struct:Point_f
+fY	./MainCtrl_Define.h	/^	float fY;$/;"	m	struct:IOA_Pos
+fY	./MainCtrl_Define.h	/^	float fY;$/;"	m	struct:Point_f
+fd	./BN/BNpos.h	/^		int fd;$/;"	m	class:BNpos
+fd	./GPS/CGPS.h	/^		int fd;$/;"	m	class:CGPS
+fd	./SubCtrlCom/SerialCom/SerialCom.h	/^		int fd;$/;"	m	class:SerialCom
+flag	./SubCtrlCom/SerialPort.h	/^	char flag;$/;"	m	struct:sndbuf
+fnparse	./SubCtrlCom/SerialPort.h	/^	PACKETPARSE fnparse;$/;"	m	struct:_SerialPort
+g_Critical_BMPLibRun	./Task/BMPLib.cpp	/^pthread_mutex_t g_Critical_BMPLibRun;$/;"	v
+g_Mutex_CurPose	./Task/IOA.cpp	/^pthread_mutex_t g_Mutex_CurPose;$/;"	v
+g_Mutex_LogFile	./LogFile/LogFile.cpp	/^pthread_mutex_t g_Mutex_LogFile;$/;"	v
+g_SerialLock	./SubCtrlCom/SerialCom/SerialCom.cpp	/^pthread_mutex_t g_SerialLock;$/;"	v
+getCurrentTime	./timestamp/timestamp.cpp	/^TTimeStamp  getCurrentTime( )$/;"	f
+getGPSSatelliteNum	./GPS/CGPS.cpp	/^int CGPS::getGPSSatelliteNum()$/;"	f	class:CGPS
+getGPSValue	./GPS/CGPS.cpp	/^bool CGPS::getGPSValue(double *lat1,double *lon1)$/;"	f	class:CGPS
+getGPSVel	./GPS/CGPS.cpp	/^bool CGPS::getGPSVel(GPSVel *vel1)$/;"	f	class:CGPS
+getGPSXY	./GPS/CGPS.cpp	/^bool CGPS::getGPSXY(GPSllh *p0,GPSllh *p1,Distance *d1)$/;"	f	class:CGPS
+hreq	./SubCtrlCom/SerialPort.h	/^	sem_t hreq;$/;"	m	struct:_SerialPort
+hrsp	./SubCtrlCom/SerialPort.h	/^	sem_t hrsp;$/;"	m	struct:_SerialPort
+id	./SubCtrlCom/SerialCom/SerialCom.h	/^		pthread_t id;$/;"	m	class:SerialCom
+info_arch	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_compiler	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_platform	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+lat	./GPS/CGPS.h	/^		double lat,lon,vel,velangle;$/;"	m	class:CGPS
+lat	./GPS/CGPS.h	/^	double lat;$/;"	m	struct:__anon2
+libBITMAPFILEHEADER	./Task/BMPLib.h	/^typedef struct libBITMAPFILEHEADER {$/;"	s
+libBITMAPFILEHEADER	./Task/BMPLib.h	/^} libBITMAPFILEHEADER;$/;"	t	typeref:struct:libBITMAPFILEHEADER
+libBITMAPINFOHEADER	./Task/BMPLib.h	/^typedef struct libBITMAPINFOHEADER{$/;"	s
+libBITMAPINFOHEADER	./Task/BMPLib.h	/^} libBITMAPINFOHEADER;$/;"	t	typeref:struct:libBITMAPINFOHEADER
+libRGBQUAD	./Task/BMPLib.h	/^typedef struct libRGBQUAD {$/;"	s
+libRGBQUAD	./Task/BMPLib.h	/^} libRGBQUAD;$/;"	t	typeref:struct:libRGBQUAD
+listenUART	./BN/BNpos.cpp	/^void BNpos::listenUART()$/;"	f	class:BNpos
+listenUART	./GPS/CGPS.cpp	/^void CGPS::listenUART()$/;"	f	class:CGPS
+listenUART	./SubCtrlCom/SerialCom/SerialCom.cpp	/^void SerialCom::listenUART()$/;"	f	class:SerialCom
+listenuartid	./BN/BNpos.h	/^		pthread_t listenuartid;$/;"	m	class:BNpos
+lon	./GPS/CGPS.h	/^		double lat,lon,vel,velangle;$/;"	m	class:CGPS
+lon	./GPS/CGPS.h	/^	double lon;$/;"	m	struct:__anon2
+m_BNposMutex	./BN/BNpos.h	/^		pthread_mutex_t m_BNposMutex;$/;"	m	class:BNpos
+m_BNposMutex	./SubCtrlCom/SerialCom/SerialCom.h	/^		pthread_mutex_t m_BNposMutex;$/;"	m	class:SerialCom
+m_C2DMap	./Task/PathPlanning.h	/^	_2DMap m_C2DMap;$/;"	m	class:PathPlanning
+m_C2DMap	./Task/Task.h	/^	_2DMap m_C2DMap;$/;"	m	class:Task
+m_CAmbientGridMap	./C_C.h	/^	AmbientGridMap m_CAmbientGridMap;$/;"	m	class:C_C
+m_CBN	./C_C.h	/^	BN m_CBN;$/;"	m	class:C_C
+m_CClientNet	./NetPortal/LaserCom.h	/^	ClientNet m_CClientNet;$/;"	m	class:LaserCom
+m_CClientNetA	./NetPortal/NetPortal.cpp	/^ClientNet NetPortal::m_CClientNetA;$/;"	m	class:NetPortal	file:
+m_CClientNetA	./NetPortal/NetPortal.h	/^	static ClientNet m_CClientNetA;$/;"	m	class:NetPortal
+m_CClientNetB	./NetPortal/NetPortal.cpp	/^ClientNet NetPortal::m_CClientNetB;$/;"	m	class:NetPortal	file:
+m_CClientNetB	./NetPortal/NetPortal.h	/^	static ClientNet m_CClientNetB;$/;"	m	class:NetPortal
+m_CClientNetMapBuilder	./NetPortal/NetPortal.cpp	/^ClientNet NetPortal::m_CClientNetMapBuilder;$/;"	m	class:NetPortal	file:
+m_CClientNetMapBuilder	./NetPortal/NetPortal.h	/^	static ClientNet m_CClientNetMapBuilder;$/;"	m	class:NetPortal
+m_CGPS	./C_C.h	/^	CGPS m_CGPS;$/;"	m	class:C_C
+m_CIOA	./C_C.h	/^	IOA m_CIOA;$/;"	m	class:C_C
+m_CIOA	./Task/Task.h	/^	IOA m_CIOA;$/;"	m	class:Task
+m_CLaserCom	./NetPortal/NetPortal.cpp	/^LaserCom NetPortal::m_CLaserCom[LASER_NUM];$/;"	m	class:NetPortal	file:
+m_CLaserCom	./NetPortal/NetPortal.h	/^	static LaserCom m_CLaserCom[LASER_NUM];$/;"	m	class:NetPortal
+m_CLocalMapBuilder	./C_C.h	/^	LocalMapBuilder m_CLocalMapBuilder;$/;"	m	class:C_C
+m_CLogFile	./C_C.h	/^	LogFile m_CLogFile;$/;"	m	class:C_C
+m_CNetPortal	./C_C.h	/^	NetPortal m_CNetPortal;$/;"	m	class:C_C
+m_CParseXML	./C_C.h	/^	ParseXML m_CParseXML;$/;"	m	class:C_C
+m_CPathPlanning	./Task/IOA.h	/^	PathPlanning m_CPathPlanning;$/;"	m	class:IOA
+m_CPathPlanning	./Task/Task.h	/^	PathPlanning m_CPathPlanning;$/;"	m	class:Task
+m_CSubCtrlCom	./C_C.h	/^	SubCtrlCom m_CSubCtrlCom;$/;"	m	class:C_C
+m_CTask	./C_C.h	/^	Task m_CTask;$/;"	m	class:C_C
+m_CTrajectory	./Task/IOA.h	/^	Trajectory m_CTrajectory;$/;"	m	class:IOA
+m_CTrajectory	./Task/Task.h	/^	Trajectory m_CTrajectory;$/;"	m	class:Task
+m_ClientAddr	./NetPortal/ClientNet.h	/^	struct sockaddr_in m_ClientAddr;$/;"	m	class:ClientNet	typeref:struct:ClientNet::sockaddr_in
+m_HostAddr	./NetPortal/ClientNet.h	/^	struct sockaddr_in m_HostAddr;$/;"	m	class:ClientNet	typeref:struct:ClientNet::sockaddr_in
+m_LogFile	./LogFile/LogFile.h	/^	ofstream m_LogFile;$/;"	m	class:LogFile
+m_PCBN	./BN/BN.cpp	/^BN *BN::m_PCBN=NULL;$/;"	m	class:BN	file:
+m_PCBN	./BN/BN.h	/^	static BN *m_PCBN;$/;"	m	class:BN
+m_bStart2Run	./NetPortal/LaserCom.h	/^	bool m_bStart2Run;$/;"	m	class:LaserCom
+m_bStopListen	./NetPortal/ClientNet.h	/^	bool m_bStopListen;$/;"	m	class:ClientNet
+m_bStopLog	./LogFile/LogFile.h	/^	bool m_bStopLog;$/;"	m	class:LogFile
+m_bStopThisStep	./Task/IOA.h	/^	bool m_bStopThisStep;$/;"	m	class:IOA
+m_bStopThreadIOA	./Task/Task.cpp	/^bool Task::m_bStopThreadIOA;$/;"	m	class:Task	file:
+m_bStopThreadIOA	./Task/Task.h	/^	static bool m_bStopThreadIOA;$/;"	m	class:Task
+m_bSysClose	./NetPortal/NetPortal.h	/^	bool m_bSysClose;$/;"	m	class:NetPortal
+m_bSysErr	./C_C.cpp	/^bool C_C::m_bSysErr;$/;"	m	class:C_C	file:
+m_bSysErr	./C_C.h	/^	static bool m_bSysErr;$/;"	m	class:C_C
+m_baud	./SubCtrlCom/SerialPort.h	/^	int m_baud;$/;"	m	struct:_SerialPort
+m_cCncStatus	./NetPortal/NetPortal.cpp	/^char NetPortal::m_cCncStatus[3][2];$/;"	m	class:NetPortal	file:
+m_cCncStatus	./NetPortal/NetPortal.h	/^	static char m_cCncStatus[3][2];$/;"	m	class:NetPortal
+m_cCurRawData	./MapService/AmbientGridMap.cpp	/^char AmbientGridMap::m_cCurRawData;$/;"	m	class:AmbientGridMap	file:
+m_cCurRawData	./MapService/AmbientGridMap.h	/^	static char m_cCurRawData;$/;"	m	class:AmbientGridMap
+m_cNetConfig	./NetPortal/NetPortal.h	/^	char m_cNetConfig[3][16];$/;"	m	class:NetPortal
+m_cNetPortalParams	./C_C.h	/^	char m_cNetPortalParams[80];$/;"	m	class:C_C
+m_cbBNlctAndOdometry	./SubCtrlCom/SubCtrlCom.h	/^	CallBack_BNLctAndOdometry m_cbBNlctAndOdometry;$/;"	m	class:SubCtrlCom
+m_cbLaserData	./NetPortal/LaserCom.h	/^	CallBack_LaserData m_cbLaserData;$/;"	m	class:LaserCom
+m_cbLaserData	./NetPortal/NetPortal.h	/^	CallBack_LaserData m_cbLaserData[LASER_NUM];$/;"	m	class:NetPortal
+m_cbLaserDtct	./SubCtrlCom/SubCtrlCom.h	/^	CallBack_LaserDtct m_cbLaserDtct[2];$/;"	m	class:SubCtrlCom
+m_cbLogFile	./NetPortal/ClientNet.h	/^	CallBack_LogFile m_cbLogFile;$/;"	m	class:ClientNet
+m_cbLogFile	./NetPortal/LaserCom.h	/^	CallBack_LogFile m_cbLogFile;$/;"	m	class:LaserCom
+m_cbLogFile	./NetPortal/NetPortal.cpp	/^CallBack_LogFile NetPortal::m_cbLogFile;$/;"	m	class:NetPortal	file:
+m_cbLogFile	./NetPortal/NetPortal.h	/^	static CallBack_LogFile m_cbLogFile;$/;"	m	class:NetPortal
+m_cbLogFile	./SubCtrlCom/SubCtrlCom.h	/^	CallBack_LogFile m_cbLogFile;$/;"	m	class:SubCtrlCom
+m_cbLogFile	./Task/IOA.h	/^	CallBack_LogFile m_cbLogFile;$/;"	m	class:IOA
+m_cbLogFile	./Task/PathPlanning.h	/^	CallBack_LogFile m_cbLogFile;$/;"	m	class:PathPlanning
+m_cbLogFile	./Task/Task.h	/^	CallBack_LogFile m_cbLogFile;$/;"	m	class:Task
+m_cbNetUpload	./NetPortal/ClientNet.h	/^	CallBack_NetUpload m_cbNetUpload;$/;"	m	class:ClientNet
+m_cbNetUpload	./SLAM/SLAM.h	/^	CallBack_NetUpload m_cbNetUpload;$/;"	m	class:SLAM
+m_cbRobotPos	./Task/Task.cpp	/^CallBack_RobotPos Task::m_cbRobotPos;$/;"	m	class:Task	file:
+m_cbRobotPos	./Task/Task.h	/^	static CallBack_RobotPos m_cbRobotPos;$/;"	m	class:Task
+m_cbSend2RS_A	./Task/Task.cpp	/^CallBack_NetUpload Task::m_cbSend2RS_A;$/;"	m	class:Task	file:
+m_cbSend2RS_A	./Task/Task.h	/^	static CallBack_NetUpload m_cbSend2RS_A;$/;"	m	class:Task
+m_cbSend2RS_B	./Task/Task.cpp	/^CallBack_NetUpload Task::m_cbSend2RS_B;$/;"	m	class:Task	file:
+m_cbSend2RS_B	./Task/Task.h	/^	static CallBack_NetUpload m_cbSend2RS_B;$/;"	m	class:Task
+m_cbSendNKJCMD	./Task/Task.cpp	/^CallBack_SendNKJCMD Task::m_cbSendNKJCMD;$/;"	m	class:Task	file:
+m_cbSendNKJCMD	./Task/Task.h	/^	static CallBack_SendNKJCMD m_cbSendNKJCMD;$/;"	m	class:Task
+m_cbTaskIn	./NetPortal/NetPortal.cpp	/^CallBack_TaskIn NetPortal::m_cbTaskIn;$/;"	m	class:NetPortal	file:
+m_cbTaskIn	./NetPortal/NetPortal.h	/^	static CallBack_TaskIn m_cbTaskIn;$/;"	m	class:NetPortal
+m_ccModuleTable	./LogFile/LogFile.h	/^	char m_ccModuleTable[MODULE_NUM][20];$/;"	m	class:LogFile
+m_fAngle	./ReadSLAMResult/ReadSLAMResult.h	/^	float m_fAngle[541][2];$/;"	m	class:ReadSLAMResult
+m_fAngle	./Task/IOA.h	/^	float m_fAngle[SICK_LINES][2];$/;"	m	class:IOA
+m_fCurPos	./C_C.cpp	/^float C_C::m_fCurPos[3];$/;"	m	class:C_C	file:
+m_fCurPos	./C_C.h	/^	static float m_fCurPos[3];$/;"	m	class:C_C
+m_fDest	./Task/PathPlanning.h	/^	float m_fDest[3];$/;"	m	class:PathPlanning
+m_fDis2MileStone	./Task/IOA.h	/^	float m_fDis2MileStone;$/;"	m	class:IOA
+m_fDisMaxAccSpd	./Task/Trajectory.h	/^	float m_fDisMaxAccSpd;$/;"	m	class:Trajectory
+m_fGlobalSpeedLimit	./Task/IOA.h	/^	float m_fGlobalSpeedLimit;$/;"	m	class:IOA
+m_fLocalSpeedLimit	./Task/IOA.h	/^	float m_fLocalSpeedLimit;$/;"	m	class:IOA
+m_fLocalSpeedLimitList	./Task/IOA.h	/^	float m_fLocalSpeedLimitList[SECURITY_AREA_NUM];$/;"	m	class:IOA
+m_fOdometryData	./C_C.cpp	/^float C_C::m_fOdometryData[4];$/;"	m	class:C_C	file:
+m_fOdometryData	./C_C.h	/^	static float m_fOdometryData[4];$/;"	m	class:C_C
+m_fPosBefIOA	./Task/PathPlanning.h	/^	float m_fPosBefIOA[3];$/;"	m	class:PathPlanning
+m_fPosBeforeIOA	./Task/IOA.h	/^	float m_fPosBeforeIOA[3];$/;"	m	class:IOA
+m_fSecurityAreaRange	./Task/IOA.h	/^	float m_fSecurityAreaRange[SECURITY_AREA_NUM];$/;"	m	class:IOA
+m_fVoltBatteryCtrl	./C_C.cpp	/^float C_C::m_fVoltBatteryCtrl;$/;"	m	class:C_C	file:
+m_fVoltBatteryCtrl	./C_C.h	/^	static float m_fVoltBatteryCtrl;$/;"	m	class:C_C
+m_fVoltBatteryPower	./C_C.cpp	/^float C_C::m_fVoltBatteryPower;$/;"	m	class:C_C	file:
+m_fVoltBatteryPower	./C_C.h	/^	static float m_fVoltBatteryPower;$/;"	m	class:C_C
+m_hReadRobotStatus	./C_C.h	/^	pthread_t m_hReadRobotStatus;$/;"	m	class:C_C
+m_hThreadBN	./C_C.h	/^	pthread_t m_hThreadBN;$/;"	m	class:C_C
+m_hThreadDrive	./Task/Task.cpp	/^pthread_t Task::m_hThreadDrive;$/;"	m	class:Task	file:
+m_hThreadDrive	./Task/Task.h	/^	static pthread_t m_hThreadDrive;$/;"	m	class:Task
+m_hThreadGPS	./C_C.h	/^	pthread_t m_hThreadGPS;$/;"	m	class:C_C
+m_hThreadGetLaserData	./NetPortal/LaserCom.h	/^	pthread_t m_hThreadGetLaserData;$/;"	m	class:LaserCom
+m_hThreadIOA	./C_C.h	/^	pthread_t m_hThreadIOA;$/;"	m	class:C_C
+m_hThreadIOA	./Task/Task.cpp	/^pthread_t Task::m_hThreadIOA;$/;"	m	class:Task	file:
+m_hThreadIOA	./Task/Task.h	/^	static pthread_t m_hThreadIOA;$/;"	m	class:Task
+m_hThreadLaserCom	./NetPortal/NetPortal.h	/^	pthread_t m_hThreadLaserCom;$/;"	m	class:NetPortal
+m_hThreadListen	./NetPortal/NetPortal.cpp	/^pthread_t NetPortal::m_hThreadListen[3];$/;"	m	class:NetPortal	file:
+m_hThreadListen	./NetPortal/NetPortal.h	/^	static pthread_t m_hThreadListen[3];$/;"	m	class:NetPortal
+m_hThreadListenA	./NetPortal/NetPortal.h	/^	pthread_t m_hThreadListenA;$/;"	m	class:NetPortal
+m_hThreadListenB	./NetPortal/NetPortal.h	/^	pthread_t m_hThreadListenB;$/;"	m	class:NetPortal
+m_hThreadLogFile	./C_C.h	/^	pthread_t m_hThreadLogFile;$/;"	m	class:C_C
+m_hThreadNetMapBuilder	./NetPortal/NetPortal.h	/^	pthread_t m_hThreadNetMapBuilder;$/;"	m	class:NetPortal
+m_hThreadNetMonitor	./NetPortal/NetPortal.h	/^	pthread_t m_hThreadNetMonitor;$/;"	m	class:NetPortal
+m_hThreadNetPortal	./C_C.h	/^	pthread_t m_hThreadNetPortal;$/;"	m	class:C_C
+m_hThreadReCNC	./NetPortal/NetPortal.cpp	/^pthread_t NetPortal::m_hThreadReCNC[3];$/;"	m	class:NetPortal	file:
+m_hThreadReCNC	./NetPortal/NetPortal.h	/^	static pthread_t m_hThreadReCNC[3];$/;"	m	class:NetPortal
+m_hThreadSLAM	./C_C.h	/^	pthread_t m_hThreadSLAM;$/;"	m	class:C_C
+m_hThreadSubCtrlCom	./C_C.h	/^	pthread_t m_hThreadSubCtrlCom;$/;"	m	class:C_C
+m_hThreadWriteRawData2File	./MapService/AmbientGridMap.cpp	/^pthread_t AmbientGridMap::m_hThreadWriteRawData2File;$/;"	m	class:AmbientGridMap	file:
+m_hThreadWriteRawData2File	./MapService/AmbientGridMap.h	/^	static pthread_t m_hThreadWriteRawData2File;$/;"	m	class:AmbientGridMap
+m_hcom	./SubCtrlCom/SerialPort.h	/^	int m_hcom;	$/;"	m	struct:_SerialPort
+m_nClientSock	./NetPortal/ClientNet.h	/^	int m_nClientSock;$/;"	m	class:ClientNet
+m_nFileLen	./ParseXML.h	/^	int m_nFileLen;$/;"	m	class:ParseXML
+m_nRawDataFileIdxR	./MapService/AmbientGridMap.cpp	/^int AmbientGridMap::m_nRawDataFileIdxR;$/;"	m	class:AmbientGridMap	file:
+m_nRawDataFileIdxR	./MapService/AmbientGridMap.h	/^	static int m_nRawDataFileIdxW,m_nRawDataFileIdxR;$/;"	m	class:AmbientGridMap
+m_nRawDataFileIdxW	./MapService/AmbientGridMap.cpp	/^int AmbientGridMap::m_nRawDataFileIdxW;$/;"	m	class:AmbientGridMap	file:
+m_nRawDataFileIdxW	./MapService/AmbientGridMap.h	/^	static int m_nRawDataFileIdxW,m_nRawDataFileIdxR;$/;"	m	class:AmbientGridMap
+m_pCBNpos	./BN/BN.h	/^	BNpos *m_pCBNpos;$/;"	m	class:BN
+m_pCC_CThis	./C_C.cpp	/^C_C *C_C::m_pCC_CThis;$/;"	m	class:C_C	file:
+m_pCC_CThis	./C_C.h	/^	static C_C *m_pCC_CThis;$/;"	m	class:C_C
+m_pCIOA	./Task/IOA.cpp	/^IOA *IOA::m_pCIOA;$/;"	m	class:IOA	file:
+m_pCIOA	./Task/IOA.h	/^	static IOA *m_pCIOA;$/;"	m	class:IOA
+m_pCLogFile	./LogFile/LogFile.cpp	/^LogFile *LogFile::m_pCLogFile;$/;"	m	class:LogFile	file:
+m_pCLogFile	./LogFile/LogFile.h	/^	static LogFile *m_pCLogFile;$/;"	m	class:LogFile
+m_pCSLAM	./C_C.h	/^	CSlamV1* m_pCSLAM;$/;"	m	class:C_C
+m_pCSerialCom	./SubCtrlCom/SerialCom/SerialCom.cpp	/^SerialCom *SerialCom::m_pCSerialCom;$/;"	m	class:SerialCom	file:
+m_pCSerialCom	./SubCtrlCom/SerialCom/SerialCom.h	/^		static SerialCom *m_pCSerialCom;$/;"	m	class:SerialCom
+m_pCSerialCom	./SubCtrlCom/SubCtrlCom.cpp	/^SerialCom *SubCtrlCom::m_pCSerialCom;$/;"	m	class:SubCtrlCom	file:
+m_pCSerialCom	./SubCtrlCom/SubCtrlCom.h	/^	static SerialCom *m_pCSerialCom;$/;"	m	class:SubCtrlCom
+m_pCTask	./Task/Task.cpp	/^Task *Task::m_pCTask;$/;"	m	class:Task	file:
+m_pCTask	./Task/Task.h	/^	static Task *m_pCTask;$/;"	m	class:Task
+m_pSerialPort	./SubCtrlCom/SerialPort.cpp	/^SerialPort *SubCtrl::m_pSerialPort;$/;"	m	class:SubCtrl	file:
+m_pSerialPort	./SubCtrlCom/SerialPort.h	/^	static SerialPort *m_pSerialPort;$/;"	m	class:SubCtrl
+m_pcContentHead	./LogFile/LogFile.h	/^	char *m_pcContentHead;$/;"	m	class:LogFile
+m_pcDataTimehead	./LogFile/LogFile.h	/^	char *m_pcDataTimehead;$/;"	m	class:LogFile
+m_pcEndL	./LogFile/LogFile.h	/^	char *m_pcEndL;$/;"	m	class:LogFile
+m_pcFileBuff	./ParseXML.h	/^	char *m_pcFileBuff;$/;"	m	class:ParseXML
+m_pcLogFileName	./LogFile/LogFile.h	/^	char *m_pcLogFileName;$/;"	m	class:LogFile
+m_pcLogFilePath	./C_C.h	/^	char *m_pcLogFilePath;$/;"	m	class:C_C
+m_pcModuleHead	./LogFile/LogFile.h	/^	char *m_pcModuleHead;$/;"	m	class:LogFile
+m_pcRawDataBuff1	./MapService/AmbientGridMap.cpp	/^char *AmbientGridMap::m_pcRawDataBuff1;$/;"	m	class:AmbientGridMap	file:
+m_pcRawDataBuff1	./MapService/AmbientGridMap.h	/^	static char *m_pcRawDataBuff1;$/;"	m	class:AmbientGridMap
+m_pcRawDataBuff2	./MapService/AmbientGridMap.cpp	/^char *AmbientGridMap::m_pcRawDataBuff2;$/;"	m	class:AmbientGridMap	file:
+m_pcRawDataBuff2	./MapService/AmbientGridMap.h	/^	static char *m_pcRawDataBuff2;$/;"	m	class:AmbientGridMap
+m_pcRawDataPtr	./MapService/AmbientGridMap.cpp	/^char *AmbientGridMap::m_pcRawDataPtr;$/;"	m	class:AmbientGridMap	file:
+m_pcRawDataPtr	./MapService/AmbientGridMap.h	/^	static char *m_pcRawDataPtr;$/;"	m	class:AmbientGridMap
+m_pcReserveSpace	./LogFile/LogFile.h	/^	char *m_pcReserveSpace;$/;"	m	class:LogFile
+m_pcTail	./LogFile/LogFile.h	/^	char *m_pcTail;$/;"	m	class:LogFile
+m_port	./SubCtrlCom/SerialPort.h	/^	int m_port;$/;"	m	struct:_SerialPort
+m_pst2DGridMapData	./Task/_2DMap.cpp	/^_2DGridMapData *_2DMap::m_pst2DGridMapData;$/;"	m	class:_2DMap	file:
+m_pst2DGridMapData	./Task/_2DMap.h	/^	static _2DGridMapData *m_pst2DGridMapData;$/;"	m	class:_2DMap
+m_pstProbabilityGraphBaseNode	./MapService/AmbientGridMap.h	/^	ProbabilityGraphNode *m_pstProbabilityGraphBaseNode;$/;"	m	class:AmbientGridMap
+m_pucInstantView	./Task/PathPlanning.h	/^	unsigned char *m_pucInstantView;$/;"	m	class:PathPlanning
+m_rev_process	./SubCtrlCom/SerialPort.h	/^	int m_rev_process;$/;"	m	struct:_SerialPort
+m_revflag	./SubCtrlCom/SerialPort.h	/^	int m_revflag;$/;"	m	struct:_SerialPort
+m_revlen	./SubCtrlCom/SerialPort.h	/^	int m_revlen;$/;"	m	struct:_SerialPort
+m_sndflag	./SubCtrlCom/SerialPort.h	/^	int m_sndflag;$/;"	m	struct:_SerialPort
+m_sndlen	./SubCtrlCom/SerialPort.h	/^	int m_sndlen;$/;"	m	struct:_SerialPort
+m_stAccTable	./Task/Trajectory.h	/^	AccTable m_stAccTable[SPD_LMT_NUM];$/;"	m	class:Trajectory
+m_stCurPos	./Task/IOA.h	/^	Pos_f m_stCurPos;$/;"	m	class:IOA
+m_stSLAM_CallBack	./C_C.h	/^	SLAM_CallBack m_stSLAM_CallBack;$/;"	m	class:C_C
+m_stSLAM_CallBack	./SLAM/SLAM.h	/^	SLAM_CallBack m_stSLAM_CallBack;$/;"	m	class:SLAM
+m_stSickARange	./Task/IOA.h	/^	IOA_Pos m_stSickARange[SICK_LINES];$/;"	m	class:IOA
+m_stSickBRange	./Task/IOA.h	/^	IOA_Pos m_stSickBRange[SICK_LINES];$/;"	m	class:IOA
+m_stSimpleCtrlCmd	./Task/IOA.h	/^	SimpleCtrlCmd m_stSimpleCtrlCmd;$/;"	m	class:IOA
+m_ucRobotID	./C_C.h	/^	unsigned char m_ucRobotID;$/;"	m	class:C_C
+m_vctBlendSegmentLen	./Task/Trajectory.h	/^	vector<Point_f> m_vctBlendSegmentLen;$/;"	m	class:Trajectory
+m_vctBlendVL	./Task/Trajectory.h	/^	vector<vector<float> > m_vctBlendVL;$/;"	m	class:Trajectory
+m_vctBlendVR	./Task/Trajectory.h	/^	vector<vector<float> > m_vctBlendVR;$/;"	m	class:Trajectory
+m_vctData	./ParseXML.h	/^	vector<string> m_vctData;$/;"	m	class:ParseXML
+m_vctLogContent	./LogFile/LogFile.h	/^	vector<LogFormat> m_vctLogContent;$/;"	m	class:LogFile
+m_vctMileStone	./Task/Trajectory.h	/^	vector<float> m_vctMileStone;$/;"	m	class:Trajectory
+m_vctPC	./ReadSLAMResult/ReadSLAMResult.h	/^	vector<vector<float> > m_vctPC;$/;"	m	class:ReadSLAMResult
+m_vctPCLocal	./ReadSLAMResult/ReadSLAMResult.h	/^	vector<vector<float> > m_vctPCLocal;$/;"	m	class:ReadSLAMResult
+m_vctRectilinearCtrl	./Task/Trajectory.h	/^	vector<RectilinearCtrl> m_vctRectilinearCtrl;$/;"	m	class:Trajectory
+m_vctRecvLinearVL	./Task/Trajectory.h	/^	vector<vector<float> > m_vctRecvLinearVL;$/;"	m	class:Trajectory
+m_vctRecvLinearVR	./Task/Trajectory.h	/^	vector<vector<float> > m_vctRecvLinearVR;$/;"	m	class:Trajectory
+m_vctRobotPos	./ReadSLAMResult/ReadSLAMResult.h	/^	vector<float> m_vctRobotPos;$/;"	m	class:ReadSLAMResult
+m_vctSegmentLen	./Task/Trajectory.h	/^	vector<Point_f> m_vctSegmentLen;$/;"	m	class:Trajectory
+m_vctSpdLmt	./Task/Task.h	/^	vector<float> m_vctSpdLmt;$/;"	m	class:Task
+m_vctTaskPath	./Task/Task.h	/^	vector<Point_f> m_vctTaskPath;$/;"	m	class:Task
+main	./C_C.cpp	/^int main(int argc, char* argv[] )$/;"	f
+main	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^int main(int argc, char* argv[])$/;"	f
+main	./build/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+main	./build/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^int main(int argc, char* argv[])$/;"	f
+main	./debug/CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+main	./debug/CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
+midflag	./SubCtrlCom/SerialPort.h	/^	char midflag;$/;"	m	struct:sndbuf
+mutex	./SubCtrlCom/circbuff.h	/^	pthread_mutex_t mutex;$/;"	m	struct:_CIRCBUFF
+n2DGridMapDataLen	./Task/_2DMap.h	/^	int n2DGridMapDataLen;$/;"	m	struct:_2DGridMapData
+n2DGridMapH	./Task/_2DMap.h	/^	int n2DGridMapH;$/;"	m	struct:_2DGridMapData
+n2DGridMapIdx	./Task/_2DMap.h	/^	int n2DGridMapIdx;$/;"	m	struct:_2DGridMapData
+n2DGridMapW	./Task/_2DMap.h	/^	int n2DGridMapW;$/;"	m	struct:_2DGridMapData
+nBorderXMax	./MapService/AmbientGridMap.h	/^	int nBorderXMax;$/;"	m	struct:ProbabilityGraphNode
+nBorderXMin	./MapService/AmbientGridMap.h	/^	int nBorderXMin;$/;"	m	struct:ProbabilityGraphNode
+nBorderYMax	./MapService/AmbientGridMap.h	/^	int nBorderYMax;$/;"	m	struct:ProbabilityGraphNode
+nBorderYMin	./MapService/AmbientGridMap.h	/^	int nBorderYMin;$/;"	m	struct:ProbabilityGraphNode
+nDataLen	./MapService/AmbientGridMap.h	/^	int nDataLen;$/;"	m	struct:RawDataInfo
+nHost_Port_A	./SLAM/SLAM.h	/^	int nHost_Port_A;$/;"	m	struct:SLAMParams
+nHost_Port_A	./SLAM/Tmp/SLAM.h	/^	int nHost_Port_A;$/;"	m	struct:SLAMParams
+nHost_Port_B	./SLAM/SLAM.h	/^	int nHost_Port_B;$/;"	m	struct:SLAMParams
+nHost_Port_B	./SLAM/Tmp/SLAM.h	/^	int nHost_Port_B;$/;"	m	struct:SLAMParams
+nIdxX	./MainCtrl_Define.h	/^	int nIdxX;$/;"	m	struct:IOA_Pos
+nIdxY	./MainCtrl_Define.h	/^	int nIdxY;$/;"	m	struct:IOA_Pos
+nPathLen	./Task/PathPlanning1.h	/^	int nPathLen;$/;"	m	struct:DataCarrier
+nSICK_Port_A	./SLAM/SLAM.h	/^	int nSICK_Port_A;$/;"	m	struct:SLAMParams
+nSICK_Port_A	./SLAM/Tmp/SLAM.h	/^	int nSICK_Port_A;$/;"	m	struct:SLAMParams
+nSICK_Port_B	./SLAM/SLAM.h	/^	int nSICK_Port_B;$/;"	m	struct:SLAMParams
+nSICK_Port_B	./SLAM/Tmp/SLAM.h	/^	int nSICK_Port_B;$/;"	m	struct:SLAMParams
+nThreadNum	./Task/PathPlanning1.h	/^	int nThreadNum;$/;"	m	struct:DataCarrier
+name_arr	./BN/BNpos.h	/^		int name_arr[18];$/;"	m	class:BNpos
+name_arr	./GPS/CGPS.h	/^		int name_arr[14];$/;"	m	class:CGPS
+name_arr	./SubCtrlCom/SerialCom/SerialCom.h	/^		int name_arr[18];$/;"	m	class:SerialCom
+obstaclepos	./BN/BNpos.h	/^			int obstaclepos;$/;"	m	struct:BNpos::__anon1
+obstaclepos	./SubCtrlCom/SerialCom/SerialCom.h	/^			int obstaclepos;$/;"	m	struct:SerialCom::__anon5
+open_port	./SubCtrlCom/SerialPort.cpp	/^int SubCtrl::open_port()$/;"	f	class:SubCtrl
+pCClientNet	./NetPortal/NetPortal.h	/^		ClientNet *pCClientNet;$/;"	m	struct:NetPortal::NP_CNCParams
+pCThis	./NetPortal/NetPortal.h	/^		NetPortal *pCThis;$/;"	m	struct:NetPortal::NP_CNCParams
+pcCmd	./Task/PathPlanning1.h	/^	char* pcCmd;$/;"	m	struct:DataCarrier
+pcCmdIdx	./Task/PathPlanning1.h	/^	char* pcCmdIdx;$/;"	m	struct:DataCarrier
+pcData	./MapService/AmbientGridMap.h	/^	char * pcData;$/;"	m	struct:RawDataInfo
+pfPath	./Task/PathPlanning1.h	/^	float *pfPath;$/;"	m	struct:DataCarrier
+pfProbabilityGraphData	./MapService/AmbientGridMap.h	/^	float *pfProbabilityGraphData;$/;"	m	struct:ProbabilityGraphNode
+pi	./GPS/CGPS.h	/^		double pi;$/;"	m	class:CGPS
+position_time	./GPS/CGPS.h	/^		time_t position_time;$/;"	m	class:CGPS
+positionx	./BN/BNpos.h	/^			int positionx;$/;"	m	struct:BNpos::__anon1
+positionx	./SubCtrlCom/SerialCom/SerialCom.h	/^			int positionx;$/;"	m	struct:SerialCom::__anon5
+positiony	./BN/BNpos.h	/^			int positiony;$/;"	m	struct:BNpos::__anon1
+positiony	./SubCtrlCom/SerialCom/SerialCom.h	/^			int positiony;$/;"	m	struct:SerialCom::__anon5
+posneg	./SubCtrlCom/SerialPort.h	/^	char posneg;$/;"	m	struct:sndbuf
+ppstNeighbour	./MapService/AmbientGridMap.h	/^	ProbabilityGraphNode **ppstNeighbour;$/;"	m	struct:ProbabilityGraphNode
+puc2DGridMapData	./Task/_2DMap.h	/^	unsigned char *puc2DGridMapData;$/;"	m	struct:_2DGridMapData
+q1	./BN/BNpos.h	/^		queue<unsigned char> q1;$/;"	m	class:BNpos
+q1	./SubCtrlCom/SerialCom/SerialCom.h	/^		queue<unsigned char> q1;$/;"	m	class:SerialCom
+recv_thread_proc	./SubCtrlCom/SerialPort.cpp	/^void *SubCtrl::recv_thread_proc(void *lpParameter)$/;"	f	class:SubCtrl
+recvcnt	./BN/BNpos.h	/^		unsigned int recvcnt;$/;"	m	class:BNpos
+recvcnt	./SubCtrlCom/SerialCom/SerialCom.h	/^		unsigned int recvcnt;$/;"	m	class:SerialCom
+recvcnt_ex	./BN/BNpos.h	/^		unsigned int recvcnt_ex;$/;"	m	class:BNpos
+recvcnt_ex	./SubCtrlCom/SerialCom/SerialCom.h	/^		unsigned int recvcnt_ex;$/;"	m	class:SerialCom
+rev_id	./SubCtrlCom/SerialPort.h	/^	pthread_t snd_id,rev_id;$/;"	m	struct:_SerialPort
+rev_sgl	./SubCtrlCom/SerialPort.h	/^	sem_t rev_sgl;$/;"	m	struct:_SerialPort
+rev_thread_exit	./SubCtrlCom/SerialPort.h	/^	sem_t rev_thread_exit;$/;"	m	struct:_SerialPort
+rgbBlue	./Task/BMPLib.h	/^	BYTE rgbBlue; \/\/该颜色的蓝色分量$/;"	m	struct:libRGBQUAD
+rgbGreen	./Task/BMPLib.h	/^	BYTE rgbGreen; \/\/该颜色的绿色分量$/;"	m	struct:libRGBQUAD
+rgbRed	./Task/BMPLib.h	/^	BYTE rgbRed; \/\/该颜色的红色分量$/;"	m	struct:libRGBQUAD
+rgbReserved	./Task/BMPLib.h	/^	BYTE rgbReserved; \/\/保留值$/;"	m	struct:libRGBQUAD
+robot	./BN/BNpos.h	/^		robotstate robot;$/;"	m	class:BNpos
+robot	./SubCtrlCom/SerialCom/SerialCom.h	/^		robotstate robot;$/;"	m	class:SerialCom
+robotid	./BN/BNpos.h	/^			int robotid;$/;"	m	struct:BNpos::__anon1
+robotid	./SubCtrlCom/SerialCom/SerialCom.h	/^			int robotid;$/;"	m	struct:SerialCom::__anon5
+robotstate	./BN/BNpos.h	/^		}robotstate;$/;"	t	class:BNpos	typeref:struct:BNpos::__anon1
+robotstate	./SubCtrlCom/SerialCom/SerialCom.h	/^		}robotstate;$/;"	t	class:SerialCom	typeref:struct:SerialCom::__anon5
+satnum	./GPS/CGPS.h	/^		int worknum,satnum;$/;"	m	class:CGPS
+send_thread_proc	./SubCtrlCom/SerialPort.cpp	/^void *SubCtrl::send_thread_proc(void *lpParameter)$/;"	f	class:SubCtrl
+sendmsg	./SubCtrlCom/SerialPort.h	/^}sendmsg;$/;"	t	typeref:struct:sndbuf
+set_Parity	./BN/BNpos.cpp	/^int BNpos::set_Parity(int fd,int databits,int stopbits,int parity)$/;"	f	class:BNpos
+set_Parity	./GPS/CGPS.cpp	/^int CGPS::set_Parity(int fd,int databits,int stopbits,int parity)$/;"	f	class:CGPS
+set_Parity	./SubCtrlCom/SerialCom/SerialCom.cpp	/^int SerialCom::set_Parity(int fd,int databits,int stopbits,int parity)$/;"	f	class:SerialCom
+set_speed	./BN/BNpos.cpp	/^void BNpos::set_speed(int fd, int speed)$/;"	f	class:BNpos
+set_speed	./GPS/CGPS.cpp	/^void CGPS::set_speed(int fd, int speed)$/;"	f	class:CGPS
+set_speed	./SubCtrlCom/SerialCom/SerialCom.cpp	/^void SerialCom::set_speed(int fd, int speed)$/;"	f	class:SerialCom
+showBmpHead	./Task/BMPLib.cpp	/^void BMPLib::showBmpHead(libBITMAPFILEHEADER* pBmpHead)$/;"	f	class:BMPLib
+showBmpInforHead	./Task/BMPLib.cpp	/^void BMPLib::showBmpInforHead(libBITMAPINFOHEADER* pBmpInforHead)$/;"	f	class:BMPLib
+showRgbQuan	./Task/BMPLib.cpp	/^void BMPLib::showRgbQuan(libRGBQUAD* pRGB)$/;"	f	class:BMPLib
+size	./SubCtrlCom/circbuff.h	/^	u_int32_t     size;		\/\/ size of the buffer$/;"	m	struct:_CIRCBUFF
+snd_id	./SubCtrlCom/SerialPort.h	/^	pthread_t snd_id,rev_id;$/;"	m	struct:_SerialPort
+snd_sgl	./SubCtrlCom/SerialPort.h	/^	sem_t snd_sgl;$/;"	m	struct:_SerialPort
+snd_thread_exit	./SubCtrlCom/SerialPort.h	/^	sem_t snd_thread_exit;$/;"	m	struct:_SerialPort
+sndbuf	./SubCtrlCom/SerialPort.h	/^	sendmsg sndbuf;$/;"	m	struct:_SerialPort
+sndbuf	./SubCtrlCom/SerialPort.h	/^typedef struct sndbuf$/;"	s
+speed_arr	./BN/BNpos.h	/^		int speed_arr[18];$/;"	m	class:BNpos
+speed_arr	./GPS/CGPS.h	/^		int speed_arr[14];$/;"	m	class:CGPS
+speed_arr	./SubCtrlCom/SerialCom/SerialCom.h	/^		int speed_arr[18];$/;"	m	class:SerialCom
+speedr	./BN/BNpos.h	/^			int speedr;$/;"	m	struct:BNpos::__anon1
+speedr	./SubCtrlCom/SerialCom/SerialCom.h	/^			int speedr;$/;"	m	struct:SerialCom::__anon5
+speedx	./BN/BNpos.h	/^			int speedx;$/;"	m	struct:BNpos::__anon1
+speedx	./SubCtrlCom/SerialCom/SerialCom.h	/^			int speedx;$/;"	m	struct:SerialCom::__anon5
+speedy	./BN/BNpos.h	/^			int speedy;$/;"	m	struct:BNpos::__anon1
+speedy	./SubCtrlCom/SerialCom/SerialCom.h	/^			int speedy;$/;"	m	struct:SerialCom::__anon5
+stPoint	./MainCtrl_Define.h	/^	Point_f stPoint;$/;"	m	struct:Pos_f
+start	./BN/BNpos.cpp	/^void BNpos::start(char* portname,unsigned int Baudrate)$/;"	f	class:BNpos
+start	./GPS/CGPS.cpp	/^void CGPS::start(char* portname)$/;"	f	class:CGPS
+start	./SubCtrlCom/SerialCom/SerialCom.cpp	/^void SerialCom::start(char* portname,unsigned int Baudrate)$/;"	f	class:SerialCom
+start_running	./SubCtrlCom/SerialPort.cpp	/^int SubCtrl::start_running()$/;"	f	class:SubCtrl
+stop_running	./SubCtrlCom/SerialPort.cpp	/^void SubCtrl::stop_running()$/;"	f	class:SubCtrl
+sum	./SubCtrlCom/circbuff.h	/^	u_int32_t     sum;        \/\/ statistic write data$/;"	m	struct:_CIRCBUFF
+threadFunction	./SubCtrlCom/SerialCom/SerialCom.cpp	/^void* SerialCom::threadFunction(void *arg)$/;"	f	class:SerialCom
+thread_close	./BN/BNpos.h	/^		int thread_close;\/\/switch to close thread$/;"	m	class:BNpos
+thread_close	./SubCtrlCom/SerialCom/SerialCom.h	/^		int thread_close;\/\/switch to close thread$/;"	m	class:SerialCom
+timeDifference	./timestamp/timestamp.cpp	/^double timeDifference( const TTimeStamp &t1, const TTimeStamp &t2 )$/;"	f
+time_tToTimestamp	./timestamp/timestamp.cpp	/^TTimeStamp  time_tToTimestamp(const time_t &t )$/;"	f
+u_int32_t	./SubCtrlCom/circbuff.h	7;"	d
+u_int8_t	./SubCtrlCom/circbuff.h	8;"	d
+ucRobotID	./BN/BN.h	/^	unsigned char ucRobotID;$/;"	m	struct:BNParams
+uiBaudrate	./BN/BN.h	/^	unsigned int uiBaudrate;$/;"	m	struct:BNParams
+vel	./GPS/CGPS.h	/^		double lat,lon,vel,velangle;$/;"	m	class:CGPS
+vel	./GPS/CGPS.h	/^	double vel;$/;"	m	struct:__anon4
+velangle	./GPS/CGPS.h	/^		double lat,lon,vel,velangle;$/;"	m	class:CGPS
+velangle	./GPS/CGPS.h	/^	double velangle;$/;"	m	struct:__anon4
+velocity	./SubCtrlCom/SerialPort.h	/^	int velocity;$/;"	m	struct:sndbuf
+worknum	./GPS/CGPS.h	/^		int worknum,satnum;$/;"	m	class:CGPS
+x	./GPS/CGPS.h	/^	double x;\/\/x is to east$/;"	m	struct:__anon3
+y	./GPS/CGPS.h	/^	double y;\/\/y is to north$/;"	m	struct:__anon3
+~AmbientGridMap	./MapService/AmbientGridMap.cpp	/^AmbientGridMap::~AmbientGridMap()$/;"	f	class:AmbientGridMap
+~BMPLib	./Task/BMPLib.cpp	/^BMPLib::~BMPLib(void)$/;"	f	class:BMPLib
+~BN	./BN/BN.cpp	/^BN::~BN()$/;"	f	class:BN
+~BNpos	./BN/BNpos.cpp	/^BNpos::~BNpos()$/;"	f	class:BNpos
+~CGPS	./GPS/CGPS.cpp	/^CGPS::~CGPS()$/;"	f	class:CGPS
+~C_C	./C_C.cpp	/^C_C::~C_C(void)$/;"	f	class:C_C
+~ClientNet	./NetPortal/ClientNet.cpp	/^ClientNet::~ClientNet(void)$/;"	f	class:ClientNet
+~IOA	./Task/IOA.cpp	/^IOA::~IOA(void)$/;"	f	class:IOA
+~JetFire	./SubCtrlCom/SerialCom/JetFire.cpp	/^JetFire::~JetFire()$/;"	f	class:JetFire
+~LaserCom	./NetPortal/LaserCom.cpp	/^LaserCom::~LaserCom()$/;"	f	class:LaserCom
+~LocalMapBuilder	./MapService/LocalMapBuilder.cpp	/^LocalMapBuilder::~LocalMapBuilder()$/;"	f	class:LocalMapBuilder
+~LogFile	./LogFile/LogFile.cpp	/^LogFile::~LogFile(void)$/;"	f	class:LogFile
+~NetPortal	./NetPortal/NetPortal.cpp	/^NetPortal::~NetPortal(void)$/;"	f	class:NetPortal
+~Pace_Lock	./Task/Pace_Lock.cpp	/^Pace_Lock::~Pace_Lock(void)$/;"	f	class:Pace_Lock
+~ParseXML	./ParseXML.cpp	/^ParseXML::~ParseXML(void)$/;"	f	class:ParseXML
+~PathPlanning	./Task/PathPlanning.cpp	/^PathPlanning::~PathPlanning(void)$/;"	f	class:PathPlanning
+~PathPlanning	./Task/PathPlanning1.cpp	/^PathPlanning::~PathPlanning()$/;"	f	class:PathPlanning
+~ReadSLAMResult	./ReadSLAMResult/ReadSLAMResult.cpp	/^ReadSLAMResult::~ReadSLAMResult(void)$/;"	f	class:ReadSLAMResult
+~SLAM	./SLAM/SLAM.cpp	/^SLAM::~SLAM()$/;"	f	class:SLAM
+~SLAM	./SLAM/Tmp/SLAM.cpp	/^SLAM::~SLAM(void)$/;"	f	class:SLAM
+~SerialCom	./SubCtrlCom/SerialCom/SerialCom.cpp	/^SerialCom::~SerialCom()$/;"	f	class:SerialCom
+~SubCtrl	./SubCtrlCom/SerialPort.cpp	/^SubCtrl::~SubCtrl()$/;"	f	class:SubCtrl
+~SubCtrlCom	./SubCtrlCom/SubCtrlCom.cpp	/^SubCtrlCom::~SubCtrlCom(void)$/;"	f	class:SubCtrlCom
+~Task	./Task/Task.cpp	/^Task::~Task()$/;"	f	class:Task
+~Trajectory	./Task/Trajectory.cpp	/^Trajectory::~Trajectory(void)$/;"	f	class:Trajectory
+~_2DMap	./Task/_2DMap.cpp	/^_2DMap::~_2DMap(void)$/;"	f	class:_2DMap

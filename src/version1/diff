@@ -1,0 +1,974 @@
+Index: clientLocal.h
+===================================================================
+--- clientLocal.h	(revision 90)
++++ clientLocal.h	(revision 89)
+@@ -19,7 +19,7 @@
+ 	~CClientLocal();
+ 	void setFile(const char* file);
+ 	void setSICKIP(vector<string> , vector<unsigned int> );
+-	void setModel(int); // 0 RawSeed 1 Carmon 2 SICK 3 fusion
++	void setModel(int); // 0 RawSeed 1 Carmon 2 SICK 
+ Q_SIGNALS:
+ 	void stopFrontend();
+ 	void stopBackend();
+Index: slam_v1.cpp
+===================================================================
+--- slam_v1.cpp	(revision 90)
++++ slam_v1.cpp	(revision 89)
+@@ -36,9 +36,9 @@
+ void CSlamV1::default_init()
+ {
+ 
++	m_file_name = "/home/lyxp/work/expdata/lenovo/LMS151/20130219.txt";
+ 	// m_file_name = "/media/ShareRegion/Datasets/LMS151_20130108/20130108_t2.txt";
+-	m_file_name = "/media/ShareRegion/Datasets/LMS151_20130108/t2.txt";
+-
++	// m_file_name = "/media/ShareRegion/Datasets/LMS151_20130108/t1.txt";
+ 	// m_file_name = "/mnt/hgfs/SharedFold/dataset/lenovo/LMS151/20130108_t2.txt";
+ 	m_work_model = 2; // 1 read carmon; 2 sick online; 3 fusion;
+ 	m_sick2_ip = "192.168.1.3";
+@@ -60,8 +60,6 @@
+ 	}else{
+ 		default_init();
+ 	}
+-
+-	bnPose = new float[3];
+ 	// setSystem();
+ }
+ 
+@@ -93,29 +91,24 @@
+ 	connect(m_pThreadFrontend,SIGNAL(finished()),&m_threadFrontend,SLOT(quit()),Qt::DirectConnection);
+ 	connect(m_pThreadBackend,SIGNAL(finished()),&m_threadBackend,SLOT(quit()),Qt::DirectConnection);
+ 
++	// frontend -> backend
++	// connect(m_pThreadFrontend,SIGNAL(sendScanFrame(void*,int)),m_pThreadBackend,SLOT(receScanFrame(void*,int)),Qt::DirectConnection);
++	connect(m_pThreadFrontend,SIGNAL(sendScanFrameCov(void*,int,double*)),m_pThreadBackend,SLOT(receScanFrameCov(void*,int,double*)),Qt::DirectConnection);
+ 
+ 
++	// backend -> frontend
++	connect(m_pThreadBackend,SIGNAL(sendUpdatePose(int,void*,double*)),m_pThreadFrontend,SLOT(receUpdatePose(int,void*,double*)),Qt::DirectConnection);
++
+ 	if(m_work_model == 3)
+ 	{
+ 		//fusion
+ 		m_pThreadFrontend->setFusion();
+-		connect(this,SIGNAL(sendBN(float,float,float)),m_pThreadFrontend->m_pFusion,SLOT(recvBN(float,float,float)),Qt::DirectConnection);
+-
+-		// frontend -> backend
+-		connect(m_pThreadFrontend->m_pFusion,SIGNAL(sendScanFrameCov(void*,int,double*)),m_pThreadBackend,SLOT(receScanFrameCov(void*,int,double*)),Qt::DirectConnection);
+-		// backend -> frontend
+-		connect(m_pThreadBackend,SIGNAL(sendUpdatePose(int,void*,double*)),m_pThreadFrontend->m_pFusion,SLOT(recvRelGlobalOptimized(int,void*,double*)),Qt::DirectConnection);
+-		connect(m_pThreadFrontend->m_pFusion,SIGNAL(send2CBScan(float*, int, double,double,double)),this,SLOT(receCurrentScan(float*, int, double,double,double)),Qt::DirectConnection);
++		// connect(m_pThreadFrontend->m_pFusion,SIGNAL(sendFrameInfo(double,double,double,float*,int)),this,SLOT(receLaserFrame(double,double,double,float*,int)));
++		connect(m_pThreadFrontend->m_pFusion,SIGNAL(send2CBPose(double,double,double)),this,SLOT(receCurrentPose(double,double,double)),Qt::DirectConnection);
+ 		connect(m_pThreadFrontend->m_pFusion,SIGNAL(finished()),&m_threadFrontend,SLOT(quit()),Qt::DirectConnection);
+ 	}
+ 	else
+ 	{
+-		// frontend -> backend
+-		// connect(m_pThreadFrontend,SIGNAL(sendScanFrame(void*,int)),m_pThreadBackend,SLOT(receScanFrame(void*,int)),Qt::DirectConnection);
+-		connect(m_pThreadFrontend,SIGNAL(sendScanFrameCov(void*,int,double*)),m_pThreadBackend,SLOT(receScanFrameCov(void*,int,double*)),Qt::DirectConnection);
+-		// backend -> frontend
+-		connect(m_pThreadBackend,SIGNAL(sendUpdatePose(int,void*,double*)),m_pThreadFrontend,SLOT(receUpdatePose(int,void*,double*)),Qt::DirectConnection);
+-
+ 		// connect(m_pThreadFrontend,SIGNAL(sendFrameInfo(double,double,double,float*,int)),this,SLOT(receLaserFrame(double,double,double,float*,int)));
+ 		// frontend -> CALLBACK
+ 		connect(m_pThreadFrontend,SIGNAL(send2CBScan(float*, int, double,double,double)),this,SLOT(receCurrentScan(float*, int ,double,double,double)),Qt::DirectConnection);
+@@ -129,7 +122,6 @@
+ }
+ 
+ void CSlamV1::run(){
+-
+ 	// startThreads
+ 	m_threadFrontend.start();
+ 	m_threadBackend.start();
+@@ -139,29 +131,8 @@
+ 		while(m_received == false)
+ 			m_wait_cond.wait(&m_mutex);
+ 		if(m_pCBSet!=NULL){
+-
+-
+-			/*
+-			this->sendBN(999, 99 , 1);
+-			cout<<"send BN!!!!!!!!!"<<endl;
+-			*/
+-			if(m_pCBSet->cbBNLocation != NULL)
+-			{
+-
+-
+-				m_pCBSet->cbBNLocation(bnPose);
+-				printf("sendBN: %f, %f, %f \n", bnPose[0], bnPose[1], bnPose[2]);
+-
+-				//if all are zero, it is invalid data.
+-				if(bnPose[0] || bnPose[1] || bnPose[2])
+-				this->sendBN(bnPose[0], bnPose[1], bnPose[2]);
+-			}
+-
+-
+ 			if(m_pCBSet->cbDataFusionResult != NULL)
+ 				m_pCBSet->cbDataFusionResult(m_px,m_py,m_pth);
+-
+-
+ 			}
+ 			if(m_pCBSet->cbSICKA != NULL){
+ 				m_pCBSet->cbSICKA(m_b);
+Index: clientFusion.cpp
+===================================================================
+--- clientFusion.cpp	(revision 90)
++++ clientFusion.cpp	(revision 89)
+@@ -32,37 +32,10 @@
+ scan_minorSick(0),
+ relp_mainSick(new OrientedPoint2D),
+ relp_minorSick(new OrientedPoint2D),
+-absPose_bn(new OrientedPoint2D),
+ opd_x_p(new OrientedPoint2D),
+-opd_x_u(new OrientedPoint2D),
+-_MAIN_SICK_READY(false),
+-_MINOR_SICK_READY(false),
+-_ODO_READY(false),
+-m_syn_num(0)
++opd_x_u(new OrientedPoint2D)
+ {
+ 
+-
+-	scnt = 0;
+-	nmovecnt = 0;
+-	nmovecnt_main = 0;
+-	nmovecnt_minor = 0;
+-
+-	// Initial covariance
+-	m_cov = new double[6];
+-	m_cov_inc = new double[6];
+-	for(int i=0;i<6;i++)
+-	{
+-		m_cov[i] = 0.;
+-		m_cov_inc[i] = 0.;
+-	}
+-
+-	cov_mainSick = new double[6];
+-	cov_minorSick = new double[6];
+-	cov_Global = new double[6];
+-
+-	scan_mainSick = new float[541];
+-	scan_minorSick = new float[541];
+-
+ 	// Initial filter
+ 	my_filter = new Unscented_scheme(x_dim); // 3 is the dimension of the state
+ 	// Setup the initial state and covariance
+@@ -112,12 +85,12 @@
+ 	//minorSICK->setOriInRobot(*oriInRobot_minorSICK);
+ 	minorSICK->moveToThread(&mThreadMinorSICK);
+ 
+-	bool test = false;
++	bool test = true;
+ 	if(test)
+ 	{
+ 		//testing using ourdata in rawseed format
+-		mainSICK->setFile("/media/ShareRegion/Datasets/LMS151_20130108/tt2.txt");
+-		minorSICK->setFile("/media/ShareRegion/Datasets/LMS151_20130108/t2.txt");
++		mainSICK->setFile("/media/ShareRegion/Datasets/LMS151_20130108/t1.txt");
++		minorSICK->setFile("/media/ShareRegion/Datasets/LMS151_20130108/tt1.txt");
+ 		connect(&mThreadMainSICK,SIGNAL(started()),mainSICK,SLOT(runRS()),Qt::DirectConnection); // for debuging using rawseed data
+ 		connect(&mThreadMinorSICK,SIGNAL(started()),minorSICK,SLOT(runRS()),Qt::DirectConnection);
+ 	}
+@@ -132,15 +105,13 @@
+ 	connect(&mThreadMainSICK,SIGNAL(finished()),this,SLOT(stop()),Qt::DirectConnection);
+ 	connect(&mThreadMinorSICK,SIGNAL(finished()),this,SLOT(stop()),Qt::DirectConnection);
+ 
++	connect(mainSICK,SIGNAL(sendRelFrameInfo(double,double,double,float*,int)),
++			this,SLOT(recvRelMainSICK(double,double,double,float*,int)),Qt::DirectConnection);
++	connect(minorSICK,SIGNAL(sendRelFrameInfo(double,double,double,float*,int)),
++			this,SLOT(recvRelMinorSICK(double,double,double,float*,int)),Qt::DirectConnection);
+ 
+-	connect(mainSICK,SIGNAL(sendRelFrameInfo(double,double,double,float*,int,TTimeStamp, double*,int)),
+-			this,SLOT(recvRelMainSICK(double,double,double,float*,int,TTimeStamp, double*,int)),Qt::DirectConnection);
+-	connect(minorSICK,SIGNAL(sendRelFrameInfo(double,double,double,float*,int,TTimeStamp, double*,int)),
+-			this,SLOT(recvRelMinorSICK(double,double,double,float*,int,TTimeStamp, double*,int)),Qt::DirectConnection);
+-
+-
+ 	mThreadMainSICK.start();
+-	//mThreadMinorSICK.start();
++	mThreadMinorSICK.start();
+ 
+ 	return true;
+ }
+@@ -157,32 +128,17 @@
+ 
+ 	float* scanForShow = 0;
+ 	int npForShow = 0;
+-
+-	OrientedPoint2D rel_pose;
+-	OrientedPoint2D sent_pose;
+-	bool first = true;
+-
+-	// record sent trajectory
+-	ofstream traj("fuse_traj.log");
+ 	//while loop
+ 	while(!m_stop_thread)
+ 	{
+ 
+-		QMutexLocker lock_filter(&mutex_filter);
+-		//QMutexLocker lock_main(&mutex_mainSICK);
+-		//QMutexLocker lock_minor2(&mutex_minorSICK);
++		QMutexLocker lock_main(&mutex_mainSICK);
++		QMutexLocker lock_minor(&mutex_minorSICK);
+ 
+-		//TODO: use odo as the signal to do updating
+-		if( _MAIN_SICK_READY)/* &&   _MINOR_SICK_READY )*/
++		if(scan_mainSick)// && scan_minorSick)
+ 		{
+-
+ 			scanForShow = scan_mainSick;
+ 			npForShow = np_mainSick;
+-			//scanForShow = scan_minorSick;
+-			//npForShow = np_minorSick;
+-
+-			scnt++;
+-
+ 			//prediction
+ 			my_filter->predict(robot_predict);
+ 			my_filter->update();		// Update the filter, so state and covariance are available
+@@ -190,42 +146,13 @@
+ 
+ 			//update
+ 			updateMainSICKNode();
+-			//updateMinorSICKNode();
++			updateMinorSICKNode();
+ 
+ 			//send frame to server
+ 			cvtX2OPD(my_filter->x, *opd_x_u);
+-			n_steps++;
+-
+-			// whether to send this frame
+-			//rel_pose = sent_pose.ominus(*opd_x_u);
+-
+-			//if(first || !this->smallMove(rel_pose)){
+-			if(first || nmovecnt_main==0)
+-			{
+-				PMScan ls(npForShow);
+-				ls.rx = opd_x_u->x * 100;
+-				ls.ry = opd_x_u->y * 100;
+-				ls.th = opd_x_u->theta;
+-				ls.np = npForShow;
+-				memcpy(ls.r, scanForShow, npForShow*sizeof(float));
+-
+-				cout<<"CClientFusion::runFusion pose: "<<opd_x_u->x<<" "<<opd_x_u->y<<" "<<opd_x_u->theta<<endl;
+-				cout<<"CClientFusion::runFusion cov1: "<<m_cov_inc[0]<<" "<<m_cov_inc[3]<<" "<<m_cov_inc[5]<<endl;
+-				cout<<"CClientFusion::runFusion cov2: "<<m_cov_inc[1]<<" "<<m_cov_inc[2]<<" "<<m_cov_inc[4]<<endl;
+-				//send to backend
+-				sendScanFrameCov((void*)(&ls), m_syn_num, m_cov_inc); // send to Backend
+-				//send to server for show
+-				sendFrameInfo(opd_x_u->x,opd_x_u->y,opd_x_u->theta, scanForShow, npForShow);
+-				//send to RS server for show
+-				send2CBScan(scanForShow, npForShow, opd_x_u->x,opd_x_u->y,opd_x_u->theta);
+-
+-				sent_pose = *opd_x_u;
+-				// record fused trajectory
+-				traj<<sent_pose<<endl;
+-				first = false;
+-				m_traj.push_back(new OrientedPoint2D(*opd_x_u));
+-				traj_index.push_back(m_traj.size()-1);
+-			}
++			//sendFrameInfo(opd_x_u->x,opd_x_u->y,opd_x_u->theta, scanForShow, npForShow);
++			send2CBPose(opd_x_u->x,opd_x_u->y,opd_x_u->theta); // to main_ctrl
++			cout<<"CClientFusion::runFusion "<<opd_x_u->x<<" "<<opd_x_u->y<<" "<<opd_x_u->theta<<endl;
+ 		}
+ 		else
+ 		{
+@@ -242,208 +169,65 @@
+ 
+ 	cout<<"CClientFusion::updateMainSICKNode()"<<endl;
+ 
+-	if(_MAIN_SICK_READY)
++	if(scan_mainSick)
+ 	{
+-
+ 		relpToRobotFrame(*oriInRobot_mainSICK, *relp_mainSick);
+ 
+ 		*opd_x_u = opd_x_p->oplus(*relp_mainSick);
+ 		Vec z(3);
+ 		cvtOPD2X(*opd_x_u, z);
+ 
+-		m_cov_inc[0] += cov_mainSick[0];
+-		m_cov_inc[3] += cov_mainSick[3];
+-		m_cov_inc[5] += cov_mainSick[5];
+-
+-
+ 		my_filter->observe (sick_observe_main, z);
+ 		my_filter->update();
+ 
+-		relp_mainSick->x = 0.;
+-		relp_mainSick->y = 0.;
+-		relp_mainSick->theta = 0.;
+-		_MAIN_SICK_READY = false;
++		scan_mainSick = 0;
+ 	}
+ 
+-
+ }
+ 
+ void CClientFusion::updateMinorSICKNode(){
+ 
+ 	cout<<"CClientFusion::updateMinorSICKNode()"<<endl;
+-
+-	//QMutexLocker lock_minor(&mutex_minorSICK);
+-	if(_MINOR_SICK_READY)
++	if(scan_minorSick)
+ 	{
+-
+ 		relpToRobotFrame(*oriInRobot_minorSICK, *relp_minorSick);
+ 
+ 		*opd_x_u = opd_x_p->oplus(*relp_minorSick);
+ 		Vec z(3);
+ 		cvtOPD2X(*opd_x_u, z);
+ 
+-
+-		cout<<" "<<sick_observe_minor.Zv[0]<<" "<<sick_observe_minor.Zv[1]<<" "<<sick_observe_minor.Zv[2]<<endl;
+ 		my_filter->observe (sick_observe_minor, z);
+ 		my_filter->update();
+ 
+-		relp_minorSick->x = 0.;
+-		relp_minorSick->y = 0.;
+-		relp_minorSick->theta = 0.;
+-		_MINOR_SICK_READY = false;
++		scan_minorSick = 0;
+ 	}
+-
+ }
+ 
+-
+ /*Receive Relative Pose from Main SICK Module*/
+-void CClientFusion::recvRelMainSICK(double x,double y,double theta,float* scan, int np, TTimeStamp t, double* cov, int nmovecnt){
+-	cout<<"CClientFusion::recvRelMainSICK" <<x<<" "<<y<<" "<<theta<<" "<<nmovecnt<<endl;
+-	{
+-		//QMutexLocker lock(&mutex_mainSICK);
+-		QMutexLocker lock(&mutex_filter);
+-
+-		if(np != 541)
+-		{
+-			printf("ERROR!!!!!!!!!!!!!!!!!!!!! \n");
+-			return;
+-		}
+-
+-		float *pscan = scan;
+-		memcpy(&scan_mainSick[0],pscan,np*sizeof(float));
+-		memcpy(cov_mainSick,cov,6*sizeof(double));
+-
+-		//accumulative relative pose
+-		OrientedPoint2D p;
+-		p.x = x;
+-		p.y = y;
+-		p.theta = theta;
+-		*relp_mainSick = relp_mainSick->oplus(p);
+-
+-		np_mainSick = np;
+-		t_mainSick = t;
+-		nmovecnt_main = nmovecnt;
+-
+-		_MAIN_SICK_READY = true;
+-		cout<<"MAIN READy"<<endl;
+-	}
++void CClientFusion::recvRelMainSICK(double x,double y,double theta,float* scan, int np){
++	cout<<"CClientFusion::recvRelMainSICK" <<x<<" "<<y<<" "<<theta<<endl;
++	QMutexLocker lock(&mutex_mainSICK);
++	relp_mainSick->x = x;
++	relp_mainSick->y = y;
++	relp_mainSick->theta = theta;
++	scan_mainSick = scan;
++	np_mainSick = np;
++	// main_syn = syn_num;
+ }
+ 
+ /*Receive Relative Pose from Main SICK Module*/
+-void CClientFusion::recvRelMinorSICK(double x,double y,double theta,float* scan, int np, TTimeStamp t, double* cov, int nmovecnt){
++void CClientFusion::recvRelMinorSICK(double x,double y,double theta,float* scan, int np){
+ 	cout<<"CClientFusion::recvRelMinorSICK" <<x<<" "<<y<<" "<<theta<<endl;
+-	{
+-		//QMutexLocker lock_minor(&mutex_minorSICK);
+-		QMutexLocker lock(&mutex_filter);
+-
+-		if(np != 541)
+-		{
+-			printf("ERROR!!!!!!!!!!!!!!!!!!!!! \n");
+-			return;
+-		}
+-
+-		float *pscan = scan;
+-		memcpy(&scan_minorSick[0],pscan,np*sizeof(float));
+-		memcpy(cov_minorSick,cov,6*sizeof(double));
+-
+-		//accumulative relative pose
+-		OrientedPoint2D p;
+-		p.x = x;
+-		p.y = y;
+-		p.theta = theta;
+-		*relp_minorSick = relp_minorSick->oplus(p);
+-
+-		np_minorSick = np;
+-		t_minorSick = t;
+-		nmovecnt_minor = nmovecnt;
+-
+-		_MINOR_SICK_READY = true;
+-
+-		cout<<"MINOR READy"<<endl;
+-
+-	}
++	QMutexLocker lock(&mutex_minorSICK);
++	relp_minorSick->x = x;
++	relp_minorSick->y = y;
++	relp_minorSick->theta = theta;
++	scan_minorSick = scan;
++	np_minorSick = np;
++	// minor_syn = syn_num;
+ }
+ 
+-/*receive abs pose from BN. unit is (cm, cm, rad)*/
+-//Will update BN immediately
+-void CClientFusion::recvBN(float x,float y,float theta)
+-{
+-	cout<<"CClientFusion::recvBN" <<x<<" "<<y<<" "<<theta<<endl;
+-	{
+-		QMutexLocker lock(&mutex_filter);
+-		absPose_bn->x = x / 100.; //cm to m
+-		absPose_bn->y = y / 100.;
+-		absPose_bn->theta = deg2rad(theta);
+ 
+-		Vec z(3);
+-		cvtOPD2X(*absPose_bn, z);
+-
+-		my_filter->observe (bn_observe, z);
+-		my_filter->update();
+-
+-	}
+-}
+-
+-
+-/*Receive Relative Pose from Main SICK Module*/
+-void CClientFusion::recvRelGlobalOptimized(int id, void* pose, double* cov){
+-	cout<<"CClientFusion::recvRelGlobalOptimized " <<id<<endl;
+-
+-	OrientedPoint2D* p = static_cast<OrientedPoint2D*>(pose);
+-	memcpy(cov_Global,cov,6*sizeof(double));
+-	cout<<"CClientFusion::recvRelGlobalOptimized cov: "<<cov_Global[0]<<" "<<cov_Global[3]<<" "<<cov_Global[5]<<endl;
+-	if(p==NULL) return ;
+-	if(id < 0 || id >= traj_index.size()){
+-		cout<<"error in CClientFrontend::recvRelGlobalOptimized!"<<endl;
+-		return ;
+-	}
+-	{
+-
+-		QMutexLocker lock(&mutex_filter);
+-
+-		OrientedPoint2D* last = m_traj[m_traj.size()-1];
+-		OrientedPoint2D* prev = m_traj[traj_index[id]];
+-		OrientedPoint2D trans = prev->ominus(*last);
+-		OrientedPoint2D changed = *prev + *p;
+-		*last = changed.oplus(trans);
+-		// OrientedPoint2D trans_abs;
+-		// fromRel2AbsPose(*prev, trans, trans_abs);
+-		// *prev = *prev + *p;
+-		// cout<<"trans is: "<<trans<<endl;
+-		// cout<<"before trans: "<<*last<<endl;
+-		// *last = *last + *p;
+-
+-		// cout<<"before UKF, cov: "<<m_pUKF->X(0,0)<<" "<<m_pUKF->X(1,1)<<" "<<m_pUKF->X(2,2)<<endl;
+-		synGlobal_observe.Zv[0] = cov_Global[0];
+-		synGlobal_observe.Zv[1] = cov_Global[3];
+-		synGlobal_observe.Zv[2] = cov_Global[5];
+-		Vec z(3);
+-		((CClientFusion*)0)->cvtOPD2X(*last,z);
+-		my_filter->observe(synGlobal_observe,z);
+-		my_filter->update();
+-		// cout<<"after UKF, cov: "<<m_pUKF->X(0,0)<<" "<<m_pUKF->X(1,1)<<" "<<m_pUKF->X(2,2)<<endl;
+-
+-		m_cov_inc[0] = cov_Global[0];
+-		m_cov_inc[3] = cov_Global[3];
+-		m_cov_inc[5] = cov_Global[5];
+-
+-		// update the observation covariance
+-		/*
+-		curr_cov(0,0) = m_pUKF->X(0,0)/100.;
+-		curr_cov(1,1) = m_pUKF->X(1,1)/100.;
+-		curr_cov(2,2) = deg2rad(m_pUKF->X(2,2));
+-		curr_cov(1,0) = curr_cov(0,1) = curr_cov(2,0) = curr_cov(0,2) = curr_cov(2,1) = curr_cov(1,2) = 0;
+-		*/
+-
+-		// cout<<"after trans: "<<*last<<endl;
+-		// upout<<id<<" "<<*p<<endl;
+-		m_syn_num ++;
+-	}
+-
+-
+-}
+-
+-
+ /* trans the relative pose to the robot frame;*/
+ void CClientFusion::relpToRobotFrame(const OrientedPoint2D oriInRobot, OrientedPoint2D &relp)
+ {
+@@ -454,7 +238,6 @@
+ 	relp.y = x * stheta + y * ctheta;
+ }
+ 
+-
+ /*Convert OrientedPoint2D to FM::Vec format.
+  * The angle will be normalized to [-pi, pi] first*/
+ void CClientFusion::cvtOPD2X(OrientedPoint2D& opd, FM::Vec & x)
+Index: slam_v1.h
+===================================================================
+--- slam_v1.h	(revision 90)
++++ slam_v1.h	(revision 89)
+@@ -67,7 +67,6 @@
+ 	void stopAllThread();
+ 	void stopFrontend();
+ 	void stopBackend();
+-	void sendBN(float,float,float);
+ public:
+ 	string m_file_name;
+ 	int m_work_model;
+@@ -94,10 +93,6 @@
+ 	vector<float> m_b;
+ 	volatile bool m_stopped;
+ 	volatile bool m_received;
+-
+-	float* bnPose;
+-	float* odoPose;
+-
+ public:
+ 	void startEventLoop(int& argc, char** argv);
+ 	QCoreApplication* qt_app;
+Index: clientFusion.h
+===================================================================
+--- clientFusion.h	(revision 90)
++++ clientFusion.h	(revision 89)
+@@ -30,10 +30,8 @@
+ 	~CClientFusion();
+ 
+ public Q_SLOTS:
+-	void recvRelMainSICK(double,double,double,float*,int,TTimeStamp,double*,int);
+-	void recvRelMinorSICK(double,double,double,float*,int,TTimeStamp,double*,int);
+-	void recvBN(float,float,float);
+-	void recvRelGlobalOptimized(int id, void* pose, double* cov);
++	void recvRelMainSICK(double,double,double,float*,int);
++	void recvRelMinorSICK(double,double,double,float*,int);
+ 	//void recvRelOdo();
+ 	//void recvRelGPS();
+ Q_SIGNALS:
+@@ -45,7 +43,6 @@
+ 	void updateMainSICKNode();
+ 	void updateMinorSICKNode();
+ 	void updateOdoNode();
+-	void updateBNNode();
+ 
+ 	void relpToRobotFrame(const zhpsm::OrientedPoint2D, zhpsm::OrientedPoint2D &);
+ 	void cvtOPD2X(zhpsm::OrientedPoint2D& opd, FM::Vec & x);
+@@ -62,7 +59,6 @@
+ 
+ 	//FILTER SETTING
+ 	int x_dim;
+-	int n_steps; // number of iteration
+ 	Unscented_scheme* my_filter; //using unscented filters
+ 	Robot_predict robot_predict;
+ 	SynGlobal_observe synGlobal_observe;
+@@ -72,7 +68,6 @@
+ 	ODO_observe odo_observe;
+ 	BN_observe bn_observe;
+ 
+-
+ 	//SENSOR SETTING
+ 	zhpsm::OrientedPoint2D* opd_x_p;
+ 	zhpsm::OrientedPoint2D* opd_x_u;
+@@ -84,39 +79,16 @@
+ 	zhpsm::OrientedPoint2D* relp_mainSick;
+ 	float* scan_mainSick;
+ 	int np_mainSick;
+-	TTimeStamp t_mainSick;
+-	double* cov_mainSick;
+-	int nmovecnt_main;
+-
+ 	zhpsm::OrientedPoint2D* relp_minorSick;
+ 	float* scan_minorSick;
+ 	int np_minorSick;
+-	TTimeStamp t_minorSick;
+-	double* cov_minorSick;
+-	int nmovecnt_minor;
+ 
+-	//BN SETTING
+-	zhpsm::OrientedPoint2D* absPose_bn;
+-
+-	//GLOBAL SETTING
+-	double * cov_Global;
+-	int m_syn_num;
+-	double* m_cov;
+-	double* m_cov_inc;
+-
+-	volatile bool _MAIN_SICK_READY;
+-	volatile bool _MINOR_SICK_READY;
+-	volatile bool _ODO_READY;
+-	volatile bool _GPS_READY;
+-	volatile bool _BN_READY;
+-
+ 	//LOCKERS
+ 	QMutex mutex_synGlobal;
+ 	QMutex mutex_filter;
+ 	QMutex mutex_mainSICK;
+ 	QMutex mutex_minorSICK;
+ 	QMutex mutex_odo;
+-	QMutex mutex_bn;
+ };
+ 
+ 
+Index: clientFrontend.cpp
+===================================================================
+--- clientFrontend.cpp	(revision 90)
++++ clientFrontend.cpp	(revision 89)
+@@ -18,17 +18,17 @@
+ using namespace zhpsm;
+ 
+ namespace{
+-
++	
+ 	// For UDUFactor
+-	static  int sx_dim = 3;
+-	static  FM::SymMatrix COV(sx_dim,sx_dim);
+-	static  FM::Matrix UD(sx_dim,sx_dim);
+-	static  FM::Matrix G(sx_dim,sx_dim);
++	static int sx_dim = 3;
++	static FM::SymMatrix COV(sx_dim,sx_dim);
++	static FM::Matrix UD(sx_dim,sx_dim);
++	static FM::Matrix G(sx_dim,sx_dim);
+ 
+-	static  Vec q(sx_dim);
++	static Vec q(sx_dim);
+ 
+ 	void assign(Eigen::Matrix3d& from, FM::SymMatrix& to)
+-	{
++	{	
+ 		for(int i=0;i<sx_dim;i++)
+ 		for(int j=0;j<sx_dim;j++)
+ 		{
+@@ -37,7 +37,7 @@
+ 	}
+ 	void assign(double m[6], FM::SymMatrix& cov){
+ 	cov(0,0) = m[0]; cov(0,1) = cov(1,0) = m[1];  cov(0,2) = cov(2,0) = m[2];
+-			 cov(1,1) = m[3]; 	      cov(1,2) = cov(2,1) = m[4];
++			 cov(1,1) = m[3]; 	      cov(1,2) = cov(2,1) = m[4]; 
+ 			 		  	      cov(2,2) = m[5];
+ 	}
+ }
+@@ -59,7 +59,6 @@
+ 	bFirst_run = 1;
+ 	matrix = (double*)malloc(6*sizeof(double));
+ 	scnt = 0;
+-	nmovecnt = 0;
+ 	bSetScnt = 0;
+ 	sent_pose = new OrientedPoint2D;
+ 	
+@@ -138,7 +137,6 @@
+ 		break;
+ 	case 3:
+ 		cout<<"runFusion()!"<<endl;
+-		use_UKF = false;
+ 		m_pFusion->runFusion();
+ 		break;
+ 	default:
+@@ -259,12 +257,6 @@
+ 		m[i]+=a[i];
+ }
+ 
+-void CClientFrontend::addMatrix(double m[6], double a[6], int scale)
+-{
+-	for(int i=0;i<6;i++)
+-		m[i]+=scale*a[i];
+-}
+-
+ void CClientFrontend::addEigen(Eigen::Matrix3d& cov, double a[6]){
+ 	cov(0,0) += a[0]; cov(1,1) += a[3]; cov(2,2) += a[5];
+ }
+@@ -285,16 +277,12 @@
+ 	// use CSM or PSM
+ 	if(m_bCSM){
+ 		scnt++;
++		float ret = m_pCSM->FMatchKeyFrame2(&ls, rel_cov);
++		// float ret = m_pCSM->FMatchKeyFrame(&ls);
++		if(ret < 0 )
+ 		{
+-			//QMutexLocker lock(&m_mutex_csm);
+-			float ret = m_pCSM->FMatchKeyFrame2(&ls, rel_cov);
+-
+-			// float ret = m_pCSM->FMatchKeyFrame(&ls);
+-			if(ret < 0 )
+-			{
+-				cout<<"CClientFrontend::runSICK: CSM failed! But continue!"<<endl;
+-				return ;
+-			}
++			cout<<"CClientFrontend::runSICK: CSM failed! But continue!"<<endl;
++			return ;
+ 		}
+ 	}else{ // PSM
+ 
+@@ -309,7 +297,6 @@
+ 		send2CBScan(/*&ls.r[0]*/&tmpls[0],ls.np,curr_pose.x,curr_pose.y,curr_pose.theta);
+ 		sendFrameInfo(curr_pose.x,curr_pose.y,curr_pose.theta,ls.r,ls.np); // send to display
+ 		traj_index.push_back(m_traj.size()-1);
+-
+ 		return ;
+ 	}
+ 	// result from CSM
+@@ -391,45 +378,15 @@
+ 			traj_index.push_back(m_traj.size()-1);
+ 			bSetScnt = true;
+ 			scnt = 0;
+-			//usleep(10000);
+-
++			// usleep(10000);
+ 			// m_pCSM->resetKeyFrame(&ls);
+ 		}
+ 	}
+ 	else
+ 	{
+-
+ 		// Fusion mode
+-
+-		getEigen(rel_cov, matrix);
+-		prev_pose = *m_traj[m_traj.size()-1];
+-		curr_pose = prev_pose.oplus(rel_pose);
+-
+-		m_traj.push_back(new OrientedPoint2D(curr_pose));
+-
+-		OrientedPoint2D big_rel_pose =sent_pose->ominus(curr_pose) ;
+-		if((!smallMove(big_rel_pose)) || (bSetScnt && scnt>=5))
+-		{
+-			if(scnt>=5){
+-				m_pPSM->pm_segment_scan(&ls);
+-				if(!m_pPSM->pm_is_corridor(&ls)){
+-					scnt = 0;
+-				}
+-				else{	// this scan is taken in corridor
+-					addMatrix(matrix, corridor_m);
+-				}
+-			}
+-
+-			*sent_pose = curr_pose;
+-			traj_index.push_back(m_traj.size()-1);
+-			bSetScnt = true;
+-			scnt = 0;
+-		}
+-
+-
+-		cout<<"ClientFrontend::run rel_pose"<<" "<<rel_pose.x<<" "<<rel_pose.y<<" "<<rel_pose.theta<<" "<<nmovecnt<<endl;
+-		sendRelFrameInfo(rel_pose.x,rel_pose.y,rel_pose.theta,ls.r,ls.np,ls.t, matrix,scnt);
+-		//usleep(10000);
++		// cout<<"ClientFrontend::runSICK "<<ip<<" "<<rel_pose.x<<" "<<rel_pose.y<<" "<<rel_pose.theta<<endl;
++		sendRelFrameInfo(rel_pose.x,rel_pose.y,rel_pose.theta,ls.r,ls.np);
+ 	}
+ }
+ 
+@@ -460,15 +417,13 @@
+ 			continue;
+ 		}
+ 		// TODO:
+-		// cout<<"before constructPSMFromSICK!"<<endl;
++
+ 		if(!constructPSMFromSICK(outObs, m_pPSM, ls))
+ 		{
+ 			cout<<"CClientFrontend::runSICK: "<<"Error with constructPSMfromSICK! But continue!"<<endl;
+ 			continue;
+ 		}
+-		// cout<<"before run(ls)"<<endl;
+ 		run(ls);
+-		// cout<<"after run(ls)"<<endl;
+ 	}
+ 
+ 	cout<<"CClientFrontend::runSICK: !!!!!! SLAM LOCAL EXIT!"<<endl;
+@@ -519,8 +474,8 @@
+ 	string delim(" ");
+ 	double start, fov, resolution, maxRange, accuracy;
+ 	int laserType, remissionMode, num_points;
+-	static __thread bool bFirst = true;
+-	//static bool bFirst = true;
++	// static __thread bool bFirst = true;
++	static bool bFirst = true;
+ 
+ 	laserType = atoi(strtok_r(line,delim.c_str(),last));
+ 	start = atof(strtok_r(NULL,delim.c_str(),last));
+Index: clientFrontend.h
+===================================================================
+--- clientFrontend.h	(revision 90)
++++ clientFrontend.h	(revision 89)
+@@ -5,9 +5,7 @@
+ #include <string>
+ #include <vector>
+ 
+-//timestamp
+ #include <Eigen/Core>
+-#include "timestamp.h"
+ 
+ namespace Bayesian_filter{class Unscented_scheme;}
+ class Robot_predict;
+@@ -55,10 +53,7 @@
+ 	void sendScanFrameCov(void*, int, double*);
+ 
+ 	void sendFrameInfo(double,double,double,float*,int);
+-	/*emit relative frame information: x,y,theta,scan_vector, number_points, timestamp, synchronization number, covarance matrix*/
+-	void sendRelFrameInfo(double,double,double,float*,int,TTimeStamp,double*,int);
+-
+-
++	void sendRelFrameInfo(double,double,double,float*,int);
+ 	void finished();
+ public:
+ 	bool constructPSMfromRawSeed(char* line, struct _PMScan&, CPolarMatch*);
+@@ -74,7 +69,6 @@
+ 	bool smallMove(zhpsm::OrientedPoint2D&);
+ 	void fromRel2AbsPose(zhpsm::OrientedPoint2D&, zhpsm::OrientedPoint2D&, zhpsm::OrientedPoint2D&);
+ 	void addMatrix(double*, double*);
+-	void addMatrix(double*, double*, int );
+ 	void addEigen(Eigen::Matrix3d&, double*);
+ 	void getEigen(Eigen::Matrix3d&, double*);
+ public:
+@@ -89,7 +83,6 @@
+ 	vector<int> traj_index;
+ 	volatile int m_syn_num;
+ 	QMutex m_mutex;
+-	QMutex m_mutex_csm;
+ 
+ 	CClientFusion* m_pFusion;
+ 
+@@ -101,7 +94,6 @@
+ 	bool bFirst_run;
+ 	double * matrix;
+ 	int scnt;
+-	int nmovecnt;
+ 	bool bSetScnt;
+ 	Eigen::Matrix3d curr_cov;
+ 	Eigen::Matrix3d rel_cov;
+Index: clientBackend.cpp
+===================================================================
+--- clientBackend.cpp	(revision 90)
++++ clientBackend.cpp	(revision 89)
+@@ -67,10 +67,6 @@
+ 		cout<<"Backend: SICK LMS151!"<<endl;
+ 		m_pPSM = new CPolarMatch("LMS151");
+ 		break;
+-	case 3:	// FUSION
+-		cout<<"Backend: SICK LMS151!"<<endl;
+-		m_pPSM = new CPolarMatch("LMS151");
+-		break;
+ 	default:
+ 		cout<<"unknown work model!"<<endl;
+ 		// quitAll();
+@@ -105,9 +101,7 @@
+ 
+ void CClientBackend::receScanFrameCov(void* p, int syn, double* m)
+ {
+-
+ 	PMScan *pScan = static_cast<PMScan*>(p);
+-	cout<<"CClientBackend::receScanFrameCov"<<pScan->rx<<" "<<pScan->ry<<" "<<pScan->th<<endl;
+ 	vector<double> cov(6);
+ 	double* pm = m;
+ 	memcpy(&cov[0],pm,sizeof(double)*6);
+Index: clientLocal.cpp
+===================================================================
+--- clientLocal.cpp	(revision 90)
++++ clientLocal.cpp	(revision 89)
+@@ -90,40 +90,28 @@
+ 	connect(&threadBackend,SIGNAL(finished()),this,SLOT(quit()));
+ 	// connect(&threadFrontend,SIGNAL(finished()),SLOT(quit()));
+ 
++	// frontend -> backend
++	// connect(m_pFrontend,SIGNAL(sendScanFrame(void*,int)),m_pBackend,SLOT(receScanFrame(void*,int)),Qt::DirectConnection);
++	connect(m_pFrontend,SIGNAL(sendScanFrameCov(void*,int,double*)),m_pBackend,SLOT(receScanFrameCov(void*,int,double*)),Qt::DirectConnection);
+ 
+-	if(work_model != 3)
+-	{
+-		// frontend -> backend
+-		// connect(m_pFrontend,SIGNAL(sendScanFrame(void*,int)),m_pBackend,SLOT(receScanFrame(void*,int)),Qt::DirectConnection);
+-		connect(m_pFrontend,SIGNAL(sendScanFrameCov(void*,int,double*)),m_pBackend,SLOT(receScanFrameCov(void*,int,double*)),Qt::DirectConnection);
++	// backend -> frontend
++	connect(m_pBackend,SIGNAL(sendUpdatePose(int,void*,double*)),m_pFrontend,SLOT(receUpdatePose(int,void*,double*)),Qt::DirectConnection);
+ 
+-		// backend -> frontend
+-		connect(m_pBackend,SIGNAL(sendUpdatePose(int,void*,double*)),m_pFrontend,SLOT(receUpdatePose(int,void*,double*)),Qt::DirectConnection);
+-
+-		// send laser frame
+-		// connect(m_pFrontend,SIGNAL(sendFrameInfo(double,double,double,float*,int,int)),this,SLOT(receLaserFrame(double,double,double,float*,int,int)));
+-		// send update pose
+-		// connect(this,SIGNAL(sendUpdatePose(int,void*)),m_pFrontend,SLOT(receUpdatePose(int,void*)),Qt::DirectConnection);
+-
+-		connect(m_pFrontend,SIGNAL(sendFrameInfo(double,double,double,float*,int)),this,SLOT(receLaserFrame(double,double,double,float*,int)));
+-
+-	}
+-	else
++	// send laser frame
++	// connect(m_pFrontend,SIGNAL(sendFrameInfo(double,double,double,float*,int,int)),this,SLOT(receLaserFrame(double,double,double,float*,int,int)));
++	// send update pose
++	// connect(this,SIGNAL(sendUpdatePose(int,void*)),m_pFrontend,SLOT(receUpdatePose(int,void*)),Qt::DirectConnection);
++	if(work_model == 3)
+ 	{
+ 		//fusion
+ 		m_pFrontend->setFusion();
+-
+-		// frontend -> backend
+-		connect(m_pFrontend->m_pFusion,SIGNAL(sendScanFrameCov(void*,int,double*)),m_pBackend,SLOT(receScanFrameCov(void*,int,double*)),Qt::DirectConnection);
+-
+-		// backend -> frontend
+-		connect(m_pBackend,SIGNAL(sendUpdatePose(int,void*,double*)),m_pFrontend->m_pFusion,SLOT(recvRelGlobalOptimized(int,void*,double*)),Qt::DirectConnection);
+-
+-		//send to server for show
+ 		connect(m_pFrontend->m_pFusion,SIGNAL(sendFrameInfo(double,double,double,float*,int)),this,SLOT(receLaserFrame(double,double,double,float*,int)));
+ 		connect(m_pFrontend->m_pFusion,SIGNAL(finished()),&threadFrontend,SLOT(quit()),Qt::DirectConnection);
+-
+ 	}
++	else
++	{
++		connect(m_pFrontend,SIGNAL(sendFrameInfo(double,double,double,float*,int)),this,SLOT(receLaserFrame(double,double,double,float*,int)));
++	}
+ 	// startThread
+ 	threadFrontend.start();
+ 	threadBackend.start();
+@@ -133,7 +121,7 @@
+ {
+ 	float *p = bearing;
+ 	vector<float> scan(n,0);
+- 	cout<<"CClientLocal::receLaserFrame x: "<<x<<" y: "<<y<<" th: "<<th<<endl;
++ 	// cout<<"receLaserinfo x: "<<x<<" y: "<<y<<" th: "<<th<<endl;
+ 	for(int i=0;i<n;i++,p++)
+ 		scan[i] = *p;
+ 	{
+Index: CMakeLists.txt
+===================================================================
+--- CMakeLists.txt	(revision 90)
++++ CMakeLists.txt	(revision 89)
+@@ -57,8 +57,7 @@
+ LINK_DIRECTORIES(${EXTERNAL_LINKS} ${CSM_LIB} ${CMAKE_BINARY_DIR}/lib /usr/lib/i386-linux-gnu)
+ LINK_DIRECTORIES(${G2O_LIB} ${FLIRT_LIB} ${SSPARSE_DIR} ${MRPT_LIB})
+ 
+-SET(OUR_LIBS slam timestamp sensorFusion zhpsm pfg zhicp zhcsm sick_reader)
+-
++SET(OUR_LIBS slam timestamp sensorFusion pfg zhpsm zhicp zhcsm sick_reader)
+ SET(CLIENT_LIBS ${OUR_LIBS} ${CSM_LIBS} ${SSPARSE_LIBS} ${G2O_LIBS} ${FLIRT_LIBS} ${MRPT_LIBS})
+ 
+ ADD_EXECUTABLE(client_v1 main_client.cpp)
+Index: dialog_client.cpp
+===================================================================
+--- dialog_client.cpp	(revision 90)
++++ dialog_client.cpp	(revision 89)
+@@ -11,8 +11,8 @@
+ 
+ namespace{
+ // QString initFile("/mnt/hgfs/SharedFold/dataset/rawseed/Bicocca_2009-02-25b/Bicocca_2009-02-25b-SICK_FRONT.csv");
+-//QString initFile("/mnt/hgfs/SharedFold/dataset/lenovo/LMS151/20130108_t2.txt");
+- QString initFile("/media/ShareRegion/Datasets/LMS151_20130108/t2.txt");
++QString initFile("/mnt/hgfs/SharedFold/dataset/lenovo/LMS151/20130108_t2.txt");
++// QString initFile("/media/ShareRegion/Datasets/LMS151_20130108/t1.txt");
+ 
+ 
+ int getFileSize(const char* file){
+@@ -178,7 +178,7 @@
+ 
+ 	cout<<"clientFrontend"<<v_sick_ips.size()<<endl;
+ 	tcpClient.setSICKIP(v_sick_ips, v_sick_ports);
+-	tcpClient.setModel(3); // 3 fusion
++	tcpClient.setModel(3); // 2 fusion
+ 	start();
+ }
+ 

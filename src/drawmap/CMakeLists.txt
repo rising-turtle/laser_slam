@@ -1,0 +1,30 @@
+SET(QT_USE_QTOPENGL TRUE)
+SET(QT_USE_QT3SUPPORT TRUE)
+INCLUDE(${QT_USE_FILE})
+
+# find CSM libs
+INCLUDE_DIRECTORIES(
+	# ${FLIRT_DIR}
+	${CMAKE_CURRENT_SOURCE_DIR}/../zhpsm 
+	)
+LINK_DIRECTORIES(${CMAKE_BINARY_DIR}/lib )
+
+SET(LIB_LIST
+	drawmap.cpp
+	line.cpp
+	fuselog.cpp
+	PMap.cpp
+	point.cpp
+)
+SET(MOC_HDRS 
+	drawmap.h
+	)
+QT4_WRAP_CPP(MOC_SRCS ${MOC_HDRS})
+
+# out lib path
+SET(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
+ADD_LIBRARY(drawmap SHARED ${LIB_LIST} ${MOC_SRCS})
+
+ADD_EXECUTABLE(test_draw test.cpp)
+TARGET_LINK_LIBRARIES(test_draw drawmap zhpsm  ${QT_LIBRARIES})
+

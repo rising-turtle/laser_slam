@@ -1,0 +1,199 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CFliterNode	./FlirterNode.cpp	/^CFliterNode::CFliterNode(LaserReading* lread, std::string laser_name):m_pLaserRead(NULL),m_id(-1),m_pFMatch(new CPolarMatch(laser_name)),m_pScan(NULL)$/;"	f	class:CFliterNode
+CFliterNode	./FlirterNode.cpp	/^CFliterNode::CFliterNode(PMScan* pmscan, CPolarMatch* laser_wrapper\/*std::string laser_name*\/):m_pLaserRead(NULL),m_id(-1),m_pFMatch(laser_wrapper), m_pScan(NULL)$/;"	f	class:CFliterNode
+CFliterNode	./FlirterNode.cpp	/^CFliterNode::CFliterNode(std::string laser_name):m_pLaserRead(NULL),m_id(-1),m_pFMatch(new CPolarMatch(laser_name)), m_pScan(NULL)$/;"	f	class:CFliterNode
+CFliterNode	./FlirterNode.h	/^class CFliterNode{$/;"	c
+CMapGraph	./MapGraph.cpp	/^CMapGraph::CMapGraph(string laser_name):$/;"	f	class:CMapGraph
+CMapGraph	./MapGraph.h	/^class CMapGraph{$/;"	c
+CMapNode	./MapNode.cpp	/^CMapNode::CMapNode():$/;"	f	class:CMapNode
+CMapNode	./MapNode.cpp	/^CMapNode::CMapNode(vector<CFliterNode*>& nodes, int duo_size):$/;"	f	class:CMapNode
+CMapNode	./MapNode.h	/^class CMapNode{$/;"	c
+D2R	./MapGraph.cpp	1225;"	d	file:
+D2R	./MapGraph.cpp	25;"	d	file:
+DIS_THRESHOLD	./MapGraph.cpp	35;"	d	file:
+EdgeSet	./MapGraph.cpp	/^typedef std::set<g2o::HyperGraph::Edge*> EdgeSet;$/;"	t	file:
+FLIRTER_NODE_H	./FlirterNode.h	2;"	d
+FliterParameters	./FlirterNode.h	/^	}FliterParameters;$/;"	t	class:CFliterNode	typeref:struct:CFliterNode::_Parameters
+GRAPH_MANAGER_H	./MapGraph.h	2;"	d
+InitFliter	./FlirterNode.cpp	/^void CFliterNode::InitFliter(){$/;"	f	class:CFliterNode
+InitNode	./FlirterNode.cpp	/^void CFliterNode::InitNode(LaserReading* lread)$/;"	f	class:CFliterNode
+IsNoisyMove	./MapGraph.cpp	/^bool CMapGraph::IsNoisyMove(OrientedPoint2D& transform)$/;"	f	class:CMapGraph
+LASER_BEARING_D	./MapGraph.cpp	31;"	d	file:
+LASER_BEARING_R	./MapGraph.cpp	32;"	d	file:
+LASER_SICK_NUM	./MapGraph.cpp	23;"	d	file:
+MAP_NODE_H	./MapNode.h	2;"	d
+MATCHING_RESULT_H	./MatchingResult.h	2;"	d
+MAX_ANGLE_D	./MapGraph.cpp	28;"	d	file:
+MAX_ANGLE_D	./MapGraph.cpp	30;"	d	file:
+MAX_LASER_RANGE	./MapGraph.cpp	33;"	d	file:
+MIN_ANGLE_D	./MapGraph.cpp	27;"	d	file:
+MIN_ANGLE_R	./MapGraph.cpp	29;"	d	file:
+M_PI	./MapGraph.cpp	1224;"	d	file:
+M_PI	./MapGraph.cpp	24;"	d	file:
+MatchingResult	./MatchingResult.h	/^	MatchingResult(){}$/;"	f	class:MatchingResult
+MatchingResult	./MatchingResult.h	/^class MatchingResult{	$/;"	c
+PREHEADER_H	./preheader.h	2;"	d
+R2D	./MapGraph.cpp	26;"	d	file:
+SQURE	./MapGraph.cpp	1103;"	d	file:
+SlamBlockSolver	./MapGraph.cpp	/^typedef g2o::BlockSolver< g2o::BlockSolverTraits<-1, -1> >  SlamBlockSolver;$/;"	t	file:
+SlamLinearCholmodSolver	./MapGraph.cpp	/^typedef g2o::LinearSolverCholmod<SlamBlockSolver::PoseMatrixType> SlamLinearCholmodSolver;$/;"	t	file:
+SlamLinearSolver	./MapGraph.cpp	/^typedef g2o::LinearSolverCSparse<SlamBlockSolver::PoseMatrixType> SlamLinearSolver;$/;"	t	file:
+UnitNode	./FlirterNode.cpp	/^void CFliterNode::UnitNode()$/;"	f	class:CFliterNode
+VertexIDMap	./MapGraph.cpp	/^typedef std::tr1::unordered_map<int, g2o::HyperGraph::Vertex*>     VertexIDMap;$/;"	t	file:
+_Parameters	./FlirterNode.cpp	/^CFliterNode::_Parameters::_Parameters(){$/;"	f	class:CFliterNode::_Parameters
+_Parameters	./FlirterNode.h	/^	typedef struct _Parameters{$/;"	s	class:CFliterNode
+acceptanceSigma	./FlirterNode.h	/^		double acceptanceSigma; $/;"	m	struct:CFliterNode::_Parameters
+addEdgeFromOriented	./MapGraph.cpp	/^bool CMapGraph::addEdgeFromOriented(int id1,int id2,int weight,OrientedPoint2D& trans,bool bigedge, bool reset)$/;"	f	class:CMapGraph
+addEdgeToG2O	./MapGraph.cpp	/^bool CMapGraph::addEdgeToG2O(MatchingResult& mr, bool large_edge, bool set_estimate)$/;"	f	class:CMapGraph
+addMapNode	./MapGraph.cpp	/^bool CMapGraph::addMapNode(CMapNode* new_node)$/;"	f	class:CMapGraph
+addMapNodeGT	./MapGraph.cpp	/^bool CMapGraph::addMapNodeGT(CMapNode* new_node)$/;"	f	class:CMapGraph
+addNode	./MapGraph.cpp	/^bool CMapGraph::addNode(CFliterNode* new_node)$/;"	f	class:CMapGraph
+addNodeImproved	./MapGraph.cpp	/^bool CMapGraph::addNodeImproved(CFliterNode* new_node)$/;"	f	class:CMapGraph
+addPoseNodeIncrementally	./MapNode.cpp	/^bool CMapNode::addPoseNodeIncrementally(CFliterNode* new_node, int feature_thre){$/;"	f	class:CMapNode
+baseSigma	./FlirterNode.h	/^		double baseSigma;$/;"	m	struct:CFliterNode::_Parameters
+calPositionDis	./MapNode.cpp	/^double CMapNode::calPositionDis(const OrientedPoint2D& p1, const OrientedPoint2D& p2)$/;"	f	class:CMapNode
+comparePreviousNodes	./MapGraph.cpp	/^bool CMapGraph::comparePreviousNodes(CFliterNode* new_node, int max_targets, int window_size)$/;"	f	class:CMapGraph
+constructMapGraph	./MapGraph.cpp	/^bool CMapGraph::constructMapGraph(){$/;"	f	class:CMapGraph
+constructMapGraphGT	./MapGraph.cpp	/^bool CMapGraph::constructMapGraphGT(){$/;"	f	class:CMapGraph
+constructMapGraphGTIncrementally	./MapGraph.cpp	/^bool CMapGraph::constructMapGraphGTIncrementally(){$/;"	f	class:CMapGraph
+constructPoseGraph	./MapGraph.cpp	/^bool CMapGraph::constructPoseGraph(){$/;"	f	class:CMapGraph
+constructPoseGraphGT	./MapGraph.cpp	/^bool CMapGraph::constructPoseGraphGT(){$/;"	f	class:CMapGraph
+descriptorType	./FlirterNode.h	/^		unsigned int descriptorType;		\/\/ descriptor type $/;"	m	struct:CFliterNode::_Parameters
+detectorType	./FlirterNode.h	/^		unsigned int detectorType;		\/\/ detector type	$/;"	m	struct:CFliterNode::_Parameters
+distanceType	./FlirterNode.h	/^		unsigned int distanceType;			\/\/ distance type$/;"	m	struct:CFliterNode::_Parameters
+dmst	./FlirterNode.h	/^		unsigned int dmst;$/;"	m	struct:CFliterNode::_Parameters
+dumpG2oTrajectory	./MapGraph.cpp	/^void CMapGraph::dumpG2oTrajectory(std::string filename){$/;"	f	class:CMapGraph
+featureEqual	./MapNode.cpp	/^bool CMapNode::featureEqual(InterestPoint* p1, InterestPoint* p2){$/;"	f	class:CMapNode
+finishReduction	./MapNode.cpp	/^void CMapNode::finishReduction(){$/;"	f	class:CMapNode
+fromLR2PM	./FlirterNode.cpp	/^PMScan* CFliterNode::fromLR2PM(LaserReading* lread){$/;"	f	class:CFliterNode
+fromOrientedPoint2SE2	./FlirterNode.cpp	/^void CFliterNode::fromOrientedPoint2SE2(OrientedPoint2D& trans, EdgeSE2& ret){$/;"	f	class:CFliterNode
+fromPM2LR	./FlirterNode.cpp	/^LaserReading* CFliterNode::fromPM2LR(PMScan* pmscan)$/;"	f	class:CFliterNode
+fromSE22OrientedPoint	./FlirterNode.cpp	/^void CFliterNode::fromSE22OrientedPoint(OrientedPoint2D& trans, EdgeSE2& ret){$/;"	f	class:CFliterNode
+fuseFeature	./MapNode.cpp	/^bool CMapNode::fuseFeature(InterestPoint* fp){$/;"	f	class:CMapNode
+fvector	./MapNode.h	/^	vector<InterestPoint*> fvector;$/;"	m	class:CMapNode
+g_IsInit	./FlirterNode.cpp	/^bool CFliterNode::g_IsInit = false;$/;"	m	class:CFliterNode	file:
+g_IsInit	./FlirterNode.h	/^	static bool g_IsInit;$/;"	m	class:CFliterNode
+g_betaGenerator	./FlirterNode.cpp	/^BetaGridGenerator* CFliterNode::g_betaGenerator = NULL;$/;"	m	class:CFliterNode	file:
+g_betaGenerator	./FlirterNode.h	/^	static BetaGridGenerator *g_betaGenerator;$/;"	m	class:CFliterNode
+g_descriptor	./FlirterNode.cpp	/^DescriptorGenerator* CFliterNode::g_descriptor =NULL;$/;"	m	class:CFliterNode	file:
+g_descriptor	./FlirterNode.h	/^	static DescriptorGenerator *g_descriptor ;$/;"	m	class:CFliterNode
+g_descriptor_name	./FlirterNode.cpp	/^string CFliterNode::g_descriptor_name = "";$/;"	m	class:CFliterNode	file:
+g_descriptor_name	./FlirterNode.h	/^	static string g_descriptor_name;$/;"	m	class:CFliterNode
+g_detector	./FlirterNode.cpp	/^Detector* CFliterNode::g_detector = NULL;$/;"	m	class:CFliterNode	file:
+g_detector	./FlirterNode.h	/^	static Detector *g_detector; $/;"	m	class:CFliterNode
+g_detectorCurvature	./FlirterNode.cpp	/^CurvatureDetector * CFliterNode::g_detectorCurvature = NULL;$/;"	m	class:CFliterNode	file:
+g_detectorCurvature	./FlirterNode.h	/^	static CurvatureDetector *g_detectorCurvature;	$/;"	m	class:CFliterNode
+g_detectorNormalBlob	./FlirterNode.cpp	/^NormalBlobDetector * CFliterNode::g_detectorNormalBlob = NULL;$/;"	m	class:CFliterNode	file:
+g_detectorNormalBlob	./FlirterNode.h	/^	static NormalBlobDetector *g_detectorNormalBlob;$/;"	m	class:CFliterNode
+g_detectorNormalEdge	./FlirterNode.cpp	/^NormalEdgeDetector* CFliterNode::g_detectorNormalEdge = NULL;$/;"	m	class:CFliterNode	file:
+g_detectorNormalEdge	./FlirterNode.h	/^	static NormalEdgeDetector *g_detectorNormalEdge;$/;"	m	class:CFliterNode
+g_detectorRange	./FlirterNode.cpp	/^RangeDetector* CFliterNode::g_detectorRange = NULL;$/;"	m	class:CFliterNode	file:
+g_detectorRange	./FlirterNode.h	/^	static RangeDetector *g_detectorRange;$/;"	m	class:CFliterNode
+g_detector_name	./FlirterNode.cpp	/^string CFliterNode::g_detector_name = "";$/;"	m	class:CFliterNode	file:
+g_detector_name	./FlirterNode.h	/^	static string g_detector_name;$/;"	m	class:CFliterNode
+g_dist	./FlirterNode.cpp	/^HistogramDistance<double> * CFliterNode::g_dist = NULL;$/;"	m	class:CFliterNode	file:
+g_dist	./FlirterNode.h	/^	static HistogramDistance<double> *g_dist ;$/;"	m	class:CFliterNode
+g_distance_name	./FlirterNode.cpp	/^string CFliterNode::g_distance_name="";$/;"	m	class:CFliterNode	file:
+g_distance_name	./FlirterNode.h	/^	static string g_distance_name;$/;"	m	class:CFliterNode
+g_distance_threshold	./MapNode.cpp	/^float CMapNode::g_distance_threshold = 0.01; \/\/ Threshold for considering as the same features$/;"	m	class:CMapNode	file:
+g_distance_threshold	./MapNode.h	/^	static float g_distance_threshold;$/;"	m	class:CMapNode
+g_match_threshold	./FlirterNode.cpp	/^const int g_match_threshold = 15;$/;"	v
+g_matching_threshold	./MapNode.cpp	/^float CMapNode::g_matching_threshold = 0.4; \/\/ Threshold for considering as inliers$/;"	m	class:CMapNode	file:
+g_matching_threshold	./MapNode.h	/^	static float g_matching_threshold;$/;"	m	class:CMapNode
+g_peakMinMax	./FlirterNode.cpp	/^SimpleMinMaxPeakFinder* CFliterNode::g_peakMinMax = NULL;$/;"	m	class:CFliterNode	file:
+g_peakMinMax	./FlirterNode.h	/^	static SimpleMinMaxPeakFinder* g_peakMinMax;$/;"	m	class:CFliterNode
+g_ransac	./FlirterNode.cpp	/^RansacFeatureSetMatcher* CFliterNode::g_ransac = NULL;$/;"	m	class:CFliterNode	file:
+g_ransac	./FlirterNode.h	/^	static RansacFeatureSetMatcher *g_ransac;$/;"	m	class:CFliterNode
+g_session_size	./MapGraph.cpp	/^int CMapGraph::g_session_size = 10;\/\/ ;8; \/\/10;$/;"	m	class:CMapGraph	file:
+g_session_size	./MapGraph.h	/^	static int g_session_size;$/;"	m	class:CMapGraph
+g_shapeGenerator	./FlirterNode.cpp	/^ShapeContextGenerator* CFliterNode::g_shapeGenerator=NULL;$/;"	m	class:CFliterNode	file:
+g_shapeGenerator	./FlirterNode.h	/^	static ShapeContextGenerator *g_shapeGenerator;$/;"	m	class:CFliterNode
+g_threshold_duo_size	./MapNode.cpp	/^int CMapNode::g_threshold_duo_size = 10;\/\/10; \/\/ Threshold for duo-graph$/;"	m	class:CMapNode	file:
+g_threshold_duo_size	./MapNode.h	/^	static int g_threshold_duo_size;$/;"	m	class:CMapNode
+getParameter	./FlirterNode.cpp	/^CFliterNode::FliterParameters& CFliterNode::getParameter(){$/;"	f	class:CFliterNode
+getPotentialEdgeTargets	./MapGraph.cpp	/^std::set<int> CMapGraph::getPotentialEdgeTargets(CFliterNode* new_node, int max_targets)$/;"	f	class:CMapGraph
+id1	./MatchingResult.h	/^	int id1,id2;  \/\/ id of the matched nodes$/;"	m	class:MatchingResult
+id2	./MatchingResult.h	/^	int id1,id2;  \/\/ id of the matched nodes$/;"	m	class:MatchingResult
+indoor	./test.cpp	/^	string indoor = "..\/data\/indoor.txt";$/;"	m	namespace:__anon3	file:
+inlier	./FlirterNode.h	/^		double inlier;$/;"	m	struct:CFliterNode::_Parameters
+intel_log	./intel_test.cpp	/^	string intel_log = "..\/data\/intel-lab.log";$/;"	m	namespace:__anon1	file:
+isBigTrafo	./MapGraph.cpp	/^bool isBigTrafo(const g2o::SE2& edge){$/;"	f	namespace:__anon2
+m_IsReady	./MapNode.h	/^	bool m_IsReady;$/;"	m	class:CMapNode
+m_edge	./MatchingResult.h	/^	g2o::EdgeSE2 m_edge;$/;"	m	class:MatchingResult
+m_featurePoints	./FlirterNode.h	/^	  std::vector<InterestPoint *> m_featurePoints;	\/\/ feature points$/;"	m	class:CFliterNode
+m_featurePoints	./MapNode.h	/^	vector<InterestPoint*> m_featurePoints; \/\/ features relative to root$/;"	m	class:CMapNode
+m_featurePointsLocal	./FlirterNode.h	/^	  std::vector<InterestPoint*> m_featurePointsLocal; \/\/ feature points in local reference$/;"	m	class:CFliterNode
+m_fpos	./MapNode.h	/^	vector<int> m_fpos; \/\/ duo-graph pos set$/;"	m	class:CMapNode
+m_fpre	./MapNode.h	/^	vector<int> m_fpre; \/\/ duo-graph pre set$/;"	m	class:CMapNode
+m_graph	./MapGraph.h	/^	map<int, CFliterNode*> m_graph; \/\/ contains the trajectory of robot$/;"	m	class:CMapGraph
+m_gtpose	./FlirterNode.h	/^	  OrientedPoint2D m_gtpose; 					\/\/ gt's pose$/;"	m	class:CFliterNode
+m_iNum_of_unique_fps	./MapNode.h	/^	int m_iNum_of_unique_fps; $/;"	m	class:CMapNode
+m_id	./FlirterNode.h	/^	  int m_id;			\/\/ id of this node$/;"	m	class:CFliterNode
+m_id	./MapNode.h	/^	int m_id;$/;"	m	class:CMapNode
+m_inlier_number	./MatchingResult.h	/^	int m_inlier_number;	\/\/ indicate the number of inlier from this match$/;"	m	class:MatchingResult
+m_log	./MapGraph.h	/^	std::vector<AbstractReading*> m_log;	\/\/ read log files$/;"	m	class:CMapGraph
+m_mapGraph	./MapGraph.h	/^	std::map<int, CMapNode*> m_mapGraph;$/;"	m	class:CMapGraph
+m_pFMatch	./FlirterNode.h	/^	  CPolarMatch* m_pFMatch;	\/\/ frontend PSM or ICP Matching $/;"	m	class:CFliterNode
+m_pFMatch	./MapNode.h	/^	CFliterNode* m_pFMatch;	\/\/ used to match feature points$/;"	m	class:CMapNode
+m_pLaserRead	./FlirterNode.h	/^	  LaserReading * m_pLaserRead;				\/\/ laser reading info$/;"	m	class:CFliterNode
+m_pPSM	./MapGraph.h	/^	CPolarMatch* m_pPSM; \/\/ used to read our carmon and store all datas$/;"	m	class:CMapGraph
+m_pScan	./FlirterNode.h	/^	  PMScan* m_pScan;$/;"	m	class:CFliterNode
+m_pose	./FlirterNode.h	/^	  OrientedPoint2D m_pose;					\/\/ pose$/;"	m	class:CFliterNode
+m_relpose	./FlirterNode.h	/^	  OrientedPoint2D m_relpose;					\/\/ relative pose to previous nodes$/;"	m	class:CFliterNode
+m_reset_request	./MapGraph.h	/^	bool m_reset_request;$/;"	m	class:CMapGraph
+m_rootPose	./MapNode.h	/^	OrientedPoint2D* m_rootPose;	\/\/ root node of this submap$/;"	m	class:CMapNode
+m_trajectory	./MapNode.h	/^	vector<OrientedPoint2D*> m_trajectory; \/\/ relative trajectory$/;"	m	class:CMapNode
+main	./intel_test.cpp	/^int main(int argc, char* argv[]){$/;"	f
+main	./test.cpp	/^int main(int argc, char* argv[]){$/;"	f
+matchFeaturePoints	./FlirterNode.cpp	/^int CFliterNode::matchFeaturePoints(std::vector<InterestPoint*>& fpref,std::vector<InterestPoint*>& fpcur,$/;"	f	class:CFliterNode
+matchNodeFrontend	./FlirterNode.cpp	/^bool CFliterNode::matchNodeFrontend(CFliterNode* pref)$/;"	f	class:CFliterNode
+matchNodeFrontendGT	./FlirterNode.cpp	/^bool CFliterNode::matchNodeFrontendGT(CFliterNode* pref, int& status){$/;"	f	class:CFliterNode
+matchNodePair	./FlirterNode.cpp	/^int CFliterNode::matchNodePair(CFliterNode* pref, MatchingResult& mr)$/;"	f	class:CFliterNode
+matchNodePair	./MapNode.cpp	/^int CMapNode::matchNodePair(CMapNode* pref, MatchingResult& mr){$/;"	f	class:CMapNode
+matchNodePairGT	./MapNode.cpp	/^int CMapNode::matchNodePairGT(CMapNode* pref, MatchingResult& mr){$/;"	f	class:CMapNode
+matchNodePairGlobal	./FlirterNode.cpp	/^int CFliterNode::matchNodePairGlobal( CFliterNode* refNode, OrientedPoint2D& transform)$/;"	f	class:CFliterNode
+matchNodePairLocal	./FlirterNode.cpp	/^int CFliterNode::matchNodePairLocal( CFliterNode* refNode, OrientedPoint2D& transform)$/;"	f	class:CFliterNode
+matchStrategy	./FlirterNode.h	/^		unsigned int matchStrategy;		\/\/ feature match strategy$/;"	m	struct:CFliterNode::_Parameters
+matchingThreshold	./FlirterNode.h	/^		double matchingThreshold;$/;"	m	struct:CFliterNode::_Parameters
+minPeak	./FlirterNode.h	/^		double minPeak;$/;"	m	struct:CFliterNode::_Parameters
+minPeakDistance	./FlirterNode.h	/^		double minPeakDistance;$/;"	m	struct:CFliterNode::_Parameters
+optimizeGraph	./MapGraph.cpp	/^void CMapGraph::optimizeGraph(int iter){$/;"	f	class:CMapGraph
+optimizer_	./MapGraph.h	/^	g2o::SparseOptimizer* optimizer_; \/\/ g2o optimization$/;"	m	class:CMapGraph
+outname	./intel_test.cpp	/^	string outname="\/mnt\/hgfs\/SharedFold\/log\/intel_g2o.log";$/;"	m	namespace:__anon1	file:
+outname	./test.cpp	/^	string outname="\/mnt\/hgfs\/SharedFold\/log\/hg2o.log";$/;"	m	namespace:__anon3	file:
+outname1	./intel_test.cpp	/^	string outname1="\/mnt\/hgfs\/SharedFold\/log\/intel_g2o_p.log";$/;"	m	namespace:__anon1	file:
+readGTCarmon	./MapGraph.cpp	/^bool CMapGraph::readGTCarmon(string filename){$/;"	f	class:CMapGraph
+readOurCarmon	./MapGraph.cpp	/^bool CMapGraph::readOurCarmon(string filename)$/;"	f	class:CMapGraph
+readSicklog	./MapGraph.cpp	/^bool CMapGraph::readSicklog(string logfile, std::vector<AbstractReading*>& log)$/;"	f	class:CMapGraph
+readlog	./MapGraph.cpp	/^bool CMapGraph::readlog(string logfile){$/;"	f	class:CMapGraph
+recordPoseTraj	./MapGraph.cpp	/^void CMapGraph::recordPoseTraj(string outfile){$/;"	f	class:CMapGraph
+recordTraj	./MapGraph.cpp	/^void CMapGraph::recordTraj(string outfile){$/;"	f	class:CMapGraph
+recordTrajectory	./MapGraph.cpp	/^void CMapGraph::recordTrajectory(string outfile)$/;"	f	class:CMapGraph
+reduceIntoMapNode	./MapNode.cpp	/^void CMapNode::reduceIntoMapNode(const vector<CFliterNode*>& node_set, int duo_size)$/;"	f	class:CMapNode
+resetGraph	./MapGraph.cpp	/^void CMapGraph::resetGraph()$/;"	f	class:CMapGraph
+resetInit	./FlirterNode.cpp	/^void CFliterNode::resetInit(){$/;"	f	class:CFliterNode
+runComparison	./MapGraph.cpp	/^void CMapGraph::runComparison(int run_num)$/;"	f	class:CMapGraph
+runG2olog	./MapGraph.cpp	/^void CMapGraph::runG2olog()$/;"	f	class:CMapGraph
+runGTCarmon	./MapGraph.cpp	/^void CMapGraph::runGTCarmon(int run_num){$/;"	f	class:CMapGraph
+runOurCarmon	./MapGraph.cpp	/^void CMapGraph::runOurCarmon(int run_num)$/;"	f	class:CMapGraph
+runSicklog	./MapGraph.cpp	/^bool CMapGraph::runSicklog()$/;"	f	class:CMapGraph
+runlog	./MapGraph.cpp	/^bool CMapGraph::runlog(){$/;"	f	class:CMapGraph
+rvector	./MapNode.h	/^	vector<vector<InterestPoint*> > rvector;$/;"	m	class:CMapNode
+scale	./FlirterNode.h	/^		unsigned int scale;$/;"	m	struct:CFliterNode::_Parameters
+sigmaStep	./FlirterNode.h	/^		double sigmaStep;$/;"	m	struct:CFliterNode::_Parameters
+success	./FlirterNode.h	/^		double success;$/;"	m	struct:CFliterNode::_Parameters
+testGT	./MapGraph.cpp	/^void CMapGraph::testGT(string outfile, int num_of_frame){$/;"	f	class:CMapGraph
+testGT1	./MapGraph.cpp	/^void CMapGraph::testGT1(string outfile, int num_of_frame){$/;"	f	class:CMapGraph
+testbug	./MapGraph.cpp	/^void CMapGraph::testbug(){$/;"	f	class:CMapGraph
+useMaxRange	./FlirterNode.h	/^		bool useMaxRange;$/;"	m	struct:CFliterNode::_Parameters
+validVerify	./MapGraph.cpp	/^bool CMapGraph::validVerify(CFliterNode* new_node, std::vector<int> index, OrientedPoint2D& fpose)$/;"	f	class:CMapGraph
+window	./FlirterNode.h	/^		unsigned int window;$/;"	m	struct:CFliterNode::_Parameters
+~CFliterNode	./FlirterNode.cpp	/^CFliterNode::~CFliterNode(){$/;"	f	class:CFliterNode
+~CMapGraph	./MapGraph.cpp	/^CMapGraph::~CMapGraph(){$/;"	f	class:CMapGraph
+~CMapNode	./MapNode.cpp	/^CMapNode::~CMapNode(){$/;"	f	class:CMapNode
+~MatchingResult	./MatchingResult.h	/^	~MatchingResult(){}$/;"	f	class:MatchingResult

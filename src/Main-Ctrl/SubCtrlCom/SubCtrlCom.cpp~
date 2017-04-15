@@ -1,0 +1,65 @@
+#include "SubCtrlCom.h"
+
+
+SerialCom *SubCtrlCom::m_pCSerialCom;
+SubCtrlCom::SubCtrlCom(void)
+{
+}
+
+SubCtrlCom::~SubCtrlCom(void)
+{
+}
+
+int SubCtrlCom::SendNKJCmd(float fVL,float fVR,int nLTime,int nRTime)
+{
+	m_pCSerialCom->SendControlCMD(fVL,fVR,nLTime,nRTime);
+}
+int SubCtrlCom::SubCtrlComInit()
+{
+	char dev[] ={"/dev/ttyUSB1"};
+	m_pCSerialCom=new SerialCom(dev,115200,0);
+	return RTN_OK;
+}
+
+
+int SubCtrlCom::SubCtrlComRun()
+{
+	m_pCSerialCom->Run();
+	return RTN_OK;
+}
+
+
+int SubCtrlCom::SubCtrlComStop()
+{
+	//m_pCSerialCom->close();
+	return RTN_OK;
+}
+
+
+int SubCtrlCom::SubCtrlComUninit()
+{
+	return RTN_OK;
+}
+
+int SubCtrlCom::Forward()
+{
+	return RTN_OK;
+}
+int SubCtrlCom::Backward()
+{
+	return RTN_OK;
+}
+int SubCtrlCom::Break()
+{
+	return RTN_OK;
+}
+int SubCtrlCom::Turn()
+{
+	return RTN_OK;
+}
+
+int SubCtrlCom::Odometry(float *pfOdometry)
+{
+	return RTN_OK;
+}
+

@@ -1,0 +1,420 @@
+#include "C_C.h"
+
+float C_C::m_fCurPos[3];
+C_C *C_C::m_pCC_CThis;
+
+
+int C_C::cbCtrlCmdParse(float x,float y,float th)
+{
+	static int cnt = 0;
+	char cTmp[12];
+	x*=100;
+	y*=100;
+	memcpy(cTmp,&x,4);
+	memcpy(cTmp+4,&y,4);
+	memcpy(cTmp+8,&th,4);
+	memcpy(m_fCurPos,cTmp,12);
+
+
+	NetPortal::UploadA(cTmp,12);
+	return 0;
+}
+int C_C::cbSLAM(float x,float y,float th){
+
+	static int cnt = 0;
+	char cTmp[12];
+
+	IOA::DataFusionResult(x,y,th);
+
+
+	//x=0;y=0;th=0;
+	x*=100;
+	y*=100;
+	memcpy(cTmp,&x,4);
+	memcpy(cTmp+4,&y,4);
+	memcpy(cTmp+8,&th,4);
+	memcpy(m_fCurPos,cTmp,12);
+
+	//printf("X:%f, Y:%f, TH:%f \n ",x,y,th);
+	//NetPortal::UploadA(cTmp,12);
+}
+int C_C::cbSICK(vector<float>& bearing)
+{
+	static int cnt = 0;
+	int nDatalen=bearing.size()*4+12,i;
+	char *pcData=new char[bearing.size()*4+12];
+	char *pcTmp=pcData+12;
+
+
+
+	//memcpy(pcData,&nDatalen,4);
+	memcpy(pcData,&m_fCurPos[0],4);
+	memcpy(pcData+4,&m_fCurPos[1],4);
+	memcpy(pcData+8,&m_fCurPos[2],4);
+
+	//printf("x:  %f   y:  %f  thata:  %f  \n",m_fCurPos[0],m_fCurPos[1],m_fCurPos[2]);
+	float fTmp;
+	for(i=0;i<bearing.size();i++)
+	{
+		
+		//printf("i: %d value:%f  \n",i,bearing[i]);
+		fTmp=bearing[i];
+		memcpy(pcTmp,&fTmp,4);
+		pcTmp+=4;
+	}
+	//printf("send PC!!!!\n");
+	if(NetPortal::UploadMapBuilder(pcData,nDatalen)==-1)
+	{
+	        printf("lost cnc!!!\n");
+		m_pCC_CThis->m_CLocalMapBuilder.MapStreamIn(pcData,nDatalen);
+	}
+	//cout<<"scan "<<cnt++<<": "<<bearing[0]<<" "<<bearing[bearing.size()-1]<<endl;
+}
+
+
+C_C::C_C(void)
+{
+	m_pCC_CThis=this;
+}
+
+C_C::~C_C(void)
+{
+}
+
+int C_C::C_CInit()
+{
+
+printf("C_C init start!!!!\n");
+	char cTmp[1000];
+	unsigned char *pucTmp=NULL;
+	memset(cTmp,0,1000);
+	LoadConfig("Conf.xml");
+
+	signal(SIGPIPE,SIG_IGN);
+	m_CLogFile.LogFileInit(m_pcLogFilePath);
+	if(pthread_create(&m_hThreadLogFile,NULL,ThreadLogFile,this)!=0)
+	{
+		printf("Create ThreadLogFile Thread Failed!!!!\n");
+	}
+	usleep(100);
+
+
+	m_CTask.TaskInit();
+
+
+
+
+
+
+printf("C_C init ThreadLogFile!!!!\n");
+	
+
+	m_CNetPortal.m_cbLaserData[0]=NULL;
+	m_CNetPortal.m_cbLaserData[1]=NULL;
+
+	m_CNetPortal.m_cbLogFile=LogFile::PushContent2LogStack;
+	m_CNetPortal.m_cbTaskIn=m_CTask.TaskIn;
+	m_CNetPortal.NetPortalInit(m_cNetPortalParams);
+printf("C_C init LaserData!!!!\n");
+
+	m_CSubCtrlCom.SubCtrlComInit();
+	m_CSubCtrlCom.m_cbBNlctAndOdometry=NULL;
+	m_CSubCtrlCom.m_cbLogFile=LogFile::PushContent2LogStack;
+
+	m_CSubCtrlCom.m_cbLaserDtct[0]=NULL;
+	m_CSubCtrlCom.m_cbLaserDtct[1]=NULL;
+printf("C_C init SubCtrlComInit!!!!\n");
+
+	m_CIOA.IOAInit();
+	m_CIOA.m_stSimpleCtrlCmd.cbBackward=SubCtrlCom::Backward;
+	m_CIOA.m_stSimpleCtrlCmd.cbForward=SubCtrlCom::Forward;
+	m_CIOA.m_stSimpleCtrlCmd.cbBreak=SubCtrlCom::Break;
+	m_CIOA.m_stSimpleCtrlCmd.cbTurn=SubCtrlCom::Turn;
+	m_CIOA.m_cbLogFile=LogFile::PushContent2LogStack;
+	
+printf("C_C init IOAInit!!!!\n");
+
+
+	SLAMParams stSLAMParams;
+	
+	memset(stSLAMParams.cHost_IP_A,0,16);
+	memset(stSLAMParams.cSICK_IP_A,0,16);
+	memset(stSLAMParams.cHost_IP_B,0,16);
+	memset(stSLAMParams.cSICK_IP_B,0,16);
+
+	pucTmp=(unsigned char *)&m_cNetPortalParams[32];
+	sprintf(stSLAMParams.cSICK_IP_A, "%d.%d.%d.%d", pucTmp[0],pucTmp[1],pucTmp[2],pucTmp[3]);
+	pucTmp+=4;
+	memcpy(&stSLAMParams.nHost_Port_A,pucTmp,4);
+	pucTmp+=4;
+	sprintf(stSLAMParams.cHost_IP_A, "%d.%d.%d.%d", pucTmp[0],pucTmp[1],pucTmp[2],pucTmp[3]);
+	pucTmp+=4;
+	memcpy(&stSLAMParams.nHost_Port_A,pucTmp,4);
+	
+	
+	pucTmp+=4;
+	sprintf(stSLAMParams.cSICK_IP_B, "%d.%d.%d.%d", pucTmp[0],pucTmp[1],pucTmp[2],pucTmp[3]);
+	pucTmp+=4;
+	memcpy(&stSLAMParams.nHost_Port_B,pucTmp,4);
+	pucTmp+=4;
+	sprintf(stSLAMParams.cHost_IP_B, "%d.%d.%d.%d", pucTmp[0],pucTmp[1],pucTmp[2],pucTmp[3]);
+	pucTmp+=4;
+	memcpy(&stSLAMParams.nHost_Port_B,pucTmp,4);
+	
+	
+
+
+	
+	m_stSLAM_CallBack.cbOdometry=SubCtrlCom::Odometry;
+	m_stSLAM_CallBack.cbBNLocation=BN::BNLocation;
+	// m_stSLAM_CallBack.cbSICKA=IOA:: GetLaserAData;
+	// m_stSLAM_CallBack.cbSICKB=IOA:: GetLaserBData;
+
+
+	//m_stSLAM_CallBack.cbDataFusionResult=IOA::DataFusionResult;
+	m_stSLAM_CallBack.cbDataFusionResult=cbSLAM;
+	m_stSLAM_CallBack.cbSICKA = cbSICK;
+	m_stSLAM_CallBack.cbLocalMap=NULL;
+	m_stSLAM_CallBack.cbLocalMap=NULL;
+
+	//m_CSLAMTest.Init(m_stSLAM_CallBack,stSLAMParams);
+
+
+//	m_CSLAM.m_cbNetUpload=NetPortal::UploadA;
+//	m_CSLAM.m_cbLogFile=LogFile::PushContent2LogStack;
+	m_pCSLAM=new CSlamV1;
+	m_pCSLAM->init(&m_stSLAM_CallBack,NULL);
+
+	//1  read Txt  
+	//2  Sick
+	m_pCSLAM->m_work_model=2;
+	m_pCSLAM->setSystem();
+	
+	//init GPS
+printf("C_C GPS Init!!!!\n");
+	//m_CGPS.start("/dev/ttyUSB0");
+
+printf("C_C BN Init!!!!\n");
+	//init BN
+	BNParams stBNParams;
+	char *pcBNDev="/dev/ttyUSB0";
+	memset(stBNParams.cDev,0,100);
+	memcpy(stBNParams.cDev,pcBNDev,strlen(pcBNDev));
+	stBNParams.uiBaudrate=57600;
+	stBNParams.ucRobotID=18;
+	m_CBN.Init(stBNParams);
+	
+
+	m_CAmbientGridMap.AGMInit();
+
+
+
+
+
+
+	m_CTask.m_cbRobotPos=cbCtrlCmdParse;
+	m_CTask.m_cbSend2RS_A=NetPortal::UploadA;
+	m_CTask.m_cbSend2RS_B=NetPortal::UploadB;
+	m_CTask.m_cbSendNKJCMD=SubCtrlCom::SendNKJCmd;
+
+
+	m_CSubCtrlCom.SubCtrlComInit();
+	return 0;
+}
+
+int C_C::C_CRun(int argc, char* argv[])
+{
+
+
+
+	if(pthread_create(&m_hThreadNetPortal,NULL,ThreadNetPortal,this)!=0)
+	{
+		printf("Create ThreadNetPortal Thread Failed!!!!\n");
+	}
+	usleep(100000);
+
+
+
+	if(pthread_create(&m_hThreadSLAM,NULL,ThreadSLAM,this)!=0)
+	{
+		printf("Create ThreadSLAM Thread Failed!!!!\n");
+	}
+	usleep(100000);
+
+	
+
+	if(pthread_create(&m_hThreadIOA,NULL,ThreadIOA,this)!=0)
+	{
+		printf("Create ThreadSLAM Thread Failed!!!!\n");
+	}
+	usleep(100000);
+
+
+
+
+	if(pthread_create(&m_hThreadSubCtrlCom,NULL,ThreadSubCtrlCom,this)!=0)
+	{
+		printf("Create ThreadSubCtrlCom Thread Failed!!!!\n");
+	}
+	usleep(100000);
+
+
+	
+
+	if(pthread_create(&m_hThreadBN,NULL,ThreadBN,this)!=0)
+	{
+		printf("Create ThreadBN Thread Failed!!!!\n");
+	}
+	usleep(100);
+	
+	// method to call slam interface
+	 m_pCSLAM->start();
+	 m_pCSLAM->startEventLoop(argc,argv);
+
+	return 0;
+}
+
+SLAM_CallBack cbCB;
+
+int main(int argc, char* argv[] )
+{
+	C_C test;
+	//cbCB.cbDataFusionResult = cbSLAM;
+	test.C_CInit();
+	test.C_CRun(argc, argv);
+	//test.m_pCSLAM->init(&cbCB,NULL);
+	//test.m_pCSLAM->start();
+	//test.m_pCSLAM->startEventLoop(argc,argv);
+	printf("main-ctrl start to run!!!!\n");
+	while (1)
+	{
+		sleep(2000000);
+	}
+	return 0;
+}
+
+
+int C_C::LoadConfig(char *pcConfigPath)
+{
+	//ParseXML CParseXML;
+	char cIP[4],cHostIP[4];
+	int i,j,nPort,nHostPort;
+	m_CParseXML.ParseXMLRun(pcConfigPath);
+	j=0;
+	for (i=0;i<5;i++)
+	{
+		ParseIP((char *)m_CParseXML.m_vctData[4*i].c_str(),cIP);
+		nPort=atoi(m_CParseXML.m_vctData[4*i+1].c_str());
+		ParseIP((char *)m_CParseXML.m_vctData[4*i+2].c_str(),cHostIP);
+		nHostPort=atoi(m_CParseXML.m_vctData[4*i+3].c_str());
+
+		memcpy(m_cNetPortalParams+j,cIP,4);
+		j+=4;
+		memcpy(m_cNetPortalParams+j,&nPort,4);
+		j+=4;
+		memcpy(m_cNetPortalParams+j,cHostIP,4);
+		j+=4;
+		memcpy(m_cNetPortalParams+j,&nHostPort,4);
+		j+=4;
+	}
+
+	m_pcLogFilePath=(char*)m_CParseXML.m_vctData[m_CParseXML.m_vctData.size()-2].c_str();
+	m_ucRobotID=atoi(m_CParseXML.m_vctData[m_CParseXML.m_vctData.size()-1].c_str());
+	return 0;
+}
+
+
+int C_C::ParseIP(char *pcData,char *pcIP)
+{
+	char cTmp[10];
+	int i,j=0,k=0;
+	for (i=0;i<(int)strlen(pcData);i++)
+	{
+		if (pcData[i]=='.')
+		{
+			pcIP[k++]=atoi(cTmp);
+			j=0;
+			memset(cTmp,0,10);
+
+		}
+		else
+		{
+			cTmp[j++]=pcData[i];
+		}
+	}
+	pcIP[k]=atoi(cTmp);
+
+	return 0;
+}
+
+
+
+void* C_C::ThreadSLAM(void* lpParam)
+{
+	C_C * pCC=(C_C *)lpParam;
+	//pCC->m_CSLAMTest.Run();
+
+	while(1)
+	{
+		float fPos[3];
+		pCC->m_CBN.BNLocation(fPos);
+		if(fPos[0]==0&&fPos[1]==0&&fPos[2]==0)
+		{
+
+		}
+		else printf("X: %f  ,Y:%f  ,Theta:%f  \n",fPos[0],fPos[1],fPos[2]);
+		usleep(20000);
+	}
+	return 0;
+}
+
+
+
+void* C_C::ThreadNetPortal(void* lpParam)
+{
+	C_C * pCC=(C_C *)lpParam;
+	pCC->m_CNetPortal.NetPortalRun();
+
+	return 0;
+}
+
+void* C_C::ThreadBN(void* lpParam)
+{
+	C_C * pCC=(C_C *)lpParam;
+	pCC->m_CBN.Run();
+	return 0;
+}
+
+void* C_C::ThreadIOA(void* lpParam)
+{
+	return 0;
+}
+
+
+void* C_C::ThreadSubCtrlCom(void* lpParam)
+{
+	C_C * pCC=(C_C *)lpParam;
+	pCC->m_CSubCtrlCom.SubCtrlComRun();
+	return 0;
+}
+
+void* C_C::ThreadLogFile(void* lpParam)
+{
+	C_C * pCC=(C_C *)lpParam;
+	pCC->m_CLogFile.LogFileRun();
+	return 0;
+}
+
+
+void *C_C::ThreadGPS(void* lpParam)
+{
+	double dVal1,dVal2;
+	C_C * pCC=(C_C *)lpParam;
+	while(1)
+	{
+		pCC->m_CGPS.listenUART();
+		usleep(100000);
+		pCC->m_CGPS.getGPSValue(&dVal1,&dVal2);
+		printf("GPS Value:  %f   %f",dVal1,dVal2);
+	}
+}
